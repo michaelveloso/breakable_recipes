@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+ruby '2.2.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use postgresql as the database for Active Record
@@ -36,13 +36,17 @@ gem 'foundation-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'rspec-rails'
-  gem 'capybara'
   gem 'launchy'
-  gem 'factory_girl'
   gem 'valid_attribute'
-  gem 'shoulda-matchers'
   gem 'pry'
   gem 'pry-rails'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'factory_girl'
+  gem 'shoulda-matchers'
+  gem 'coveralls', require: false
 end
 
 group :development do
