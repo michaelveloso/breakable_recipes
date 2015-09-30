@@ -9,7 +9,6 @@ feature 'user registers', %Q{
 
   [√] User can sign up from nav bar
   [√] User must provide username, email, first_name, last_name, and password
-  [] User may provide photo url for avatar
   [√] User is shown errors if mandatory fields are not filled out
   [√] User is shown errors if duplicate username
   [√] User is shown errors if duplicate email
@@ -17,12 +16,6 @@ feature 'user registers', %Q{
   [√] User is taken to root when form is filled out correctly
   [√] User role is set to 'member'
 } do
-
-  # Acceptance Criteria:
-  # * I must specify a valid email address,
-  #   password, and password confirmation
-  # * If I don't specify the required information, I am presented with
-  #   an error message
 
   scenario 'Sign Up button is visible if no one is signed in' do
     visit root_path
@@ -41,7 +34,6 @@ feature 'user registers', %Q{
       fill_in 'Email', with: 'john@example.com'
       fill_in 'Password', with: 'password'
       fill_in 'Password confirmation', with: 'password'
-      # fill_in 'Photo_url', with: 'www.image.com'
     end
 
     scenario 'Gets success message on signup' do
