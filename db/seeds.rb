@@ -7,3 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 UserSeeder.seed!
+IngredientSeeder.seed!

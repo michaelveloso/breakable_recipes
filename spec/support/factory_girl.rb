@@ -10,4 +10,8 @@ FactoryGirl.define do
     password_confirmation 'password'
   end
 
+  factory :ingredient do
+    sequence(:name) { |n| "ingredient#{n}" }
+  end
+
 end
