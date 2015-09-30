@@ -51,5 +51,4 @@ def sign_in(user)
   fill_in 'Password', with: user.password
 
   click_button 'Log in'
-
 end
