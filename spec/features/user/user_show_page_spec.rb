@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user visits account page', %Q{
+feature 'user visits account page', %{
   As a signed up user
   I want see my information
   So I can verify that it's correct
@@ -16,12 +16,7 @@ feature 'user visits account page', %Q{
     before(:each) do
       @user = FactoryGirl.create(:user)
 
-      visit new_user_session_path
-
-      fill_in 'Email', with: @user.email
-      fill_in 'Password', with: @user.password
-
-      click_button 'Log in'
+      sign_in(@user)
 
       click_link 'My Account'
     end
@@ -40,14 +35,21 @@ feature 'user visits account page', %Q{
   scenario 'user can\'t access another user\'s account' do
     user = FactoryGirl.create(:user)
     bad_user = FactoryGirl.create(:user)
-    visit new_user_session_path
 
-    fill_in 'Email', with: bad_user.email
-    fill_in 'Password', with: bad_user.password
-    click_button 'Log in'
+    sign_in(bad_user)
 
     visit user_path(user)
     expect(page).to have_content("You're not signed in as this user")
     expect(current_path).to eq(root_path)
   end
+end
+
+def sign_in(user)
+  visit new_user_session_path
+
+  fill_in 'Email', with: user.email
+  fill_in 'Password', with: user.password
+
+  click_button 'Log in'
+
 end
