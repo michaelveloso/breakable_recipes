@@ -63,7 +63,8 @@ RSpec.describe User, type: :model do
       last_name: "Roberts"
       )
     expect(user.valid?).to eq(false)
-    expect(user.errors.full_messages[0]).to eq("Username has already been taken")
+    expect(user.errors.full_messages[0]).to eq(
+      "Username has already been taken")
   end
 
   it "should have full name" do
