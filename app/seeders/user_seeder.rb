@@ -4,6 +4,7 @@ class UserSeeder
       username: "member",
       email: "member@member.com",
       password: "password",
+      password_confirmation: "password",
       first_name: "Member",
       last_name: "User",
       role: "member"
@@ -11,6 +12,7 @@ class UserSeeder
       username: "admin",
       email: "admin@admin.com",
       password: "password",
+      password_confirmation: "password",
       first_name: "Admin",
       last_name: "User",
       role: "admin"
@@ -19,7 +21,7 @@ class UserSeeder
 
   def self.seed!
     USERS.each do |user|
-      User.find_or_create_by!(user)
+      User.create!(user)
     end
   end
 end
