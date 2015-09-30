@@ -7,8 +7,7 @@ class UserSeeder
       first_name: "Member",
       last_name: "User",
       role: "member"
-    },
-     {
+    }, {
       username: "admin",
       email: "admin@admin.com",
       password: "password",

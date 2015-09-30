@@ -100,7 +100,8 @@ feature 'user registers', %Q{
       fill_in 'Password confirmation', with: 'pass'
       click_button 'Sign up'
 
-      expect(page).to have_content('Password is too short (minimum is 8 characters)')
+      expect(page).to have_content(
+        'Password is too short (minimum is 8 characters)')
     end
 
     scenario "username can't be a dupe" do
