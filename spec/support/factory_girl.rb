@@ -8,10 +8,21 @@ FactoryGirl.define do
     last_name 'Last'
     password 'password'
     password_confirmation 'password'
+
+    factory :user_mod do
+      role 'moderator'
+    end
+
+    factory :user_admin do
+      role 'admin'
+    end
   end
 
   factory :ingredient do
     sequence(:name) { |n| "ingredient#{n}" }
+    factory :ingredient_subtype do
+      sequence(:subtype) { |n| "subtype#{n}" }
+    end
   end
 
 end

@@ -1,7 +1,8 @@
-class UserSeeder
+class IngredientSeeder
   INGREDIENTS = [
     {
       name: "Tomatoes",
+      subtype: "Plum"
     }, {
       name: "Paprika"
     }

@@ -17,10 +17,11 @@ ActiveRecord::Schema.define(version: 20150930201247) do
   enable_extension "plpgsql"
 
   create_table "ingredients", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name",    null: false
+    t.string "subtype"
   end
 
-  add_index "ingredients", ["name"], name: "index_ingredients_on_name", unique: true, using: :btree
+  add_index "ingredients", ["name", "subtype"], name: "index_ingredients_on_name_and_subtype", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",       null: false
