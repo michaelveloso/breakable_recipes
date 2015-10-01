@@ -1,5 +1,12 @@
 <h1>Ingredient List</h1>
 
 <% @ingredients.each do |ingredient| %>
-  <%= ingredient.name %>
+  <div class="ingredient-entry">
+    <%= ingredient.description %>
+  </div>
+<% end %>
+<% if current_user.present? %>
+  <% if current_user.role == 'moderator' || current_user.role == 'admin' %>
+    <%= button_to 'Add an ingredient', new_ingredient_path, method: :get %>
+  <% end %>
 <% end %>

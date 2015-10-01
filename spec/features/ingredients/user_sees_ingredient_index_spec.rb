@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'user sees ingredient index', %{
-  As a user
+  As an unauthenticated user
   I want see a list of ingredients
   So I know what's available
 
