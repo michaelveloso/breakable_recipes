@@ -1,4 +1,6 @@
 class IngredientsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+
   def index
     @ingredients = Ingredient.all
   end
@@ -20,6 +22,23 @@ class IngredientsController < ApplicationController
     end
   end
 
+  def edit
+    check_permission
+    @ingredient = this_ingredient
+  end
+
+  def update
+    check_permission
+    @ingredient = this_ingredient
+    if @ingredient.update_attributes(ingredient_params)
+      flash[:success] = "Ingredient updated!"
+      redirect_to ingredients_path
+    else
+      flash[:errors] = @ingredient.errors.full_messages.join(', ')
+      render :edit
+    end
+  end
+
   private
 
   def ingredient_params
@@ -27,14 +46,13 @@ class IngredientsController < ApplicationController
   end
 
   def check_permission
-    if current_user.present?
-      if not current_user.role == 'admin' || current_user.role == 'moderator'
-        flash[:errors] = 'You don\'t have permission to do that!'
-        redirect_to root_path
-      end
-    else
-      flash[:errors] = 'You\'re not signed in'
-      redirect_to root_path
+    if not current_user.role == 'admin' || current_user.role == 'moderator'
+      flash[:errors] = 'You don\'t have permission to do that!'
+      redirect_to ingredients_path
     end
+  end
+
+  def this_ingredient
+    Ingredient.find(params[:id])
   end
 end

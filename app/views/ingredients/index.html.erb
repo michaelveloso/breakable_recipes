@@ -3,6 +3,7 @@
 <% @ingredients.each do |ingredient| %>
   <div class="ingredient-entry">
     <%= ingredient.description %>
+    <%= button_to "Edit", edit_ingredient_path(ingredient), method: :get %>
   </div>
 <% end %>
 <% if current_user.present? %>
