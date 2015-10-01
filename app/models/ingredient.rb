@@ -1,6 +1,6 @@
 class Ingredient < ActiveRecord::Base
   validates :name, presence: true
-  validates :name, uniqueness: {scope: :subtype}
+  validates :name, uniqueness: { scope: :subtype }
 
   def description
     string = "#{name}"

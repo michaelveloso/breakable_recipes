@@ -21,7 +21,7 @@ FactoryGirl.define do
   factory :ingredient do
     sequence(:name) { |n| "ingredient#{n}" }
     factory :ingredient_subtype do
-      sequence(:subtype) { |n| "subtype#{n}"}
+      sequence(:subtype) { |n| "subtype#{n}" }
     end
   end
 
