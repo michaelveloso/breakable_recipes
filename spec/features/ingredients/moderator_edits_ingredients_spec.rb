@@ -27,7 +27,7 @@ feature 'moderator edits ingredient', %{
 
   context 'user has permission' do
 
-    scenario 'only authorized user can access edit button on ingredient index' do
+    scenario 'only authorized users access edit button on ingredient index' do
       sign_in(@moderator)
 
       visit ingredients_path
