@@ -11,15 +11,16 @@ feature 'user visits account page', %{
   [] - User sees their information on their account page
   [] - Users can't see other users' account pages
 } do
+
+  before(:each) do
+    @user = FactoryGirl.create(:user)
+
+    sign_in(@user)
+
+    click_link 'My Account'
+  end
+
   context 'user accesses own account' do
-
-    before(:each) do
-      @user = FactoryGirl.create(:user)
-
-      sign_in(@user)
-
-      click_link 'My Account'
-    end
 
     scenario 'user can see their account page by clicking "My Account"' do
       expect(current_path).to eq(user_path(@user))
@@ -33,12 +34,9 @@ feature 'user visits account page', %{
   end
 
   scenario 'user can\'t access another user\'s account' do
-    user = FactoryGirl.create(:user)
-    bad_user = FactoryGirl.create(:user)
+    other_user = FactoryGirl.create(:user)
+    visit user_path(other_user)
 
-    sign_in(bad_user)
-
-    visit user_path(user)
     expect(page).to have_content("You're not signed in as this user")
     expect(current_path).to eq(root_path)
   end

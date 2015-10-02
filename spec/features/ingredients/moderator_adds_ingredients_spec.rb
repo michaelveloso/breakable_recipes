@@ -18,11 +18,16 @@ feature 'moderator adds ingredient', %{
 
 } do
 
+  before(:each) do
+    @user = FactoryGirl.create(:user)
+    @moderator = FactoryGirl.create(:user_mod)
+    @admin = FactoryGirl.create(:user_admin)
+  end
+
   context 'user has permission' do
 
     scenario do
-      moderator = FactoryGirl.create(:user_mod)
-      sign_in(moderator)
+      sign_in(@moderator)
 
       visit new_ingredient_path
       find_field 'ingredient-name-input'
@@ -30,8 +35,7 @@ feature 'moderator adds ingredient', %{
     end
 
     scenario 'moderator can add ingredients' do
-      moderator = FactoryGirl.create(:user_mod)
-      sign_in(moderator)
+      sign_in(@moderator)
       visit ingredients_path
       click_button('Add an ingredient')
       fill_in 'ingredient-name-input', with: 'Tomatillos'
@@ -41,8 +45,7 @@ feature 'moderator adds ingredient', %{
     end
 
     scenario 'admin can add ingredients' do
-      admin = FactoryGirl.create(:user_admin)
-      sign_in(admin)
+      sign_in(@admin)
       visit ingredients_path
       click_button('Add an ingredient')
 
@@ -53,8 +56,7 @@ feature 'moderator adds ingredient', %{
     end
 
     scenario 'successful submission shows success on ingredient index' do
-      moderator = FactoryGirl.create(:user_mod)
-      sign_in(moderator)
+      sign_in(@moderator)
       visit ingredients_path
 
       click_button('Add an ingredient')
@@ -70,8 +72,7 @@ feature 'moderator adds ingredient', %{
     end
 
     scenario 'unsuccessful submission shows errors' do
-      moderator = FactoryGirl.create(:user_mod)
-      sign_in(moderator)
+      sign_in(@moderator)
       visit new_ingredient_path
 
       click_button('Add this ingredient')
@@ -82,16 +83,14 @@ feature 'moderator adds ingredient', %{
   context 'user does not have permission' do
 
     scenario 'user visit new ingredient page from index' do
-      user = FactoryGirl.create(:user)
-      sign_in(user)
+      sign_in(@user)
       visit ingredients_path
 
       expect(page).to_not have_content('Add an ingredient')
     end
 
     scenario 'user cannot visit add page' do
-      user = FactoryGirl.create(:user)
-      sign_in(user)
+      sign_in(@user)
       visit new_ingredient_path
 
       expect(page).to have_content('You don\'t have permission to do that')

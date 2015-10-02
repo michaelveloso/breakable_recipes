@@ -1,17 +1,16 @@
 class IngredientsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
+  before_action :check_permission, except: [:index]
 
   def index
     @ingredients = Ingredient.all
   end
 
   def new
-    check_permission
     @ingredient = Ingredient.new
   end
 
   def create
-    check_permission
     @ingredient = Ingredient.new(ingredient_params)
     if @ingredient.save
       flash[:success] = "Ingredient added!"
@@ -23,12 +22,10 @@ class IngredientsController < ApplicationController
   end
 
   def edit
-    check_permission
     @ingredient = this_ingredient
   end
 
   def update
-    check_permission
     @ingredient = this_ingredient
     if @ingredient.update_attributes(ingredient_params)
       flash[:success] = "Ingredient updated!"
@@ -37,6 +34,13 @@ class IngredientsController < ApplicationController
       flash[:errors] = @ingredient.errors.full_messages.join(', ')
       render :edit
     end
+  end
+
+  def destroy
+    @ingredient = this_ingredient
+    @ingredient.destroy
+    flash[:success] = "Ingredient removed!"
+    redirect_to ingredients_path
   end
 
   private
