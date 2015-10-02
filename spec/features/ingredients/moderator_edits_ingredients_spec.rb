@@ -34,19 +34,16 @@ feature 'moderator edits ingredient', %{
       click_button ('Edit')
 
       expect(current_path).to eq(edit_ingredient_path(@ingredient))
-
       click_link ('Sign Out')
 
       sign_in(@admin)
-
       visit ingredients_path
       click_button ('Edit')
 
       expect(current_path).to eq(edit_ingredient_path(@ingredient))
-
       click_link ('Sign Out')
 
-      sign_in(@name)
+      sign_in(@user)
 
       visit ingredients_path
       expect(page.has_button?('Edit')).to eq(false)
@@ -54,7 +51,6 @@ feature 'moderator edits ingredient', %{
 
     scenario 'form fields are visible and prefilled' do
       sign_in(@moderator)
-
       visit edit_ingredient_path(@ingredient)
 
       find_field 'ingredient-name-input'
@@ -65,7 +61,6 @@ feature 'moderator edits ingredient', %{
 
     scenario 'moderator can edit ingredients' do
       sign_in(@moderator)
-
       visit edit_ingredient_path(@ingredient)
 
       fill_in 'ingredient-name-input', with: 'Tomatillos'
@@ -76,7 +71,6 @@ feature 'moderator edits ingredient', %{
 
     scenario 'admin can edit ingredients' do
       sign_in(@admin)
-
       visit edit_ingredient_path(@ingredient)
 
       fill_in 'ingredient-name-input', with: 'Tomatillos'
@@ -87,14 +81,13 @@ feature 'moderator edits ingredient', %{
 
     scenario 'successful submission updates database' do
       sign_in(@moderator)
-
       visit edit_ingredient_path(@ingredient)
 
       fill_in 'ingredient-name-input', with: 'Tomatillos'
       fill_in 'ingredient-subtype-input', with: 'heirloom'
-
       click_button('Update this ingredient')
 
+      @ingredient.reload
       expect(@ingredient.name).to eq('Tomatillos')
       expect(@ingredient.subtype).to eq('heirloom')
     end
@@ -105,7 +98,6 @@ feature 'moderator edits ingredient', %{
 
       fill_in 'ingredient-name-input', with: 'Tomatillos'
       fill_in 'ingredient-subtype-input', with: 'heirloom'
-
       click_button('Update this ingredient')
 
       expect(page).to have_content('Ingredient updated!')
@@ -119,20 +111,13 @@ feature 'moderator edits ingredient', %{
 
       fill_in 'ingredient-name-input', with: ''
       fill_in 'ingredient-subtype-input', with: ''
-
       click_button('Update this ingredient')
+
       expect(page).to have_content('Name can\'t be blank')
     end
   end
 
   context 'user does not have permission' do
-
-    scenario 'user cannot visit edit ingredient page from index' do
-      sign_in(@user)
-      visit ingredients_path
-
-      expect(find_button('Edit')).to eq(false)
-    end
 
     scenario 'user cannot visit edit page' do
       sign_in(@user)

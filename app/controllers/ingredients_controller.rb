@@ -43,7 +43,7 @@ class IngredientsController < ApplicationController
     check_permission
     @ingredient = this_ingredient
     @ingredient.destroy
-    flash[:success] = "Ingredient deleted!"
+    flash[:success] = "Ingredient removed!"
     redirect_to ingredients_path
   end
 
