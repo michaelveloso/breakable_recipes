@@ -55,8 +55,10 @@ feature 'moderator edits ingredient', %{
 
       find_field 'ingredient-name-input'
       find_field 'ingredient-subtype-input'
-      expect(page).to have_field('ingredient-name-input', with: @ingredient.name)
-      expect(page).to have_field('ingredient-subtype-input', with: @ingredient.subtype)
+      expect(page).to have_field(
+        'ingredient-name-input', with: @ingredient.name)
+      expect(page).to have_field(
+        'ingredient-subtype-input', with: @ingredient.subtype)
     end
 
     scenario 'moderator can edit ingredients' do
