@@ -7,11 +7,11 @@ feature 'moderator deletes ingredient', %{
 
   Acceptance criteria:
 
-  [] - Moderator can delete ingredients from ingredients index
-  [] - Admin can delete ingredients from ingredients index
-  [] - Successful deletion takes user to ingredients index
-  [] - Successful deletion shows success message
-  [] - Users cannot delete ingredients from ingredients index
+  [√] - Moderator can delete ingredients from ingredients index
+  [√] - Admin can delete ingredients from ingredients index
+  [√] - Successful deletion takes user to ingredients index
+  [√] - Successful deletion shows success message
+  [√] - Users cannot delete ingredients from ingredients index
 } do
 
   context 'user has permission' do

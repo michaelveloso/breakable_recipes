@@ -7,8 +7,8 @@ feature 'user sees category index', %{
 
   Acceptance criteria:
 
-  [] - Moderator sees categories at /moderator/categories
-  [] - Categories are in alphabetical order
+  [√] - Moderator sees categories at /moderator/categories
+  [√] - Categories are in alphabetical order
 } do
 
   scenario 'only moderator or admin can see category list' do

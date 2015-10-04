@@ -8,7 +8,7 @@ feature 'user sees ingredient index', %{
   Acceptance criteria:
 
   [√] - User sees ingredients at /ingredients
-  [] - Ingredients are in alphabetical order
+  [√] - Ingredients are in alphabetical order
 } do
 
   scenario 'user can see ingredient list' do
