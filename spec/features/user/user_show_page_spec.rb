@@ -7,9 +7,9 @@ feature 'user visits account page', %{
 
   Acceptance criteria:
 
-  [] - User can visit their account page by clicking 'My Account' if signed in
-  [] - User sees their information on their account page
-  [] - Users can't see other users' account pages
+  [√] - User can visit their account page by clicking 'My Account' if signed in
+  [√] - User sees their information on their account page
+  [√] - Users can't see other users' account pages
 } do
 
   before(:each) do
