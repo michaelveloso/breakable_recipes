@@ -10,4 +10,23 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name, :username]
   end
+
+  def confirm_user
+    if current_user.present?
+      if current_user != User.find(params[:id])
+        flash[:errors] = "You're not signed in as this user"
+        redirect_to root_path
+      end
+    else
+      flash[:errors] = "You're not signed in"
+      redirect_to root_path
+    end
+  end
+
+  def check_permission
+    if not current_user.role == 'admin' || current_user.role == 'moderator'
+      flash[:errors] = 'You don\'t have permission to do that!'
+      redirect_to root_path
+    end
+  end
 end

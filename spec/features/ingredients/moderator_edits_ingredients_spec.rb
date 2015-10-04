@@ -125,7 +125,7 @@ feature 'moderator edits ingredient', %{
       sign_in(@user)
       visit edit_ingredient_path(@ingredient)
 
-      expect(current_path).to eq(ingredients_path)
+      expect(current_path).to eq(root_path)
       expect(page).to have_content('You don\'t have permission to do that')
     end
   end

@@ -35,7 +35,6 @@ gem 'foundation-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'rspec-rails'
   gem 'launchy'
   gem 'valid_attribute'
   gem 'pry'
@@ -43,9 +42,11 @@ group :development, :test do
 end
 
 group :test do
+  gem 'rspec-rails'
   gem 'capybara'
   gem 'factory_girl'
   gem 'shoulda-matchers'
+  gem 'orderly'
   gem 'coveralls', require: false
 end
 
