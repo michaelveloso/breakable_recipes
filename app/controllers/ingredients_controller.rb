@@ -1,12 +1,9 @@
 class IngredientsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action :check_permission, except: [:index]
+  before_action :verify_moderator, except: [:index]
 
   def index
     @ingredients = Ingredient.order(:name, :subtype)
-  end
-
-  def new
     @ingredient = Ingredient.new
   end
 
@@ -17,7 +14,8 @@ class IngredientsController < ApplicationController
       redirect_to ingredients_path
     else
       flash[:errors] = @ingredient.errors.full_messages.join(', ')
-      render :new
+      @ingredients = Ingredient.order(:name, :subtype)
+      render :index
     end
   end
 

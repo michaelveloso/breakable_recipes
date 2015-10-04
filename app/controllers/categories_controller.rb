@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_permission
+  before_action :verify_moderator
 
   def index
     @categories = Category.order(:name)
