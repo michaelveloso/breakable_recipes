@@ -7,10 +7,19 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :role, presence: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def moderator?
+    role == 'admin' || role == 'moderator'
+  end
+
+  def admin?
+    rol == 'admin'
+  end
 
   def full_name
     "#{first_name} #{last_name}"

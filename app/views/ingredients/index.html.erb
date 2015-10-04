@@ -1,18 +1,30 @@
 <h1>Ingredient List</h1>
 
+<% if current_user.present? %>
+  <% if current_user.moderator? %>
+    <%= form_for(@ingredient) do |form| %>
+      <div class="field column small-12">
+        <%= form.text_field :name, class: "text-input-field ingredient-input-field", id: "ingredient-name-input", placeholder: "Ingredient name" %>
+      </div>
+      <div class="field column small-12">
+        <%= form.text_field :subtype, class: "text-input-field ingredient-input-field", id: "ingredient-subtype-input", placeholder: "Optional subtype" %>
+      </div>
+      <div class="actions">
+        <%= form.submit "Add this ingredient", class: "button expand round medium" %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+
 <% @ingredients.each do |ingredient| %>
   <div class="ingredient-entry">
     <%= ingredient.description %>
     <% if current_user.present? %>
-      <% if current_user.role == 'moderator' || current_user.role == 'admin' %>
+      <% if current_user.moderator? %>
         <%= button_to "Edit", edit_ingredient_path(ingredient), method: :get %>
         <%= button_to "Delete", ingredient, method: :delete %>
       <% end %>
     <% end %>
   </div>
-<% end %>
-<% if current_user.present? %>
-  <% if current_user.role == 'moderator' || current_user.role == 'admin' %>
-    <%= button_to 'Add an ingredient', new_ingredient_path, method: :get %>
-  <% end %>
 <% end %>

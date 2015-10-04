@@ -26,10 +26,10 @@ feature 'moderator adds ingredient', %{
 
   context 'user has permission' do
 
-    scenario do
+    scenario 'moderator can see input fields' do
       sign_in(@moderator)
 
-      visit new_ingredient_path
+      visit ingredients_path
       find_field 'ingredient-name-input'
       find_field 'ingredient-subtype-input'
     end
@@ -37,7 +37,6 @@ feature 'moderator adds ingredient', %{
     scenario 'moderator can add ingredients' do
       sign_in(@moderator)
       visit ingredients_path
-      click_button('Add an ingredient')
       fill_in 'ingredient-name-input', with: 'Tomatillos'
       click_button('Add this ingredient')
 
@@ -47,7 +46,6 @@ feature 'moderator adds ingredient', %{
     scenario 'admin can add ingredients' do
       sign_in(@admin)
       visit ingredients_path
-      click_button('Add an ingredient')
 
       fill_in 'ingredient-name-input', with: 'Tomatillos'
       click_button('Add this ingredient')
@@ -58,8 +56,6 @@ feature 'moderator adds ingredient', %{
     scenario 'successful submission shows success on ingredient index' do
       sign_in(@moderator)
       visit ingredients_path
-
-      click_button('Add an ingredient')
 
       fill_in 'ingredient-name-input', with: 'Tomatillos'
       fill_in 'ingredient-subtype-input', with: 'heirloom'
@@ -73,8 +69,7 @@ feature 'moderator adds ingredient', %{
 
     scenario 'unsuccessful submission shows errors' do
       sign_in(@moderator)
-      visit new_ingredient_path
-
+      visit ingredients_path
       click_button('Add this ingredient')
       expect(page).to have_content('Name can\'t be blank')
     end
@@ -86,14 +81,7 @@ feature 'moderator adds ingredient', %{
       sign_in(@user)
       visit ingredients_path
 
-      expect(page).to_not have_content('Add an ingredient')
-    end
-
-    scenario 'user cannot visit add page' do
-      sign_in(@user)
-      visit new_ingredient_path
-
-      expect(page).to have_content('You don\'t have permission to do that')
+      expect(page).to_not have_content('Add this ingredient')
     end
   end
 end

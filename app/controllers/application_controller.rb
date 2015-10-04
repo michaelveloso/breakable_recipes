@@ -23,8 +23,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def check_permission
-    if not current_user.role == 'admin' || current_user.role == 'moderator'
+  def verify_moderator
+    if not current_user.moderator?
       flash[:errors] = 'You don\'t have permission to do that!'
       redirect_to root_path
     end
