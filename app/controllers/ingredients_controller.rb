@@ -3,7 +3,7 @@ class IngredientsController < ApplicationController
   before_action :check_permission, except: [:index]
 
   def index
-    @ingredients = Ingredient.all
+    @ingredients = Ingredient.order(:name, :subtype)
   end
 
   def new
@@ -49,12 +49,6 @@ class IngredientsController < ApplicationController
     params.require(:ingredient).permit(:name, :subtype)
   end
 
-  def check_permission
-    if not current_user.role == 'admin' || current_user.role == 'moderator'
-      flash[:errors] = 'You don\'t have permission to do that!'
-      redirect_to ingredients_path
-    end
-  end
 
   def this_ingredient
     Ingredient.find(params[:id])
