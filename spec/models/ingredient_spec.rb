@@ -7,10 +7,12 @@ RSpec.describe Ingredient, type: :model do
 
   it { should have_valid(:subtype).when("plum", "red wine") }
 
+  it { should have_many :ingredient_lists }
+  it { should have_many :recipes }
+
   it 'should not validate duplicate name-subtype pairs' do
     Ingredient.create(name: "Tomatoes", subtype: "Plum")
     ingredient_invalid = Ingredient.new(name: "Tomatoes", subtype: "Plum")
     expect(ingredient_invalid.valid?).to eq(false)
   end
-
 end
