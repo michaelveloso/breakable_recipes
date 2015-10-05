@@ -49,6 +49,7 @@ RSpec.describe Recipe, type: :model do
     recipe = FactoryGirl.create(:recipe_numbers)
     expect(recipe.complexity_rating).to eq(recipe.complexity)
     expect(recipe.cooking_time_min).to eq("#{recipe.cooking_time} minutes")
-    expect(recipe.num_served).to eq("#{recipe.num_served_min}-#{recipe.num_served_max} people")
+    expect(recipe.num_served).to eq(
+      "#{recipe.num_served_min}-#{recipe.num_served_max} people")
   end
 end
