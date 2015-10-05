@@ -1,9 +1,9 @@
 class CategorySeeder
   CATEGORIES = [
-    { name: "Asian"},
-    { name: "Italian"},
-    { name: "Pasta"},
-    { name: "Vegetarian"}
+    { name: "Asian" },
+    { name: "Italian" },
+    { name: "Pasta" },
+    { name: "Vegetarian" }
   ]
 
   def self.seed!

@@ -18,5 +18,4 @@ class Recipe < ActiveRecord::Base
   validates :complexity, numericality: {
     only_integer: true }
   validates :complexity, inclusion: { in: (0..3) }
-
 end

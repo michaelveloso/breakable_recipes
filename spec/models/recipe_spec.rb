@@ -12,17 +12,17 @@ RSpec.describe Recipe, type: :model do
   it { should have_valid(:name).when("tomatoes", "soy sauce") }
   it { should_not have_valid(:name).when(nil, '') }
 
-  it { should have_valid(:cooking_time).when('0', '30', '200')}
-  it { should_not have_valid(:cooking_time).when('bob', '-5', '20.5')}
+  it { should have_valid(:cooking_time).when('0', '30', '200') }
+  it { should_not have_valid(:cooking_time).when('bob', '-5', '20.5') }
 
-  it { should have_valid(:num_served_min).when('0', '5', '8')}
-  it { should_not have_valid(:num_served_min).when('bob', '-5', '20.5')}
+  it { should have_valid(:num_served_min).when('0', '5', '8') }
+  it { should_not have_valid(:num_served_min).when('bob', '-5', '20.5') }
 
-  it { should have_valid(:num_served_max).when('0', '5', '8')}
-  it { should_not have_valid(:num_served_max).when('bob', '-5', '20.5')}
+  it { should have_valid(:num_served_max).when('0', '5', '8') }
+  it { should_not have_valid(:num_served_max).when('bob', '-5', '20.5') }
 
-  it { should have_valid(:complexity).when('0', '1', '2', '3')}
-  it { should_not have_valid(:num_served_max).when('bob', '-1', '20.5')}
+  it { should have_valid(:complexity).when('0', '1', '2', '3') }
+  it { should_not have_valid(:num_served_max).when('bob', '-1', '20.5') }
 
   it 'should not accept duplicate names' do
     user = FactoryGirl.create(:user)

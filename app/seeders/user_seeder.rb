@@ -16,7 +16,7 @@ class UserSeeder
       first_name: "Moderator",
       last_name: "User",
       role: "moderator"
-    },{
+    }, {
       username: "admin",
       email: "admin@admin.com",
       password: "password",
