@@ -7,11 +7,11 @@ feature 'user edits categories', %{
 
   Acceptance criteria:
 
-  [] - Moderator can edit categories from category index
-  [] - Edit page shows all fields
-  [] - User sees success message on update
-  [] - User is taken to categories index on update
-  [] - User is shown errors on unsuccessful update
+  [√] - Moderator can edit categories from category index
+  [√] - Edit page shows all fields
+  [√] - User sees success message on update
+  [√] - User is taken to categories index on update
+  [√] - User is shown errors on unsuccessful update
 } do
 
   before(:each) do
