@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
+  it { should have_many :recipes }
+
   it { should have_valid(:email).when("email@gmail.com", "gmail@email.com") }
   it { should_not have_valid(:email).when(nil, '', 'zest.com') }
 
