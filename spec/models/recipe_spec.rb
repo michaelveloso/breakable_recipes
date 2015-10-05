@@ -25,18 +25,31 @@ RSpec.describe Recipe, type: :model do
   it { should_not have_valid(:num_served_max).when('bob', '-1', '20.5') }
 
   it 'should not accept duplicate names' do
-    user = FactoryGirl.create(:user)
-    Recipe.create(name: "Recipe", user: user)
-    new_recipe = Recipe.new(name: "Recipe", user: user)
+    FactoryGirl.create(:recipe, name: "Recipe")
+    new_recipe = FactoryGirl.build(:recipe, name: "Recipe")
     expect(new_recipe.valid?).to eq(false)
   end
 
   it 'should default to 0 on numerical values' do
-    user = FactoryGirl.create(:user)
-    recipe = Recipe.create(name: "Recipe", user: user)
+    recipe = FactoryGirl.create(:recipe)
     expect(recipe.cooking_time).to eq(0)
     expect(recipe.num_served_min).to eq(0)
     expect(recipe.num_served_max).to eq(0)
     expect(recipe.complexity).to eq(0)
+  end
+
+  it 'should default to empty strings on 0 values' do
+    recipe = FactoryGirl.create(:recipe)
+    expect(recipe.complexity_rating).to eq("")
+    expect(recipe.cooking_time_min).to eq("")
+    expect(recipe.num_served).to eq("")
+  end
+
+  it 'should show rating strings' do
+    recipe = FactoryGirl.create(:recipe_numbers)
+    expect(recipe.complexity_rating).to eq(recipe.complexity)
+    expect(recipe.cooking_time_min).to eq("#{recipe.cooking_time} minutes")
+    expect(recipe.num_served).to eq(
+      "#{recipe.num_served_min}-#{recipe.num_served_max} people")
   end
 end
