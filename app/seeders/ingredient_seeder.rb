@@ -5,9 +5,10 @@ class IngredientSeeder
     { name: "Chili-garlic Paste" },
     { name: "Cilantro" },
     { name: "Corn" },
+    { name: "Crushed Red Pepper" },
     { name: "Cucumber" },
-    { name: "Garlic", subtype: "Minced" },
-    { name: "Ginger", subtype: "Grated" },
+    { name: "Garlic" },
+    { name: "Ginger" },
     { name: "Mint" },
     { name: "Rice Noodles" },
     { name: "Oil", subtype: "Sesame" },
@@ -16,15 +17,18 @@ class IngredientSeeder
     { name: "Peanut Butter", subtype: "Smooth" },
     { name: "Peanuts", subtype: "Roasted Salted" },
     { name: "Potatoes", subtype: "Yukon Gold" },
+    { name: "Salt" },
+    { name: "Sesame Paste" },
     { name: "Soy Sauce" },
     { name: "Sugar", subtype: "Brown" },
     { name: "Tomatoes", subtype: "Plum" },
-    { name: "Vinegar", subtype: "Cider" }
+    { name: "Vinegar", subtype: "Cider" },
+    { name: "Vinegar", subtype: "Rice" }
   ]
 
   def self.seed!
     INGREDIENTS.each do |ingredient|
-      Ingredient.create!(ingredient)
+      Ingredient.create(ingredient)
     end
   end
 end
