@@ -7,11 +7,11 @@ feature 'user adds categories', %{
 
   Acceptance criteria:
 
-  [] - Moderator can add categories from at /moderator/categories
-  [] - Form is displayed correctly
-  [] - Form shows errors if name is not filled out correctly
-  [] - Form displays success message on successful submission
-  [] - Moderator is taken to categories index after success
+  [√] - Moderator can add categories from at /moderator/categories
+  [√] - Form is displayed correctly
+  [√] - Form shows errors if name is not filled out correctly
+  [√] - Form displays success message on successful submission
+  [√] - Moderator is taken to categories index after success
 } do
 
   before(:each) do

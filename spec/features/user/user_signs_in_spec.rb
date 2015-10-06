@@ -28,7 +28,6 @@ feature 'user signs in', %Q{
     end
 
     scenario 'user is taken to their index' do
-      pending("Waiting for recipe index to be implemented")
       expect(current_path).to eq(recipes_path)
     end
   end
