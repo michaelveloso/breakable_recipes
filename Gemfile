@@ -36,13 +36,13 @@ gem 'foundation-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'launchy'
-  gem 'valid_attribute'
   gem 'pry'
   gem 'pry-rails'
+  gem 'rspec-rails'
 end
 
 group :test do
-  gem 'rspec-rails'
+  gem 'valid_attribute'
   gem 'capybara'
   gem 'factory_girl'
   gem 'shoulda-matchers'
