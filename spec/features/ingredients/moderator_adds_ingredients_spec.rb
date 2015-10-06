@@ -58,12 +58,12 @@ feature 'moderator adds ingredient', %{
       visit ingredients_path
 
       fill_in 'ingredient-name-input', with: 'Tomatillos'
-      fill_in 'ingredient-subtype-input', with: 'heirloom'
+      fill_in 'ingredient-subtype-input', with: 'Heirloom'
 
       click_button('Add this ingredient')
 
       expect(page).to have_content('Ingredient added!')
-      expect(page).to have_content('Tomatillos, heirloom')
+      expect(page).to have_content('Heirloom Tomatillos')
       expect(current_path).to eq(ingredients_path)
     end
 

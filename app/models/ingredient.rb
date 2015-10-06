@@ -5,9 +5,9 @@ class Ingredient < ActiveRecord::Base
   validates :name, presence: true
   validates :name, uniqueness: { scope: :subtype }
 
-  def description
+  def to_s
     string = "#{name}"
-    string << ", #{subtype}" if subtype.present?
+    string = "#{subtype} " + string if subtype.present?
     string
   end
 end

@@ -48,7 +48,7 @@ feature 'moderator deletes ingredient', %{
 
       click_button ('Delete')
 
-      expect(page).to_not have_content(@ingredient.description)
+      expect(page).to_not have_content(@ingredient.to_s)
     end
 
     scenario 'admin can delete ingredients' do
@@ -58,7 +58,7 @@ feature 'moderator deletes ingredient', %{
 
       click_button ('Delete')
 
-      expect(page).to_not have_content(@ingredient.description)
+      expect(page).to_not have_content(@ingredient.to_s)
     end
 
     scenario 'successful deletion removes ingredient from database' do

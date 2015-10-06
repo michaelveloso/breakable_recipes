@@ -86,12 +86,12 @@ feature 'moderator edits ingredient', %{
       visit edit_ingredient_path(@ingredient)
 
       fill_in 'ingredient-name-input', with: 'Tomatillos'
-      fill_in 'ingredient-subtype-input', with: 'heirloom'
+      fill_in 'ingredient-subtype-input', with: 'Heirloom'
       click_button('Update this ingredient')
 
       @ingredient.reload
       expect(@ingredient.name).to eq('Tomatillos')
-      expect(@ingredient.subtype).to eq('heirloom')
+      expect(@ingredient.subtype).to eq('Heirloom')
     end
 
     scenario 'successful submission shows success on ingredient index' do
@@ -99,11 +99,11 @@ feature 'moderator edits ingredient', %{
       visit edit_ingredient_path(@ingredient)
 
       fill_in 'ingredient-name-input', with: 'Tomatillos'
-      fill_in 'ingredient-subtype-input', with: 'heirloom'
+      fill_in 'ingredient-subtype-input', with: 'Heirloom'
       click_button('Update this ingredient')
 
       expect(page).to have_content('Ingredient updated!')
-      expect(page).to have_content('Tomatillos, heirloom')
+      expect(page).to have_content('Heirloom Tomatillos')
       expect(current_path).to eq(ingredients_path)
     end
 

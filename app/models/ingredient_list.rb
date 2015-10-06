@@ -7,4 +7,8 @@ class IngredientList < ActiveRecord::Base
   validates :recipe_id, uniqueness: { scope: :ingredient_id }
   validates :ingredient_id, presence: true
   validates :ingredient_id, uniqueness: { scope: :recipe_id }
+
+  def to_s
+    "#{amount} #{ingredient}, #{preparation}"
+  end
 end

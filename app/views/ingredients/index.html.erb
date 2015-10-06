@@ -19,7 +19,7 @@
 
 <% @ingredients.each do |ingredient| %>
   <div class="ingredient-entry">
-    <%= ingredient.description %>
+    <%= ingredient.to_s %>
     <% if current_user.present? %>
       <% if current_user.moderator? %>
         <%= button_to "Edit", edit_ingredient_path(ingredient), method: :get %>
