@@ -1,11 +1,8 @@
 class RecipeSeeder
-
   def self.seed!
     corn_chowder_salad
     sesame_noodles_with_cucumber
   end
-
-  private
 
   def self.ingredient(name, subtype = nil)
     Ingredient.find_by(name: name, subtype: subtype)
@@ -119,8 +116,8 @@ class RecipeSeeder
       { recipe: recipe,
         order: 1,
         body: "Cook noodles according to package directions and rinse with cold
-          water to cool. Drain well. Drizzle with a tiny splash of toasted sesame
-          oil to keep them from sticking until dressed."
+          water to cool. Drain well. Drizzle with a tiny splash of toasted
+          sesame oil to keep them from sticking until dressed."
       }, {
         recipe: recipe,
         order: 2,
@@ -229,6 +226,5 @@ class RecipeSeeder
     end
     recipe.categories << category("Asian")
     recipe.categories << category("Vegetarian")
-    binding.pry
   end
 end

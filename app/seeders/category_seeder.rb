@@ -1,6 +1,4 @@
 class CategorySeeder
-
-
   CATEGORIES = [
     { name: "Asian" },
     { name: "Italian" },
