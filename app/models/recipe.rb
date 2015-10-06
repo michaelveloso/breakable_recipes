@@ -24,12 +24,12 @@ class Recipe < ActiveRecord::Base
   end
 
   def cooking_time_min
-    (cooking_time == 0) ? "" : "#{cooking_time} minutes"
+    (cooking_time == 0) ? "" : "Cooking time: #{cooking_time} minutes"
   end
 
   def num_served
     if num_served_min > 0 && num_served_min <= num_served_max
-      "#{num_served_min}-#{num_served_max} people"
+      "Serves #{num_served_min}-#{num_served_max}"
     else
       ""
     end

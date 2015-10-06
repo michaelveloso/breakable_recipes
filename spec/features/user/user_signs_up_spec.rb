@@ -46,7 +46,7 @@ feature 'user registers', %Q{
     scenario 'user is sent to root' do
       click_button 'Sign up'
 
-      expect(current_path).to eq(root_path)
+      expect(current_path).to eq(recipes_path)
     end
 
     scenario 'user is set as member by default' do

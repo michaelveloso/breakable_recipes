@@ -7,8 +7,8 @@ feature 'user deletes categories', %{
 
   Acceptance criteria:
 
-  [] - Moderator can delete categories at /moderator/categories
-  [] - Form displays success message on successful deletion
+  [√] - Moderator can delete categories at /moderator/categories
+  [√] - Form displays success message on successful deletion
 } do
 
   before(:each) do
