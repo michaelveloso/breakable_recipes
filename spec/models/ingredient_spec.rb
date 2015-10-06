@@ -15,4 +15,9 @@ RSpec.describe Ingredient, type: :model do
     ingredient_invalid = Ingredient.new(name: "Tomatoes", subtype: "Plum")
     expect(ingredient_invalid.valid?).to eq(false)
   end
+
+  it 'should give its description' do
+    ingredient = Ingredient.create(name: "Tomatoes", subtype: "Plum")
+    expect(ingredient.to_s).to eq("Plum Tomatoes")
+  end
 end
