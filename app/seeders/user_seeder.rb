@@ -29,7 +29,7 @@ class UserSeeder
 
   def self.seed!
     USERS.each do |user|
-      User.create!(user)
+      User.create(user)
     end
   end
 end

@@ -38,6 +38,30 @@ FactoryGirl.define do
       num_served_min { rand(2..4) }
       num_served_max { rand(4..8) }
       complexity { rand(1..3) }
+
+      factory :recipe_complete do
+        transient do
+          recipe_steps_count { rand(4..8) }
+          ingredient_lists_count { rand(5..15) }
+          categories_count { rand(0..3) }
+        end
+
+        after(:create) do |recipe, evaluator|
+          create_list(
+            :recipe_step,
+            evaluator.recipe_steps_count,
+            recipe: recipe)
+          create_list(
+            :ingredient_list,
+            evaluator.ingredient_lists_count,
+            recipe: recipe,
+            recipe_step: recipe.recipe_steps.to_a.sample)
+          create_list(
+            :recipe_category,
+            evaluator.categories_count,
+            recipe: recipe)
+        end
+      end
     end
   end
 
