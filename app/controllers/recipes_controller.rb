@@ -60,6 +60,6 @@ class RecipesController < ApplicationController
   end
 
   def recipe_category_ids
-    params[:recipe][:categories_attributes].select {|id| id.length > 0}
+    params[:recipe][:categories_attributes].select { |id| id.length > 0 }
   end
 end
