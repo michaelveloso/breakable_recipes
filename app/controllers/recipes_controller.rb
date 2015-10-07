@@ -23,10 +23,15 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
       recipe_category_ids.each do |category_id|
-        RecipeCategory.create(recipe: @recipe, category_id: category_id[1][:id])
+        RecipeCategory.create(
+          recipe: @recipe, 
+          category_id: category_id[1][:id])
       end
       recipe_steps.each do |order, body_hash|
-        RecipeStep.create(recipe: @recipe, order: (order.to_i + 1), body: body_hash[:body])
+        RecipeStep.create(
+          recipe: @recipe,
+          order: (order.to_i + 1),
+          body: body_hash[:body])
       end
       flash[:success] = "Recipe added!"
       redirect_to recipe_path(@recipe)
@@ -68,6 +73,6 @@ class RecipesController < ApplicationController
   end
 
   def recipe_steps
-    params[:recipe][:recipe_steps_attributes].select { |body| body.length > 0}
+    params[:recipe][:recipe_steps_attributes].select { |body| body.length > 0 }
   end
 end
