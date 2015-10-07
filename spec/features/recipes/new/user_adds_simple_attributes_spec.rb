@@ -7,13 +7,14 @@ feature 'user can add simple attributes', %{
 
   Acceptance criteria:
 
-  [] User can create new recipes from recipe index
-  [] Form is only visible to registered users
-  [] Form displays fields for recipe name, cooking time, complexity, and number served
-  [] Form requires name only
-  [] Form displays success message on complete submission
-  [] User sees recipe show page on complete submission
-  [] Form shows errors on incomplete submission
+  [√] User can create new recipes from recipe index
+  [√] Form is only visible to registered users
+  [√] Form displays fields for recipe name,
+       cooking time, complexity, and number served
+  [√] Form requires name only
+  [√] Form displays success message on complete submission
+  [√] User sees recipe show page on complete submission
+  [√] Form shows errors on incomplete submission
 } do
 
   context 'unregistered user' do
