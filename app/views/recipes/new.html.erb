@@ -10,15 +10,21 @@
   </div>
   <div>
     <%= form.label :cooking_time %>
-    <%= form.number_field :cooking_time %>
+    <%= form.number_field :cooking_time, placeholder: "" %>
   </div>
   <div>
     <%= form.label :num_served_min %>
-    <%= form.number_field :num_served_min, id: "num-served-min-input" %>
+    <%= form.number_field :num_served_min, id: "num-served-min-input", placeholder: "" %>
   </div>
   <div>
     <%= form.label :num_served_max %>
-    <%= form.number_field :num_served_max, id: "num-served-max-input" %>
+    <%= form.number_field :num_served_max, id: "num-served-max-input", placeholder: "" %>
+  </div>
+  <div>
+    <%= form.label :categories %>
+    <%= form.fields_for :categories do |category_form| %>
+      <%= category_form.select :id, options_for_select(@category_options) %>
+    <% end %>
   </div>
   <div class="actions">
     <%= form.submit "Add this Recipe!" %>
