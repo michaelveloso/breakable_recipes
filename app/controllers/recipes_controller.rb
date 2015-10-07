@@ -16,6 +16,7 @@ class RecipesController < ApplicationController
     @category_options = category_options
     @recipe = Recipe.new
     2.times { @recipe.categories.build }
+    10.times { @recipe.recipe_steps.build }
   end
 
   def create
@@ -23,6 +24,9 @@ class RecipesController < ApplicationController
     if @recipe.save
       recipe_category_ids.each do |category_id|
         RecipeCategory.create(recipe: @recipe, category_id: category_id[1][:id])
+      end
+      recipe_steps.each do |order, body_hash|
+        RecipeStep.create(recipe: @recipe, order: (order.to_i + 1), body: body_hash[:body])
       end
       flash[:success] = "Recipe added!"
       redirect_to recipe_path(@recipe)
@@ -61,5 +65,9 @@ class RecipesController < ApplicationController
 
   def recipe_category_ids
     params[:recipe][:categories_attributes].select { |id| id.length > 0 }
+  end
+
+  def recipe_steps
+    params[:recipe][:recipe_steps_attributes].select { |body| body.length > 0}
   end
 end

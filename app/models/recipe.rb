@@ -7,6 +7,7 @@ class Recipe < ActiveRecord::Base
   has_many :categories, through: :recipe_categories
 
   accepts_nested_attributes_for :categories
+  accepts_nested_attributes_for :recipe_steps
 
   validates :user_id, presence: true
   validates :name, presence: true

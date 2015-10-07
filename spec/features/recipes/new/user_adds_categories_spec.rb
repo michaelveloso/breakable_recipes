@@ -7,7 +7,8 @@ feature 'user can add categories', %{
 
   Acceptance criteria:
 
-  [] Form displays dropdowns for categories
+  [√] Form displays dropdowns for categories
+  [√] Correct categories appear on show page
 } do
 
   before(:each) do
