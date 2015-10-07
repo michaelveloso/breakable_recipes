@@ -13,16 +13,22 @@ class RecipesController < ApplicationController
   end
 
   def new
+    @category_options = category_options
     @recipe = Recipe.new
+    2.times { @recipe.categories.build }
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
+      recipe_category_ids.each do |category_id|
+        RecipeCategory.create(recipe: @recipe, category_id: category_id[1][:id])
+      end
       flash[:success] = "Recipe added!"
       redirect_to recipe_path(@recipe)
     else
       flash[:errors] = @recipe.errors.full_messages.join(', ')
+      @category_options = category_options
       render :new
     end
   end
@@ -43,5 +49,17 @@ class RecipesController < ApplicationController
       flash[:errors] = "You don't have permission to see this recipe"
       redirect_to root_path
     end
+  end
+
+  def category_options
+    options = [[nil]]
+    Category.all.each do |category|
+      options << [category.name, category.id]
+    end
+    options
+  end
+
+  def recipe_category_ids
+    params[:recipe][:categories_attributes].select { |id| id.length > 0 }
   end
 end
