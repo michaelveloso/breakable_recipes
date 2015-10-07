@@ -40,7 +40,6 @@ feature 'user sees recipe index', %{
   end
 
   scenario 'recipes are links to their show pages' do
-    pending ('implement with recipe show page')
     click_link(@recipe.name)
 
     expect(current_path).to eq(recipe_path(@recipe))

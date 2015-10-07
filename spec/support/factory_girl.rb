@@ -25,8 +25,26 @@ FactoryGirl.define do
     end
   end
 
+  factory :ingredient_list do
+    ingredient
+    recipe
+    amount "amount"
+    preparation "preparation"
+    recipe_step
+  end
+
   factory :category do
     sequence(:name) { |n| "category#{n}" }
+  end
+
+  factory :recipe_step do
+    recipe
+    body "Instructions"
+    sequence(:order)
+  end
+  factory :recipe_category do
+    recipe
+    category
   end
 
   factory :recipe do
