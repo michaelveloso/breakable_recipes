@@ -1,0 +1,26 @@
+<h1 class="sub-header">Add a Recipe</h1>
+
+<%= form_for(@recipe) do |form| %>
+  <div>
+    <%= form.text_field :name, placeholder: "Recipe Name", id: "recipe-name-input" %>
+  </div>
+  <div>
+    <%= form.label :complexity %>
+    <%= form.select :complexity, [[1,1],[2,2],[3,3]]%>
+  </div>
+  <div>
+    <%= form.label :cooking_time %>
+    <%= form.number_field :cooking_time %>
+  </div>
+  <div>
+    <%= form.label :num_served_min %>
+    <%= form.number_field :num_served_min, id: "num-served-min-input" %>
+  </div>
+  <div>
+    <%= form.label :num_served_max %>
+    <%= form.number_field :num_served_max, id: "num-served-max-input" %>
+  </div>
+  <div class="actions">
+    <%= form.submit "Add this Recipe!" %>
+  </div>
+<% end %>

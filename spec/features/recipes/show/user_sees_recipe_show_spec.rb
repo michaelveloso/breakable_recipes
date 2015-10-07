@@ -7,8 +7,9 @@ feature 'user sees recipe details on show page', %{
 
   Acceptance criteria:
 
-  [] All recipe attributes are visible
-  [] Recipe is only visible to owner
+  [√] All recipe attributes are visible
+  [√] Recipe steps are in correct order
+  [√] Recipe is only visible to owner
 } do
 
   before(:each) do

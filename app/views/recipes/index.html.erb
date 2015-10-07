@@ -1,5 +1,11 @@
-<h1>Your Recipes</h1>
+<% if not current_user.present? %>
+  Sign in or sign up to add recipes!
+<% else %>
+  <h1>Your Recipes</h1>
 
-<% @recipes.each do |recipe| %>
-  <%= link_to recipe.name, recipe_path(recipe) %>
+  <% @recipes.each do |recipe| %>
+    <%= link_to recipe.name, recipe_path(recipe) %>
+  <% end %>
+
+  <%= link_to "Add a new recipe", new_recipe_path %>
 <% end %>
