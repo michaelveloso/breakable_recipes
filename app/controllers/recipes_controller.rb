@@ -24,7 +24,7 @@ class RecipesController < ApplicationController
     if @recipe.save
       recipe_category_ids.each do |category_id|
         RecipeCategory.create(
-          recipe: @recipe, 
+          recipe: @recipe,
           category_id: category_id[1][:id])
       end
       recipe_steps.each do |order, body_hash|
