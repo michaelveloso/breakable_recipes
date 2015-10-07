@@ -1,5 +1,5 @@
 <h1>Your Recipes</h1>
 
 <% @recipes.each do |recipe| %>
-  <%= recipe.name %>
+  <%= link_to recipe.name, recipe_path(recipe) %>
 <% end %>

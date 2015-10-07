@@ -1,0 +1,19 @@
+<h1><%= @recipe.name %></h1>
+Complexity: <%= @recipe.complexity_rating %>
+<%= @recipe.cooking_time_min %>
+<%= @recipe.num_served %>
+<% if @recipe.categories.present? %>
+  <% @recipe.categories.each do |category| %>
+    <%= category.name %>
+  <% end %>
+<% end %>
+<h2>Ingredients:</h2>
+<% @ingredients.each do |ingredient| %>
+  <%= ingredient.to_s %>
+<% end %>
+
+<h2>Steps:</h2>
+<% @steps.each do |step| %>
+  <span>Step <%= step.order %>:</span>
+  <%= step.body %>
+<% end %>
