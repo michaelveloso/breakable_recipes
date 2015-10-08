@@ -71,7 +71,7 @@ class RecipesController < ApplicationController
   end
 
   def add_recipe_categories
-    recipe_category_ids.each do |key, category_id|
+    recipe_category_ids.each do |_key, category_id|
       RecipeCategory.create(
         recipe: @recipe,
         category_id: category_id[:id])
@@ -79,7 +79,7 @@ class RecipesController < ApplicationController
   end
 
   def add_ingredient_lists
-    ingredient_lists.each do |key, info|
+    ingredient_lists.each do |_key, info|
       IngredientList.create(
         recipe: @recipe,
         ingredient_id: info[:id],
