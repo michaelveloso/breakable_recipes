@@ -16,7 +16,7 @@ class RecipesController < ApplicationController
     @category_options = category_options
     @ingredient_options = ingredient_options
     @recipe = Recipe.new
-    2.times { @recipe.categories.build }
+    3.times { @recipe.categories.build }
     20.times { @recipe.ingredient_lists.build }
     10.times { @recipe.recipe_steps.build }
   end
@@ -55,7 +55,7 @@ class RecipesController < ApplicationController
   end
 
   def category_options
-    options = [[nil]]
+    options = [['(Choose a category)', nil]]
     Category.all.each do |category|
       options << [category.name, category.id]
     end
@@ -63,7 +63,7 @@ class RecipesController < ApplicationController
   end
 
   def ingredient_options
-    options = [[nil]]
+    options = [['(Choose an ingredient)', nil]]
     Ingredient.all.each do |ingredient|
       options << [ingredient.for_dropdown, ingredient.id]
     end

@@ -8,13 +8,13 @@
   padding: 0px 5px;
   border-radius: 5px;
   background-color: $dark-orange;
-  box-shadow: 2px 2px 1px #888888;
+  box-shadow: 2px 2px 1px darken($light-yellow, 70%);
 }
 
 .category-name {
   background-color: $light-orange;
   border-radius: 5px;
-  box-shadow: 2px 2px 1px #888888;
+  box-shadow: 2px 2px 1px darken($light-yellow, 70%);
   padding: 0px 5px;
 }
 
@@ -25,7 +25,7 @@
 .ingredient-block {
   background-color: $light-green;
   border-radius: 5px;
-  box-shadow: 4px 4px 2px darken($light-yellow, 70%);;
+  box-shadow: 4px 4px 2px darken($light-yellow, 70%);
   padding: 5px;
   margin-left: 10px;
   border-style: solid;
@@ -42,7 +42,7 @@
   border-radius: 5px;
   box-shadow: 4px 4px 2px darken($light-yellow, 70%);
   padding: 5px;
-  margin-left: 10px;
+  margin: 0 10px 20px 0;
   border-style: solid;
   border-width: 1px;
   border-color: darken($light-yellow, 10%);
@@ -58,7 +58,7 @@
   background-color: $light-blue;
   border-radius: 5px;
   box-shadow: 2px 2px 1px darken($light-green, 70%);
-  padding: 10px 0px;
+  padding: 10px 0;
   margin: 5px 8px 5px 5px;
   border-style: solid;
   border-width: 1px;
