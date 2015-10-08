@@ -24,34 +24,34 @@ feature 'user can add ingredients', %{
   end
 
   scenario 'user can add ingredients to a new recipe' do
-    select @ingredient1.name, from: 'ingredients_attributes_0_id'
-    select @ingredient2.name, from: 'ingredients_attributes_1_id'
-    select @ingredient3.name, from: 'ingredients_attributes_2_id'
+    select @ingredient1.name, from: 'recipe_ingredient_lists_attributes_0_id'
+    select @ingredient2.name, from: 'recipe_ingredient_lists_attributes_1_id'
+    select @ingredient3.name, from: 'recipe_ingredient_lists_attributes_2_id'
     click_button("Add this Recipe!")
 
-    expect(page).to have_content("Recipe Added!")
+    expect(page).to have_content("Recipe added!")
   end
 
   scenario 'user can add amount to ingredients' do
-    select @ingredient1.name, from: 'ingredients_attributes_0_id'
-    fill_in 'ingredients_attributes_0_amount', with: "ing amount"
+    select @ingredient1.name, from: 'recipe_ingredient_lists_attributes_0_id'
+    fill_in 'recipe_ingredient_lists_attributes_0_amount', with: "ing amount"
     click_button("Add this Recipe!")
 
     expect(page).to have_content("ing amount")
   end
 
   scenario 'user can add preparation to ingredients' do
-    select @ingredient1.name, from: 'ingredients_attributes_0_id'
-    fill_in 'ingredients_attributes_0_preparation', with: "some preparation"
+    select @ingredient1.name, from: 'recipe_ingredient_lists_attributes_0_id'
+    fill_in 'recipe_ingredient_lists_attributes_0_preparation', with: "some preparation"
     click_button("Add this Recipe!")
 
     expect(page).to have_content("some preparation")
   end
 
   scenario 'user can tag ingredients with step order' do
-    select @ingredient1.name, from: 'ingredients_attributes_0_id'
-    fill_in 'ingredients_attributes_0_order', with: 1
-    select @ingredient2.name, from: 'ingredients_attributes_1_id'
+    select @ingredient1.name, from: 'recipe_ingredient_lists_attributes_0_id'
+    fill_in 'recipe_ingredient_lists_attributes_0_step', with: 1
+    select @ingredient2.name, from: 'recipe_ingredient_lists_attributes_1_id'
 
     click_button("Add this Recipe!")
 
@@ -60,8 +60,8 @@ feature 'user can add ingredients', %{
   end
 
   scenario 'ingredients appear on recipe show page' do
-    select @ingredient1.name, from: 'ingredients_attributes_0_id'
-    select @ingredient2.name, from: 'ingredients_attributes_1_id'
+    select @ingredient1.name, from: 'recipe_ingredient_lists_attributes_0_id'
+    select @ingredient2.name, from: 'recipe_ingredient_lists_attributes_1_id'
     click_button("Add this Recipe!")
 
     expect(page).to have_content(@ingredient1.name)

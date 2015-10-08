@@ -17,24 +17,16 @@ class RecipesController < ApplicationController
     @ingredient_options = ingredient_options
     @recipe = Recipe.new
     2.times { @recipe.categories.build }
-    20.times { @recipe.ingredients.build }
+    20.times { @recipe.ingredient_lists.build }
     10.times { @recipe.recipe_steps.build }
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
-      recipe_category_ids.each do |category_id|
-        RecipeCategory.create(
-          recipe: @recipe,
-          category_id: category_id[1][:id])
-      end
-      recipe_steps.each do |order, body_hash|
-        RecipeStep.create(
-          recipe: @recipe,
-          order: (order.to_i + 1),
-          body: body_hash[:body])
-      end
+      add_recipe_categories
+      add_ingredient_lists
+      add_recipe_steps
       flash[:success] = "Recipe added!"
       redirect_to recipe_path(@recipe)
     else
@@ -78,11 +70,44 @@ class RecipesController < ApplicationController
     options
   end
 
+  def add_recipe_categories
+    recipe_category_ids.each do |key, category_id|
+      RecipeCategory.create(
+        recipe: @recipe,
+        category_id: category_id[:id])
+    end
+  end
+
+  def add_ingredient_lists
+    ingredient_lists.each do |key, info|
+      IngredientList.create(
+        recipe: @recipe,
+        ingredient_id: info[:id],
+        amount: info[:amount],
+        preparation: info[:preparation],
+        step: info[:step]
+      )
+    end
+  end
+
+  def add_recipe_steps
+    recipe_steps.each do |order, body_hash|
+      RecipeStep.create(
+        recipe: @recipe,
+        order: (order.to_i + 1),
+        body: body_hash[:body])
+    end
+  end
+
   def recipe_category_ids
     params[:recipe][:categories_attributes].select { |id| id.length > 0 }
   end
 
   def recipe_steps
     params[:recipe][:recipe_steps_attributes].select { |body| body.length > 0 }
+  end
+
+  def ingredient_lists
+    params[:recipe][:ingredient_lists_attributes].select { |id| id.length > 0 }
   end
 end

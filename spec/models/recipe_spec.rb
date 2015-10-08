@@ -39,7 +39,7 @@ RSpec.describe Recipe, type: :model do
 
   it 'should show rating strings' do
     recipe = FactoryGirl.create(:recipe_numbers)
-    expect(recipe.complexity_rating).to eq(recipe.complexity)
+    expect(recipe.complexity_rating).to eq("Complexity: #{recipe.complexity}")
     expect(recipe.cooking_time_min).to eq(
       "Cooking time: #{recipe.cooking_time} minutes")
     expect(recipe.num_served).to eq(

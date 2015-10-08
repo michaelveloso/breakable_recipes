@@ -1,24 +1,24 @@
 <h1 class="sub-header">Add a Recipe</h1>
 
-<%= form_for(@recipe) do |form| %>
+<%= form_for @recipe do |form| %>
   <div>
     <%= form.text_field :name, placeholder: "Recipe Name", id: "recipe-name-input" %>
   </div>
   <div>
     <%= form.label :complexity %>
-    <%= form.select :complexity, [[1,1],[2,2],[3,3]]%>
+    <%= form.select :complexity, [[nil],[1,1],[2,2],[3,3]]%>
   </div>
   <div>
     <%= form.label :cooking_time %>
-    <%= form.number_field :cooking_time, placeholder: "" %>
+    <%= form.number_field :cooking_time %>
   </div>
   <div>
     <%= form.label :num_served_min %>
-    <%= form.number_field :num_served_min, id: "num-served-min-input", placeholder: "" %>
+    <%= form.number_field :num_served_min, id: "num-served-min-input" %>
   </div>
   <div>
     <%= form.label :num_served_max %>
-    <%= form.number_field :num_served_max, id: "num-served-max-input", placeholder: "" %>
+    <%= form.number_field :num_served_max, id: "num-served-max-input" %>
   </div>
   <div>
     <%= form.label :categories %>
@@ -26,8 +26,18 @@
       <%= category_form.select :id, options_for_select(@category_options) %>
     <% end %>
   </div>
+    <%= form.label :ingredient_lists %>
+    <%= form.fields_for :ingredient_lists do |il_form| %>
+      <%= il_form.select :id, options_for_select(@ingredient_options) %>
+      <%= il_form.text_field :amount, placeholder: "amount" %>
+      <%= il_form.text_field :preparation, placeholder: "preparation" %>
+      <%= il_form.number_field :step %>
+    <% end %>
+  <div>
+  </div>
   <div>
     <% step_counter = 1 %>
+    <%= form.label :recipe_steps %>
     <%= form.fields_for :recipe_steps do |recipe_step_form| %>
       Step <%= step_counter %>
       <%= recipe_step_form.text_area :body %>

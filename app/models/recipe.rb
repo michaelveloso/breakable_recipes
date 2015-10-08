@@ -8,7 +8,7 @@ class Recipe < ActiveRecord::Base
 
   accepts_nested_attributes_for :categories
   accepts_nested_attributes_for :recipe_steps
-  accepts_nested_attributes_for :ingredients
+  accepts_nested_attributes_for :ingredient_lists
 
   validates :user_id, presence: true
   validates :name, presence: true
@@ -29,7 +29,7 @@ class Recipe < ActiveRecord::Base
   validates :complexity, inclusion: { in: [nil, 1, 2, 3] }
 
   def complexity_rating
-    (complexity.present?) ? complexity : ""
+    (complexity.present?) ? "Complexity: #{complexity}" : ""
   end
 
   def cooking_time_min
