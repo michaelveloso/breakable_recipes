@@ -57,45 +57,45 @@ class RecipeSeeder
         ingredient: ingredient("Bacon"),
         amount: "4 thick slices",
         preparation: "cut 1/2 inch thick",
-        recipe_step: recipe_steps[0]
+        step: 1
       }, {
         recipe: recipe,
         ingredient: ingredient("Potatoes", "Yukon Gold"),
         amount: "1 pound",
         preparation: "peeled and 1/2-inch diced",
-        recipe_step: recipe_steps[1]
+        step: 2
       }, {
         recipe: recipe,
         ingredient: ingredient("Bell Peppers", "Red"),
         amount: "2",
         preparation: "1/2-inch diced",
-        recipe_step: recipe_steps[1]
+        step: 2
       }, {
         recipe: recipe,
         ingredient: ingredient("Corn"),
         amount: "6-8 ears",
-        recipe_step: recipe_steps[1]
+        step: 2
       }, {
         recipe: recipe,
         ingredient: ingredient("Onion", "Red"),
         amount: "1 Medium",
         preparation: "thinly sliced",
-        recipe_step: recipe_steps[2]
+        step: 3
       }, {
         recipe: recipe,
         ingredient: ingredient("Vinegar", "Cider"),
         amount: "1/4 cup",
-        recipe_step: recipe_steps[2]
+        step: 3
       }, {
         recipe: recipe,
         ingredient: ingredient("Salt"),
         preparation: "to taste",
-        recipe_step: recipe_steps[2]
+        step: 3
       }, {
         recipe: recipe,
         ingredient: ingredient("Crushed Red Pepper"),
         preparation: "to taste",
-        recipe_step: recipe_steps[2]
+        step: 3
       }
     ]
     ingredient_list_hashes.each do |ingredient_list_hash|
@@ -147,78 +147,78 @@ class RecipeSeeder
       { recipe: recipe,
         ingredient: ingredient("Rice Noodles"),
         amount: "3/4 pound",
-        recipe_step: recipe_steps[0]
+        step: 1
       }, {
         recipe: recipe,
         ingredient: ingredient("Oil", "Sesame"),
         amount: "2 tbsp",
-        recipe_step: recipe_steps[0]
+        step: 1
       }, {
         recipe: recipe,
         ingredient: ingredient("Sesame Paste"),
         amount: "2 tbsp",
-        recipe_step: recipe_steps[1]
+        step: 2
       }, {
         recipe: recipe,
         ingredient: ingredient("Peanut Butter", "Smooth"),
         amount: "1 tbsp",
-        recipe_step: recipe_steps[1]
+        step: 2
       }, {
         recipe: recipe,
         ingredient: ingredient("Soy Sauce"),
         amount: "3 1/2 tbsp",
-        recipe_step: recipe_steps[1]
+        step: 2
       }, {
         recipe: recipe,
         ingredient: ingredient("Vinegar", "Rice"),
         amount: "2 tbsp",
-        recipe_step: recipe_steps[1]
+        step: 2
       }, {
         recipe: recipe,
         ingredient: ingredient("Sugar", "Brown"),
         amount: "1 tbsp",
-        recipe_step: recipe_steps[1]
+        step: 2
       }, {
         recipe: recipe,
         ingredient: ingredient("Ginger"),
         amount: "1 tbsp",
         preparation: "grated",
-        recipe_step: recipe_steps[1]
+        step: 2
       }, {
         recipe: recipe,
         ingredient: ingredient("Garlic"),
         amount: "2 tsp",
         preparation: "minced",
-        recipe_step: recipe_steps[1]
+        step: 2
       }, {
         recipe: recipe,
         ingredient: ingredient("Chili-garlic Paste"),
         preparation: "to taste",
-        recipe_step: recipe_steps[1]
+        step: 2
       }, {
         recipe: recipe,
         ingredient: ingredient("Cucumber"),
         amount: "1/2 pound",
         preparation: "very thinly sliced",
-        recipe_step: recipe_steps[3]
+        step: 4
       }, {
         recipe: recipe,
         ingredient: ingredient("Peanuts", "Roasted Salted"),
         amount: "1/2 cup",
         preparation: "roughly chopped",
-        recipe_step: recipe_steps[3]
+        step: 4
       }, {
         recipe: recipe,
         ingredient: ingredient("Mint"),
         amount: "handful",
         preparation: "chopped",
-        recipe_step: recipe_steps[3]
+        step: 4
       }, {
         recipe: recipe,
         ingredient: ingredient("Cilantro"),
         amount: "handful",
         preparation: "chopped",
-        recipe_step: recipe_steps[3]
+        step: 4
       }
     ]
     ingredient_list_hashes.each do |ingredient_list_hash|

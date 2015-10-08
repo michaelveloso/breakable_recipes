@@ -10,4 +10,10 @@ class Ingredient < ActiveRecord::Base
     string = "#{subtype} " + string if subtype.present?
     string
   end
+
+  def for_dropdown
+    string = "#{name}"
+    string += ", #{subtype}" if subtype.present?
+    string
+  end
 end

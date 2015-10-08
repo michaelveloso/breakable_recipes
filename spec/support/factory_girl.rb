@@ -30,7 +30,7 @@ FactoryGirl.define do
     recipe
     amount "amount"
     preparation "preparation"
-    recipe_step
+    step { rand(1..6) }
   end
 
   factory :category do
@@ -73,7 +73,7 @@ FactoryGirl.define do
             :ingredient_list,
             evaluator.ingredient_lists_count,
             recipe: recipe,
-            recipe_step: recipe.recipe_steps.to_a.sample)
+            step: rand(0..evaluator.recipe_steps_count))
           create_list(
             :recipe_category,
             evaluator.categories_count,

@@ -16,8 +16,13 @@ RSpec.describe Ingredient, type: :model do
     expect(ingredient_invalid.valid?).to eq(false)
   end
 
-  it 'should give its description' do
+  it 'should yield a string' do
     ingredient = Ingredient.create(name: "Tomatoes", subtype: "Plum")
     expect(ingredient.to_s).to eq("Plum Tomatoes")
+  end
+
+  it 'should give a dropdown-friendly output' do
+    ingredient = Ingredient.create(name: "Tomatoes", subtype: "Plum")
+    expect(ingredient.for_dropdown).to eq("Tomatoes, Plum")
   end
 end
