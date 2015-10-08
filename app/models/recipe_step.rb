@@ -1,6 +1,4 @@
 class RecipeStep < ActiveRecord::Base
-  has_many :ingredient_lists
-  has_many :ingredients, through: :ingredient_lists
   belongs_to :recipe
 
   validates :recipe_id, presence: true

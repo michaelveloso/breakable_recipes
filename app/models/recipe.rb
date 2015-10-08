@@ -8,30 +8,36 @@ class Recipe < ActiveRecord::Base
 
   accepts_nested_attributes_for :categories
   accepts_nested_attributes_for :recipe_steps
+  accepts_nested_attributes_for :ingredients
 
   validates :user_id, presence: true
   validates :name, presence: true
   validates :name, uniqueness: true
   validates :cooking_time, numericality: {
-    only_integer: true, greater_than_or_equal_to: 0 }
+    only_integer: true,
+    greater_than: 0,
+    allow_nil: true }
   validates :num_served_min, numericality: {
-    only_integer: true, greater_than_or_equal_to: 0 }
+    only_integer: true,
+    greater_than: 0,
+    allow_nil: true }
   validates :num_served_max, numericality: {
-    only_integer: true, greater_than_or_equal_to: 0 }
-  validates :complexity, numericality: {
-    only_integer: true }
-  validates :complexity, inclusion: { in: (0..3) }
+    only_integer: true,
+    greater_than: 0,
+    allow_nil: true }
+  validates :complexity, numericality: { allow_nil: true, only_integer: true }
+  validates :complexity, inclusion: { in: [nil, 1, 2, 3] }
 
   def complexity_rating
-    (complexity == 0) ? "" : complexity
+    (complexity.present?) ? complexity : ""
   end
 
   def cooking_time_min
-    (cooking_time == 0) ? "" : "Cooking time: #{cooking_time} minutes"
+    (cooking_time.present?) ? "Cooking time: #{cooking_time} minutes" : ""
   end
 
   def num_served
-    if num_served_min > 0 && num_served_min <= num_served_max
+    if num_served_min.present? && num_served_min <= num_served_max
       "Serves #{num_served_min}-#{num_served_max}"
     else
       ""

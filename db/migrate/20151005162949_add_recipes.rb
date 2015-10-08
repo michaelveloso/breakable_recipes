@@ -3,10 +3,10 @@ class AddRecipes < ActiveRecord::Migration
     create_table :recipes do |t|
       t.integer :user_id, null: false
       t.string :name, null: false
-      t.integer :cooking_time, default: 0
-      t.integer :num_served_min, default: 0
-      t.integer :num_served_max, default: 0
-      t.integer :complexity, default: 0
+      t.integer :cooking_time
+      t.integer :num_served_min
+      t.integer :num_served_max
+      t.integer :complexity
 
       t.timestamps
     end

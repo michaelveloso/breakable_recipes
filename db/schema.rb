@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151006145726) do
+ActiveRecord::Schema.define(version: 20151007205005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,11 +23,11 @@ ActiveRecord::Schema.define(version: 20151006145726) do
   add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
 
   create_table "ingredient_lists", force: :cascade do |t|
-    t.integer "ingredient_id",  null: false
+    t.integer "ingredient_id", null: false
     t.string  "amount"
-    t.integer "recipe_id",      null: false
-    t.integer "recipe_step_id"
+    t.integer "recipe_id",     null: false
     t.string  "preparation"
+    t.integer "step"
   end
 
   add_index "ingredient_lists", ["recipe_id", "ingredient_id"], name: "index_ingredient_lists_on_recipe_id_and_ingredient_id", unique: true, using: :btree
@@ -47,20 +47,20 @@ ActiveRecord::Schema.define(version: 20151006145726) do
   add_index "recipe_categories", ["recipe_id", "category_id"], name: "index_recipe_categories_on_recipe_id_and_category_id", unique: true, using: :btree
 
   create_table "recipe_steps", force: :cascade do |t|
-    t.string  "body"
-    t.integer "order"
+    t.string  "body",      null: false
+    t.integer "order",     null: false
     t.integer "recipe_id", null: false
   end
 
   add_index "recipe_steps", ["recipe_id", "order"], name: "index_recipe_steps_on_recipe_id_and_order", unique: true, using: :btree
 
   create_table "recipes", force: :cascade do |t|
-    t.integer  "user_id",                    null: false
-    t.string   "name",                       null: false
-    t.integer  "cooking_time",   default: 0
-    t.integer  "num_served_min", default: 0
-    t.integer  "num_served_max", default: 0
-    t.integer  "complexity",     default: 0
+    t.integer  "user_id",        null: false
+    t.string   "name",           null: false
+    t.integer  "cooking_time"
+    t.integer  "num_served_min"
+    t.integer  "num_served_max"
+    t.integer  "complexity"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
