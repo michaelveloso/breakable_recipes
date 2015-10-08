@@ -41,9 +41,9 @@
 
 .recipe-add-categories-block select {
   background-color: $white;
-  color: $slate;
   border-color: darken($light-orange, 5%);
   border-radius: 5px;
+  color: $slate;
 }
 
 .recipe-add-ingredients-block {
@@ -94,6 +94,7 @@
   color: $slate;
   font-family: 'Lobster', cursive;
   font-size: 16pt;
+
   &:hover {
     background-color: $slate;
     box-shadow: 2px 2px 1px darken($light-yellow, 70%);
