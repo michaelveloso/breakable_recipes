@@ -73,7 +73,7 @@ FactoryGirl.define do
             :ingredient_list,
             evaluator.ingredient_lists_count,
             recipe: recipe,
-            step: rand(0..evaluator.recipe_steps_count))
+            step: rand(1..evaluator.recipe_steps_count))
           create_list(
             :recipe_category,
             evaluator.categories_count,

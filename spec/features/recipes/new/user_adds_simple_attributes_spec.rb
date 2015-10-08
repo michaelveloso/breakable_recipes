@@ -43,7 +43,7 @@ feature 'user can add simple attributes', %{
 
     scenario 'user can see form fields' do
       find_field("recipe-name-input")
-      find_field("Cooking time")
+      find_field("recipe_cooking_time")
       find_field("Complexity")
       find_field("num-served-min-input")
       find_field("num-served-max-input")

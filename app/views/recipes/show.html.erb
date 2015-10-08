@@ -1,19 +1,40 @@
-<h1><%= @recipe.name %></h1>
-<%= @recipe.complexity_rating %>
-<%= @recipe.cooking_time_min %>
-<%= @recipe.num_served %>
-<% if @recipe.categories.present? %>
-  <% @recipe.categories.each do |category| %>
-    <%= category.name %>
-  <% end %>
-<% end %>
-<h2>Ingredients:</h2>
-<% @ingredients.each do |ingredient| %>
-  <%= ingredient.to_s %>
-<% end %>
-
-<h2>Steps:</h2>
-<% @steps.each_with_index do |step, index| %>
-  <span>Step <%= index + 1 %>:</span>
-  <%= step.body %>
-<% end %>
+<div class="recipe-block row">
+  <h2><%= @recipe.name %></h2>
+  <div class="recipe-info-block column small-12">
+    <span class="recipe-info-attr"><%= @recipe.complexity_rating %></span>
+    <span class="recipe-info-attr"><%= @recipe.cooking_time_min %></span>
+    <span class="recipe-info-attr"><%= @recipe.num_served %></span>
+    <div>
+      <% if @recipe.categories.present? %>
+        <% @recipe.categories.each do |category| %>
+          <span class="category-name">
+            <%= category.name %>
+          </span>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="ingredient-row column small-12">
+    <h3>Ingredients:</h3>
+    <div class="ingredient-block columns small-6">
+      <% @ingredients.each do |ingredient| %>
+        <div class="ingredient-listing columns small-12">
+          <%= ingredient.to_s %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="step-row column small-12">
+    <h3>Instructions:</h3>
+    <div class="step-block columns small-8">
+      <% @steps.each_with_index do |step, index| %>
+        <div class="recipe-step-index">Step <%= index + 1 %>:</div>
+        <div class="recipe-step">
+          <div class="recipe-step-body">
+            <%= step.body %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
