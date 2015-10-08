@@ -39,13 +39,13 @@
 
 .step-block {
   background-color: $light-green;
+  border-color: darken($light-yellow, 10%);
   border-radius: 5px;
-  box-shadow: 4px 4px 2px darken($light-yellow, 70%);
-  padding: 5px;
-  margin: 0 10px 20px 0;
   border-style: solid;
   border-width: 1px;
-  border-color: darken($light-yellow, 10%);
+  box-shadow: 4px 4px 2px darken($light-yellow, 70%);
+  margin: 0 10px 20px 0;
+  padding: 5px;
 }
 
 .recipe-step-index {

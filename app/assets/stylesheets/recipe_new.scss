@@ -1,28 +1,28 @@
 @import "colors";
 
 .recipe-name-input-block textarea {
-  font-size: 16pt;
-  font-family: 'Lobster', cursive;
   background-color: $white;
-  color: $slate;
   border-color: darken($light-yellow, 5%);
   border-radius: 5px;
+  color: $slate;
+  font-family: 'Lobster', cursive;
+  font-size: 16pt;
 }
 
 .recipe-attributes-block {
-  padding: 0 5px;
-  border-radius: 5px;
   background-color: $dark-orange;
+  border-radius: 5px;
   box-shadow: 2px 2px 1px darken($light-yellow, 70%);
   font-size: 14pt;
+  padding: 0 5px;
   padding-top: 10px;
 }
 
 .recipe-attributes-block input {
   background-color: $white;
-  color: $slate;
   border-color: darken($dark-orange, 5%);
   border-radius: 5px;
+  color: $slate;
 }
 
 .recipe-attribute-input label {
@@ -30,13 +30,13 @@
 }
 
 .recipe-add-categories-block {
-  padding: 0 5px;
-  border-radius: 5px;
   background-color: $light-orange;
+  border-radius: 5px;
   box-shadow: 2px 2px 1px darken($light-yellow, 70%);
   font-size: 14pt;
-  padding-top: 15px;
   margin: 20px 0;
+  padding: 0 5px;
+  padding-top: 15px;
 }
 
 .recipe-add-categories-block select {
@@ -47,13 +47,13 @@
 }
 
 .recipe-add-ingredients-block {
-  padding: 0 5px;
-  border-radius: 5px;
   background-color: $light-green;
+  border-radius: 5px;
   box-shadow: 2px 2px 1px darken($light-yellow, 70%);
   font-size: 14pt;
-  padding-top: 10px;
   margin-bottom: 20px;
+  padding: 0 5px;
+  padding-top: 10px;
 }
 
 .recipe-add-ingredients-block select {
@@ -75,14 +75,14 @@
   border-radius: 5px;
   box-shadow: 2px 2px 1px darken($light-yellow, 70%);
   font-size: 14pt;
-  padding: 15px 15px 0 15px;
+  padding: 15px 15px 0;
 }
 
 .recipe-add-steps-block textarea {
   background-color: $white;
-  color: $slate;
   border-color: darken($light-green, 10%);
   border-radius: 5px;
+  color: $slate;
 }
 
 .actions {
