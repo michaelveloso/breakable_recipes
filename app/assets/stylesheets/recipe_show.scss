@@ -1,0 +1,70 @@
+@import "colors";
+
+.recipe-info-block {
+  padding-bottom: 20px;
+}
+
+.recipe-info-attr {
+  padding: 0px 5px;
+  border-radius: 5px;
+  background-color: $dark-orange;
+  box-shadow: 2px 2px 1px #888888;
+}
+
+.category-name {
+  background-color: $light-orange;
+  border-radius: 5px;
+  box-shadow: 2px 2px 1px #888888;
+  padding: 0px 5px;
+}
+
+.ingredient-row {
+  padding-bottom: 20px;
+}
+
+.ingredient-block {
+  background-color: $light-green;
+  border-radius: 5px;
+  box-shadow: 4px 4px 2px darken($light-yellow, 70%);;
+  padding: 5px;
+  margin-left: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: darken($light-yellow, 10%);
+}
+
+.ingredient-listing {
+  padding: 2px 0px;
+}
+
+.step-block {
+  background-color: $light-green;
+  border-radius: 5px;
+  box-shadow: 4px 4px 2px darken($light-yellow, 70%);
+  padding: 5px;
+  margin-left: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: darken($light-yellow, 10%);
+}
+
+.recipe-step-index {
+  font-size: 14pt;
+  margin-left: 5px;
+  font-family: 'Lobster', cursive
+}
+
+.recipe-step {
+  background-color: $light-blue;
+  border-radius: 5px;
+  box-shadow: 2px 2px 1px darken($light-green, 70%);
+  padding: 10px 0px;
+  margin: 5px 8px 5px 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: darken($light-green, 10%);
+}
+
+.recipe-step-body {
+  margin: 5px 5px 5px 20px;
+}

@@ -12,6 +12,8 @@ class IngredientList < ActiveRecord::Base
     greater_than: 0 }
 
   def to_s
-    "#{amount} #{ingredient}, #{preparation}"
+    string = "#{amount} #{ingredient}"
+    string += ", #{preparation}" if preparation.present?
+    string
   end
 end

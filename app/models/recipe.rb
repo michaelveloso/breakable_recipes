@@ -37,8 +37,14 @@ class Recipe < ActiveRecord::Base
   end
 
   def num_served
-    if num_served_min.present? && num_served_min <= num_served_max
-      "Serves #{num_served_min}-#{num_served_max}"
+    if num_served_min.present?
+      if num_served_min < num_served_max
+        "Serves #{num_served_min}-#{num_served_max}"
+      elsif num_served_min == num_served_max
+        "Serves #{num_served_min}"
+      else
+        "Serves #{num_served_max}-#{num_served_min}"
+      end
     else
       ""
     end
