@@ -1,16 +1,11 @@
-class CategorySeeder
-  CATEGORIES = [
-    { name: "Asian" },
-    { name: "Italian" },
-    { name: "Pasta" },
-    { name: "Salad" },
-    { name: "Side Dish" },
-    { name: "Vegetarian" }
-  ]
+require 'csv'
 
+class CategorySeeder
   def self.seed!
-    CATEGORIES.each do |category|
-      Category.create(category)
+    csv = File.read(Rails.root + "app/seeders/csv/categories.csv")
+    categories = CSV.parse(csv, headers: true)
+    categories.each do |category|
+      Category.create(category.to_hash)
     end
   end
 end

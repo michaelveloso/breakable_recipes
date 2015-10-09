@@ -1,21 +1,32 @@
 @import "colors";
 
+@mixin infoblock($bg-color) {
+  background-color: $bg-color;
+  border-radius: 5px;
+  box-shadow: 2px 2px 1px darken($light-yellow, 70%);
+  padding: 0 5px;
+
+}
+
+@mixin biginfoblock($bg-color, $shadow-color) {
+  background-color: $bg-color;
+  border-color: darken($shadow-color, 10%);
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 4px 4px 2px darken($shadow-color, 70%);
+}
+
 .recipe-info-block {
   padding-bottom: 20px;
 }
 
 .recipe-info-attr {
-  background-color: $dark-orange;
-  border-radius: 5px;
-  box-shadow: 2px 2px 1px darken($light-yellow, 70%);
-  padding: 0 5px;
+  @include infoblock($dark-orange);
 }
 
 .category-name {
-  background-color: $light-orange;
-  border-radius: 5px;
-  box-shadow: 2px 2px 1px darken($light-yellow, 70%);
-  padding: 0 5px;
+  @include infoblock($light-orange);
 }
 
 .ingredient-row {
@@ -23,12 +34,7 @@
 }
 
 .ingredient-block {
-  background-color: $light-green;
-  border-color: darken($light-yellow, 10%);
-  border-radius: 5px;
-  border-style: solid;
-  border-width: 1px;
-  box-shadow: 4px 4px 2px darken($light-yellow, 70%);
+  @include biginfoblock($light-green, $light-yellow);
   margin-left: 10px;
   padding: 5px;
 }
@@ -38,12 +44,7 @@
 }
 
 .step-block {
-  background-color: $light-green;
-  border-color: darken($light-yellow, 10%);
-  border-radius: 5px;
-  border-style: solid;
-  border-width: 1px;
-  box-shadow: 4px 4px 2px darken($light-yellow, 70%);
+  @include biginfoblock($light-green, $light-yellow);
   margin: 0 10px 20px 0;
   padding: 5px;
 }
@@ -55,11 +56,7 @@
 }
 
 .recipe-step {
-  background-color: $light-blue;
-  border-color: darken($light-green, 10%);
-  border-radius: 5px;
-  border-style: solid;
-  border-width: 1px;
+  @include biginfoblock($light-blue, $light-green);
   box-shadow: 2px 2px 1px darken($light-green, 70%);
   margin: 5px 8px 5px 5px;
   padding: 10px 0;

@@ -56,7 +56,7 @@ class RecipesController < ApplicationController
 
   def category_options
     options = [['(Choose a category)', nil]]
-    Category.all.each do |category|
+    Category.order(:name).each do |category|
       options << [category.name, category.id]
     end
     options
@@ -64,7 +64,7 @@ class RecipesController < ApplicationController
 
   def ingredient_options
     options = [['(Choose an ingredient)', nil]]
-    Ingredient.all.each do |ingredient|
+    Ingredient.order(:name, :subtype).each do |ingredient|
       options << [ingredient.for_dropdown, ingredient.id]
     end
     options
