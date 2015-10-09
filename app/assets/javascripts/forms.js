@@ -1,20 +1,28 @@
 var catOption, $catBlock, newCatHTML;
 
-var ingOptions, $ingBlock, newIngHTML, ingSelectHTML;
+var ingOption, $ingBlock, newIngHTML;
+
+var stepOption, $stepBlock, newStepHTML;
 
 $(document).ready(function(){
 
   catOption = $catBlock.html();
   ingOption = $ingBlock.html();
+  stepOption = $stepBlock.html();
 
   $('#new-category-button').on('click', function(event){
     event.preventDefault();
-    $categoryBlock.append(newCatHTML(catOption));
+    $catBlock.append(newCatHTML(catOption));
   });
 
   $('#new-ingredient-button').on('click', function(event){
     event.preventDefault();
     $ingBlock.append(newIngHTML(ingOption));
+  });
+
+  $('#new-step-button').on('click', function(event){
+    event.preventDefault();
+    $stepBlock.append(newStepHTML(stepOption));
   });
 });
 
@@ -45,4 +53,20 @@ newIngHTML = function(originalHTML){
   ingString = originalHTML.replace(/\[0\]/g, ingIndexArray)
   ingString = ingString.replace(/\_0\_/g, ingIndexUS)
   return ingString;
+};
+
+//information for recipe steps
+
+$stepBlock = $("#recipe-add-steps");
+
+newStepHTML = function(originalHTML){
+  var stepIndex, stepIndexArray, stepIndexUS, stepString;
+  stepIndex = $(".step-box").length;
+  stepIndexArray = "[" + stepIndex + "]";
+  stepIndexUS = "_" + stepIndex + "_";
+  stepIndexStep = "Step " + (stepIndex + 1)
+  stepString = originalHTML.replace(/\[0\]/g, stepIndexArray);
+  stepString = stepString.replace(/\_0\_/g, stepIndexUS);
+  stepString = stepString.replace(/Step [0-9][0-9]?/g, stepIndexStep);
+  return stepString;
 };

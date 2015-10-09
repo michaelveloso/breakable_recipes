@@ -74,11 +74,12 @@
   </div>
   <div class="row">
     <h3>Recipe Steps</h3>
-    <div class="columns small-10 recipe-add-steps-block">
+    <button type="button" id="new-step-button" class="button round tiny">+</button>
+    <div id="recipe-add-steps" class="columns small-10 recipe-add-steps-block">
       <% step_counter = 1 %>
       <%= form.fields_for :recipe_steps do |recipe_step_form| %>
         <h6>Step <%= step_counter %></h6>
-        <%= recipe_step_form.text_area :body %>
+        <%= recipe_step_form.text_area :body, class:"step-box" %>
         <% step_counter += 1 %>
       <% end %>
     </div>
