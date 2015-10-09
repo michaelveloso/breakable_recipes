@@ -35,10 +35,9 @@
     </div>
   </div>
   <div class="row">
-    <div id="recipe-add-categories" class="recipe-add-categories-block columns small-10">
-      <div class="small-2 columns">
-        <button type="button" id="new-category-button" class="button round tiny">+</button>
-      </div>
+    <h3>Categories</h3>
+    <button type="button" id="new-category-button" class="button round tiny">+</button>
+    <div id="recipe-add-categories" class="recipe-add-categories-block columns small-10 end">
       <%= form.fields_for :categories do |category_form| %>
         <div class="small-4 columns category-box end">
           <%= category_form.select :id, options_for_select(@category_options), class: "category-select-box" %>
@@ -48,10 +47,11 @@
   </div>
   <div class="row">
     <h3>Ingredients</h3>
-    <div class="columns small-10 recipe-add-ingredients-block">
+    <button type="button" id="new-ingredient-button" class="button round tiny">+</button>
+    <div id="recipe-add-ingredients" class="columns small-10 recipe-add-ingredients-block">
       <%= form.fields_for :ingredient_lists do |il_form| %>
         <div class="row">
-          <div class="columns small-12">
+          <div class="columns small-12 ingredient-box">
             <div class="columns small-4">
               <%= il_form.select :id, options_for_select(@ingredient_options) %>
             </div>

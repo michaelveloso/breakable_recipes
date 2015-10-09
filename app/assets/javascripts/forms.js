@@ -1,24 +1,48 @@
-var categoriesPresent, optionsHTML, $categoryBlock, newCategoryHTML;
+var catOption, $catBlock, newCatHTML;
+
+var ingOptions, $ingBlock, newIngHTML, ingSelectHTML;
 
 $(document).ready(function(){
+
+  catOption = $catBlock.html();
+  ingOption = $ingBlock.html();
+
   $('#new-category-button').on('click', function(event){
     event.preventDefault();
-    $categoryBlock.append(newCategoryHTML());
+    $categoryBlock.append(newCatHTML(catOption));
+  });
+
+  $('#new-ingredient-button').on('click', function(event){
+    event.preventDefault();
+    $ingBlock.append(newIngHTML(ingOption));
   });
 });
 
-optionsHTML = $("#recipe_categories_attributes_0_id").html();
+//information for categories
 
-newCategoryHTML = function(){
-  categoryIndex = $(".category-box").length;
-  string = "<div class='small-4 columns category-box end'>";
-  string += "<select name='recipe[categories_attributes]";
-  string += "[" + categoryIndex + "]";
-  string += "[id]' id='recipe_categories_attributes_" + categoryIndex + "_id'>"
-  string += optionsHTML;
-  string += "</select>"
-  string += "</div>";
-  return string;
+$catBlock = $("#recipe-add-categories");
+
+newCatHTML = function(originalHTML){
+  var catIndex, catIndexArray, catIndexUS, catString;
+  catIndex = $(".category-box").length;
+  catIndexArray = "[" + catIndex + "]"
+  catIndexUS = "_" + catIndex + "_"
+  catString = originalHTML.replace(/\[0\]/g, catIndexArray)
+  catString = catString.replace(/\_0\_/g, catIndexUS)
+  return catString;
 };
 
-$categoryBlock = $("#recipe-add-categories");
+
+//information for ingredients
+
+$ingBlock = $("#recipe-add-ingredients");
+
+newIngHTML = function(originalHTML){
+  var ingIndex, ingIndexArray, ingIndexUS, ingString;
+  ingIndex = $(".ingredient-box").length;
+  ingIndexArray = "[" + ingIndex + "]"
+  ingIndexUS = "_" + ingIndex + "_"
+  ingString = originalHTML.replace(/\[0\]/g, ingIndexArray)
+  ingString = ingString.replace(/\_0\_/g, ingIndexUS)
+  return ingString;
+};
