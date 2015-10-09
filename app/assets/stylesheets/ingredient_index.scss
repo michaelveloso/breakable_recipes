@@ -17,7 +17,8 @@
       &:hover {
         background-color: $slate;
         box-shadow: 2px 2px 1px darken($light-yellow, 70%);
-        color: $white; }
+        color: $white;
+      }
     }
   }
 }
@@ -27,8 +28,8 @@
   padding: 1px 0;
 
   a {
-    font-size: 10pt;
     color: $blue-gray;
+    font-size: 10pt;
     padding: 0 2px;
 
     &:hover {
@@ -42,8 +43,8 @@
   padding: 1px 0;
 
   a {
-    font-size: 10pt;
     color: $blue-gray;
+    font-size: 10pt;
     padding: 0 2px;
 
     &:hover {
