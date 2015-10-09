@@ -16,9 +16,11 @@ class RecipesController < ApplicationController
     @category_options = category_options
     @ingredient_options = ingredient_options
     @recipe = Recipe.new
-    3.times { @recipe.categories.build }
-    20.times { @recipe.ingredient_lists.build }
+    # 3.times { @recipe.categories.build }
+    # 20.times { @recipe.ingredient_lists.build }
     10.times { @recipe.recipe_steps.build }
+    @recipe.categories.build
+    @recipe.ingredient_lists.build
   end
 
   def create
