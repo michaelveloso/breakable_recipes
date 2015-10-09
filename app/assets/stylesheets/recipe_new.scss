@@ -1,5 +1,12 @@
 @import "colors";
 
+@mixin fieldstyle($border-color) {
+  background-color: $white;
+  border-color: darken($border-color, 5%);
+  border-radius: 5px;
+  color: $slate
+}
+
 .recipe-name-input-block textarea {
   background-color: $white;
   border-color: darken($light-yellow, 5%);
@@ -16,13 +23,14 @@
   font-size: 14pt;
   padding: 0 5px;
   padding-top: 10px;
-}
 
-.recipe-attributes-block input {
-  background-color: $white;
-  border-color: darken($dark-orange, 5%);
-  border-radius: 5px;
-  color: $slate;
+  & input {
+    @include fieldstyle($dark-orange);
+  }
+
+  & select {
+    @include fieldstyle($dark-orange);
+  }
 }
 
 .recipe-attribute-input label {
@@ -37,13 +45,10 @@
   margin: 20px 0;
   padding: 0 5px;
   padding-top: 15px;
-}
 
-.recipe-add-categories-block select {
-  background-color: $white;
-  border-color: darken($light-orange, 5%);
-  border-radius: 5px;
-  color: $slate;
+  & select {
+    @include fieldstyle($light-orange);
+  }
 }
 
 .recipe-add-ingredients-block {
@@ -54,20 +59,14 @@
   margin-bottom: 20px;
   padding: 0 5px;
   padding-top: 10px;
-}
 
-.recipe-add-ingredients-block select {
-  background-color: $white;
-  border-color: darken($light-green, 5%);
-  border-radius: 5px;
-  color: $slate;
-}
+  & select {
+    @include fieldstyle($light-green);
+  }
 
-.recipe-add-ingredients-block input {
-  background-color: $white;
-  border-color: darken($light-green, 10%);
-  border-radius: 5px;
-  color: $slate;
+  & input {
+    @include fieldstyle($light-green);
+  }
 }
 
 .recipe-add-steps-block {
@@ -76,13 +75,10 @@
   box-shadow: 2px 2px 1px darken($light-yellow, 70%);
   font-size: 14pt;
   padding: 15px 15px 0;
-}
 
-.recipe-add-steps-block textarea {
-  background-color: $white;
-  border-color: darken($light-green, 10%);
-  border-radius: 5px;
-  color: $slate;
+  & textarea {
+    @include fieldstyle($light-green);
+  }
 }
 
 .actions {
