@@ -26,13 +26,13 @@ feature 'moderator deletes ingredient', %{
     scenario 'only authorized user can see delete button on ingredient index' do
       sign_in(@moderator)
       visit ingredients_path
-      find_button ('Delete')
+      find_link ('Delete')
 
       click_link 'Sign Out'
 
       sign_in(@admin)
       visit ingredients_path
-      find_button ('Delete')
+      find_link ('Delete')
 
       click_link 'Sign Out'
 
@@ -46,7 +46,7 @@ feature 'moderator deletes ingredient', %{
 
       visit ingredients_path
 
-      click_button ('Delete')
+      click_link ('Delete')
 
       expect(page).to_not have_content(@ingredient.to_s)
     end
@@ -56,7 +56,7 @@ feature 'moderator deletes ingredient', %{
 
       visit ingredients_path
 
-      click_button ('Delete')
+      click_link ('Delete')
 
       expect(page).to_not have_content(@ingredient.to_s)
     end
@@ -66,7 +66,7 @@ feature 'moderator deletes ingredient', %{
 
       visit ingredients_path
 
-      click_button ('Delete')
+      click_link ('Delete')
 
       expect(Ingredient.last).to_not eq(@ingredient)
     end
@@ -76,7 +76,7 @@ feature 'moderator deletes ingredient', %{
 
       visit ingredients_path
 
-      click_button ('Delete')
+      click_link ('Delete')
 
       expect(page).to have_content('Ingredient removed')
     end

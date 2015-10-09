@@ -10,16 +10,28 @@
 <body>
 
   <nav class="top-bar">
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="/">Breakable Recipes</a></h1>
-      </li>
-    </ul>
+    <section class="top-bar-section left">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="/">Breakable Recipes</a></h1>
+        </li>
+        <% if current_user %>
+          <% if current_user.moderator? %>
+            <li class="topbar-link">
+              <%= link_to 'Categories', categories_path %>
+            </li>
+            <li class="topbar-link">
+              <%= link_to 'Ingredients', ingredients_path %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </section>
 
     <section class="top-bar-section">
       <ul class="right">
         <%- if current_user -%>
-          <li><%= link_to 'My Account', user_path(current_user) %></li>
+          <li><%= link_to current_user.username, user_path(current_user) %></li>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <%- else -%>
           <li><%= link_to 'Sign Up', new_user_registration_path %></li>

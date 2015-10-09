@@ -31,14 +31,14 @@ feature 'moderator edits ingredient', %{
       sign_in(@moderator)
 
       visit ingredients_path
-      click_button ('Edit')
+      click_link ('Edit')
 
       expect(current_path).to eq(edit_ingredient_path(@ingredient))
       click_link ('Sign Out')
 
       sign_in(@admin)
       visit ingredients_path
-      click_button ('Edit')
+      click_link ('Edit')
 
       expect(current_path).to eq(edit_ingredient_path(@ingredient))
       click_link ('Sign Out')
@@ -103,7 +103,7 @@ feature 'moderator edits ingredient', %{
       click_button('Update this ingredient')
 
       expect(page).to have_content('Ingredient updated!')
-      expect(page).to have_content('Heirloom Tomatillos')
+      expect(page).to have_content('Tomatillos, Heirloom')
       expect(current_path).to eq(ingredients_path)
     end
 

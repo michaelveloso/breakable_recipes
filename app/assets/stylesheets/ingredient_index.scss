@@ -1,0 +1,54 @@
+@import "colors";
+
+.new-ingredient-block {
+  input {
+    background-color: $white;
+    border-color: darken($light-yellow, 5%);
+    border-radius: 5px;
+    color: $slate;
+
+    &.button {
+      background-color: $light-yellow;
+      color: $slate;
+      font-family: 'Lobster', cursive;
+      font-size: 16pt;
+      margin-top: 15px;
+
+      &:hover {
+        background-color: $slate;
+        box-shadow: 2px 2px 1px darken($light-yellow, 70%);
+        color: $white;
+      }
+    }
+  }
+}
+
+.ingredient-entry {
+  font-size: 14pt;
+  padding: 1px 0;
+
+  a {
+    color: $blue-gray;
+    font-size: 10pt;
+    padding: 0 2px;
+
+    &:hover {
+      color: $slate;
+    }
+  }
+}
+
+.category-entry {
+  font-size: 14pt;
+  padding: 1px 0;
+
+  a {
+    color: $blue-gray;
+    font-size: 10pt;
+    padding: 0 2px;
+
+    &:hover {
+      color: $slate;
+    }
+  }
+}

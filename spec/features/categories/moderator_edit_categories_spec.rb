@@ -25,7 +25,7 @@ feature 'user edits categories', %{
     sign_in(@mod)
     visit categories_path
 
-    click_button 'Edit'
+    click_link 'Edit'
     expect(page).to have_content("Edit this category")
     expect(page).to_not have_content("You don't have permission")
     click_link 'Sign Out'
@@ -33,7 +33,7 @@ feature 'user edits categories', %{
     sign_in(@admin)
     visit categories_path
 
-    click_button 'Edit'
+    click_link 'Edit'
     expect(page).to have_content("Edit this category")
     expect(page).to_not have_content("You don't have permission")
   end

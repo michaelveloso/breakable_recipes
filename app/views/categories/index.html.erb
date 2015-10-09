@@ -1,14 +1,20 @@
 <h1>Category List</h1>
 
-<%= form_for @category do |form| %>
-  <%= form.text_field :name, id: "category-input", placeholder: "Add a category"%>
-  <%= form.submit "Add a category", class: "button round medium" %>
-<% end %>
+<div class="new-category-block column small-12">
+  <%= form_for @category do |form| %>
+    <div class="field column small-3">
+      <%= form.text_field :name, id: "category-input", placeholder: "Add a category"%>
+    </div>
+    <div class="column small-2 end">
+      <%= form.submit "Add a category", class: "recipe-button expand button round small" %>
+    </div>
+  <% end %>
+</div>
 
 <% @categories.each do |category| %>
   <div class="category-entry">
     <%= category.name %>
-    <%= button_to "Edit", edit_category_path(category), method: :get %>
-    <%= button_to "Delete", category, method: :delete %>
+    <%= link_to "Edit", edit_category_path(category), method: :get, class: "mod-link" %>
+    <%= link_to "Delete", category, method: :delete, class: "mod-link" %>
   </div>
 <% end %>

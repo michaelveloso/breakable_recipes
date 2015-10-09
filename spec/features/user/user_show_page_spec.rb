@@ -17,7 +17,7 @@ feature 'user visits account page', %{
 
     sign_in(@user)
 
-    click_link 'My Account'
+    click_link @user.username
   end
 
   context 'user accesses own account' do
