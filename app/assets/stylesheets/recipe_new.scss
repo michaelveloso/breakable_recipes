@@ -24,11 +24,11 @@
   padding: 0 5px;
   padding-top: 10px;
 
-  & input {
+  input {
     @include fieldstyle($dark-orange);
   }
 
-  & select {
+  select {
     @include fieldstyle($dark-orange);
   }
 }
@@ -46,7 +46,7 @@
   padding: 0 5px;
   padding-top: 15px;
 
-  & select {
+  select {
     @include fieldstyle($light-orange);
   }
 }
@@ -60,11 +60,11 @@
   padding: 0 5px;
   padding-top: 10px;
 
-  & select {
+  select {
     @include fieldstyle($light-green);
   }
 
-  & input {
+  input {
     @include fieldstyle($light-green);
   }
 }
@@ -76,7 +76,7 @@
   font-size: 14pt;
   padding: 15px 15px 0;
 
-  & textarea {
+  textarea {
     @include fieldstyle($light-green);
   }
 }
