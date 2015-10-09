@@ -27,6 +27,7 @@
 
 .category-name {
   @include infoblock($light-orange);
+  margin: 0 2px;
 }
 
 .ingredient-row {

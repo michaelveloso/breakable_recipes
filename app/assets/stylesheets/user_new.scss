@@ -1,0 +1,26 @@
+@import "colors";
+
+#new_user {
+
+  input {
+  background-color: $white;
+  border-color: darken($light-yellow, 5%);
+  border-radius: 5px;
+  color: $slate;
+  font-size: 14pt;
+  margin: 15px 0;
+  }
+
+  input.button{
+    background-color: $light-yellow;
+    border-radius: 1000px;
+    color: $slate;
+    font-family: 'Lobster', cursive;
+    font-size: 16pt;
+    margin-button: 0;
+    &:hover {
+      background-color: $slate;
+      box-shadow: 2px 2px 1px darken($light-yellow, 70%);
+      color: $white; }
+  }
+}

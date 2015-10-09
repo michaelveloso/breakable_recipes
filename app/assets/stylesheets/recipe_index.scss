@@ -1,0 +1,29 @@
+@import "colors";
+
+.recipe-name {
+  font-family: 'Lobster', cursive;
+  font-size: 20pt;
+  margin: 0 10px;
+
+  a {
+    color: $blue-gray;
+  }
+
+  a:hover {
+    color: $slate;
+  }
+}
+
+.recipe-info-index {
+  margin: 0 0 10px 20px;
+}
+
+.recipe-index-header {
+  span {
+    margin-top: 5px;
+  }
+}
+.your-recipes {
+  font-family: 'Lobster', cursive;
+  font-size: 30pt;
+}

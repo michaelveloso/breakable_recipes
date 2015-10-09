@@ -36,7 +36,7 @@ feature 'user can add simple attributes', %{
     scenario 'user can visit new recipe page from recipe index' do
       visit recipes_path
 
-      click_link("Add a new recipe")
+      click_button("Add a new recipe")
 
       expect(current_path).to eq(new_recipe_path)
     end
