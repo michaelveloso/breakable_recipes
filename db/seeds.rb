@@ -6,6 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+if Rails.env.production?
+  CategorySeeder.seed!
+  UserSeeder.seed!
+  IngredientSeeder.seed!
+  RecipeSeeder.seed!
+end
+
 if Rails.env.development?
   CategorySeeder.seed!
   UserSeeder.seed!
