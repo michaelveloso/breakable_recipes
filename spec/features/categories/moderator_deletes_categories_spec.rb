@@ -21,17 +21,17 @@ feature 'user deletes categories', %{
   end
 
   scenario 'moderator or admin can delete a category from index' do
-    find_button("Delete")
+    find_link("Delete")
     click_link 'Sign Out'
 
     sign_in(@admin)
     visit categories_path
 
-    find_button("Delete")
+    find_link("Delete")
   end
 
   scenario 'page shows success message on successful deletion' do
-    click_button "Delete"
+    click_link "Delete"
     expect(page).to have_content("Category deleted!")
     expect(page).to_not have_content(@category.name)
   end

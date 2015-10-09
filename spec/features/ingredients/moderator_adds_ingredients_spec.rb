@@ -63,7 +63,7 @@ feature 'moderator adds ingredient', %{
       click_button('Add this ingredient')
 
       expect(page).to have_content('Ingredient added!')
-      expect(page).to have_content('Heirloom Tomatillos')
+      expect(page).to have_content('Tomatillos, Heirloom')
       expect(current_path).to eq(ingredients_path)
     end
 
