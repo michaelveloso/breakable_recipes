@@ -2,28 +2,28 @@
 
 <% if current_user.present? %>
   <% if current_user.moderator? %>
-    <%= form_for(@ingredient) do |form| %>
-      <div class="field column small-12">
-        <%= form.text_field :name, class: "text-input-field ingredient-input-field", id: "ingredient-name-input", placeholder: "Ingredient name" %>
-      </div>
-      <div class="field column small-12">
-        <%= form.text_field :subtype, class: "text-input-field ingredient-input-field", id: "ingredient-subtype-input", placeholder: "Optional subtype" %>
-      </div>
-      <div class="actions">
-        <%= form.submit "Add this ingredient", class: "button expand round medium" %>
-      </div>
-    <% end %>
+    <div class="new-ingredient-block column small-12">
+      <%= form_for(@ingredient) do |form| %>
+        <div class="field column small-3">
+          <%= form.text_field :name, class: "text-input-field ingredient-input-field", id: "ingredient-name-input", placeholder: "Ingredient name" %>
+          <%= form.text_field :subtype, class: "text-input-field ingredient-input-field", id: "ingredient-subtype-input", placeholder: "Optional subtype" %>
+        </div>
+        <div class="column small-4 end">
+          <%= form.submit "Add this ingredient", class: "recipe-button button expand round medium" %>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 <% end %>
 
 
 <% @ingredients.each do |ingredient| %>
   <div class="ingredient-entry">
-    <%= ingredient.to_s %>
+    <%= ingredient.for_dropdown %>
     <% if current_user.present? %>
       <% if current_user.moderator? %>
-        <%= button_to "Edit", edit_ingredient_path(ingredient), method: :get %>
-        <%= button_to "Delete", ingredient, method: :delete %>
+        <%= link_to "Edit", edit_ingredient_path(ingredient), class: "mod-link", method: :get %>
+        <%= link_to "Delete", ingredient, class: "mod-link", method: :delete %>
       <% end %>
     <% end %>
   </div>

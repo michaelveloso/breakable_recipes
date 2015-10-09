@@ -47,7 +47,6 @@ class IngredientsController < ApplicationController
     params.require(:ingredient).permit(:name, :subtype)
   end
 
-
   def this_ingredient
     Ingredient.find(params[:id])
   end

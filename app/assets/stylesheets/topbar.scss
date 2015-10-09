@@ -1,0 +1,9 @@
+@import "colors";
+
+.topbar-link a {
+  color: $white;
+  padding: 0 5px;
+  &:hover {
+    color: $blue-gray;
+  }
+}
