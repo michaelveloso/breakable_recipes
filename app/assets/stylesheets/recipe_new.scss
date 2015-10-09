@@ -83,6 +83,7 @@
 
 .actions {
   margin-top: 20px;
+  margin-bottom: 0;
 }
 
 .recipe-button {
@@ -90,6 +91,7 @@
   color: $slate;
   font-family: 'Lobster', cursive;
   font-size: 16pt;
+  margin: 0;
 
   &:hover {
     background-color: $slate;

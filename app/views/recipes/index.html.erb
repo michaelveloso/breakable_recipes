@@ -1,11 +1,29 @@
 <% if not current_user.present? %>
-  Sign in or sign up to add recipes!
+  <%= link_to "Sign in", new_user_session_path %> or <%= link_to "Sign up", new_user_registration_path %> to add recipes!
 <% else %>
-  <h1>Your Recipes</h1>
-
-  <% @recipes.each do |recipe| %>
-    <%= link_to recipe.name, recipe_path(recipe) %>
-  <% end %>
-
-  <%= link_to "Add a new recipe", new_recipe_path %>
+  <div class="row recipe-index-header">
+    <span class="small-3 column your-recipes">Your Recipes</span>
+    <span class="small-4 column add-recipe-index end">
+      <%= button_to "Add a new recipe", new_recipe_path, method: :get, class: "inline button recipe-button round expand" %>
+    </span>
+  </div>
+  <div class="recipe-list-block">
+    <% @recipes.each do |recipe| %>
+      <div class="recipe-name">
+        <%= link_to recipe.name, recipe_path(recipe) %>
+      </div>
+      <div class="recipe-info-index">
+        <span class="recipe-info-attr"><%= recipe.complexity_rating %></span>
+        <span class="recipe-info-attr"><%= recipe.cooking_time_min %></span>
+        <span class="recipe-info-attr"><%= recipe.num_served %></span>
+        <% if recipe.categories.present? %>
+          <% recipe.categories.each do |category| %>
+            <span class="category-name">
+              <%= category.name %>
+            </span>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 <% end %>
