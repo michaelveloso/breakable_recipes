@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user edits info', %Q{
+feature 'user edits info', %{
   As a user,
   I want to edit my information
   So I can keep it up to date
