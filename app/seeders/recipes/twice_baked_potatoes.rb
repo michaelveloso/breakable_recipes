@@ -1,5 +1,6 @@
 class RecipeSeeder
   def self.twice_baked_potatoes
+    exit if recipe("Twice-Baked Potatoes")
     recipe = Recipe.new(name: "Twice-Baked Potatoes", user: User.first)
     recipe.cooking_time = 120
     recipe.num_served_min = 10

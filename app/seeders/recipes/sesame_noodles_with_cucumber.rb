@@ -1,5 +1,6 @@
 class RecipeSeeder
   def self.sesame_noodles_with_cucumber
+    exit if recipe("Sesame Noodles with Cucumber")
     recipe = Recipe.new(name: "Sesame Noodles with Cucumber", user: User.first)
     recipe.cooking_time = 30
     recipe.num_served_min = 4
