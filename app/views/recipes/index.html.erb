@@ -11,6 +11,7 @@
     <% @recipes.each do |recipe| %>
       <div class="recipe-name">
         <%= link_to recipe.name, recipe_path(recipe) %>
+        <%= button_to "Delete", recipe, method: :delete %>
       </div>
       <div class="recipe-info-index">
         <span class="recipe-info-attr"><%= recipe.complexity_rating %></span>
