@@ -4,5 +4,5 @@
   <div>Name: <%= @user.full_name %></div>
   <div>Email: <%= @user.email %></div>
   <%= button_to "Edit your info", edit_user_registration_path(@user), class: 'recipe-button button expand round medium', method: :get %>
-  <%= button_to "Delete Account", @user, class: 'recipe-button button expand round medium', method: :delete %>
+  <%= button_to "Delete my account", @user, class: 'recipe-button button expand round medium', method: :delete %>
 </div>
