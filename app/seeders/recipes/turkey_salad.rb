@@ -31,7 +31,7 @@ class RecipeSeeder
         step: 1
       }, {
         recipe: recipe,
-        ingredient: ingredient("Yogurt","Plain"),
+        ingredient: ingredient("Yogurt", "Plain"),
         amount: "1/4 cup",
         step: 2
       }, {
