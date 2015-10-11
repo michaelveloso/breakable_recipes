@@ -11,7 +11,7 @@ feature 'user sees recipe index', %{
   [√] - Registered user sees their recipes at recipes path
   [√] - Recipes are in alphabetical order
   [√] - Recipes are links to their show pages
-  [] - Recipe attributes are listed next to their recipe
+  [√] - Recipe attributes are listed next to their recipe
 } do
 
   scenario 'unregistered user sees invitation to sign up' do
