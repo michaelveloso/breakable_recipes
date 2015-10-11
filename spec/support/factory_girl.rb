@@ -53,8 +53,8 @@ FactoryGirl.define do
 
     factory :recipe_numbers do
       cooking_time { rand(5..60) }
-      num_served_min { rand(2..4) }
-      num_served_max { rand(4..8) }
+      num_served_min { rand(1..4) }
+      num_served_max { rand(5..8) }
       complexity { rand(1..3) }
 
       factory :recipe_complete do

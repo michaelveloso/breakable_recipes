@@ -1,5 +1,6 @@
 class RecipeSeeder
   def self.betsys_gumbo
+    exit if recipe("Betsy's Gumbo")
     recipe = Recipe.new(name: "Betsy's Gumbo", user: User.first)
     recipe.cooking_time = 240
     recipe.num_served_min = 12

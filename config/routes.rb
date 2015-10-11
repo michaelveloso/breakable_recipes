@@ -2,13 +2,14 @@ Rails.application.routes.draw do
   root 'recipes#index'
   devise_for :users
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :destroy]
 
   resources :ingredients, except: [:show]
 
   resources :categories, except: [:show, :new]
 
-  resources :recipes, only: [:index, :show, :new, :create]
+  resources :recipes, only: [:index, :show, :new, :create, :destroy]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
