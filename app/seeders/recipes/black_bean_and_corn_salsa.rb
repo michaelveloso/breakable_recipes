@@ -21,7 +21,7 @@ class RecipeSeeder
 
     ingredient_list_hashes = [
       { recipe: recipe,
-        ingredient: ingredient("Beans","Black"),
+        ingredient: ingredient("Beans", "Black"),
         amount: "52 oz.",
         step: 1
       }, {

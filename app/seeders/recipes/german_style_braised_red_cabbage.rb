@@ -1,7 +1,8 @@
 class RecipeSeeder
   def self.german_style_braised_red_cabbage
     exit if recipe("German_style Braised Red Cabbage")
-    recipe = Recipe.new(name: "German-Style Braised Red Cabbage", user: User.first)
+    recipe = Recipe.new(
+      name: "German-Style Braised Red Cabbage", user: User.first)
     recipe.cooking_time = 120
     recipe.num_served_min = 4
     recipe.num_served_max = 8

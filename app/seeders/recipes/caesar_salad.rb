@@ -12,7 +12,8 @@ class RecipeSeeder
       { recipe: recipe,
         order: 1,
         body: "Mix dressing."
-      }, { recipe: recipe,
+      }, {
+        recipe: recipe,
         order: 2,
         body: "Add dressing to lettuce and toss. Add
           cheese and toss. Add croutons and toss. Serve."

@@ -66,6 +66,5 @@ class RecipeSeeder
     recipe.categories << category("Side Dish")
     recipe.categories << category("Mexican")
     recipe.categories << category("Vegetarian")
-
   end
 end
