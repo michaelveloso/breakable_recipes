@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'recipes#index'
   devise_for :users
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :destroy]
 
   resources :ingredients, except: [:show]
 
