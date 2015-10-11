@@ -8,9 +8,15 @@ require_relative 'recipes/edamame_and_white_bean_salad'
 require_relative 'recipes/black_bean_and_corn_salsa'
 require_relative 'recipes/german_style_braised_red_cabbage'
 require_relative 'recipes/corn_chowder'
+require_relative 'recipes/turkey_salad'
+require_relative 'recipes/roast_beef_and_blue_cheese_wraps'
+require_relative 'recipes/pasta_amatriciana'
+
 
 class RecipeSeeder
   def self.seed!
+    roast_beef_and_blue_cheese_wraps
+    turkey_salad
     corn_chowder
     caesar_salad
     corn_chowder_salad
@@ -21,6 +27,7 @@ class RecipeSeeder
     edamame_and_white_bean_salad
     black_bean_and_corn_salsa
     german_style_braised_red_cabbage
+    pasta_amatriciana
   end
 
   def self.ingredient(name, subtype = nil)
