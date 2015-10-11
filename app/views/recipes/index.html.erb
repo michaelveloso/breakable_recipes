@@ -9,9 +9,9 @@
   </div>
   <div class="recipe-list-block">
     <% @recipes.each do |recipe| %>
-      <div class="recipe-name">
-        <%= link_to recipe.name, recipe_path(recipe) %>
-        <%= button_to "Delete", recipe, method: :delete %>
+      <div class="recipe-name small-12 columns">
+        <span><%= link_to recipe.name, recipe_path(recipe), class: "small-6 columns" %>
+        <%= button_to "Delete", recipe, class: "delete-from-index-button button tiny round inline left", method: :delete %></span>
       </div>
       <div class="recipe-info-index">
         <span class="recipe-info-attr"><%= recipe.complexity_rating %></span>

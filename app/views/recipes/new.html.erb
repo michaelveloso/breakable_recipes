@@ -17,7 +17,7 @@
       <div class="small-3 columns recipe-attribute-input">
         <%= form.label "Cooking time (min):", class: "right inline" %>
       </div>
-      <div class="small-1 columns recipe-attribute-input">
+      <div class="small-2 columns recipe-attribute-input">
         <%= form.number_field :cooking_time, class: "input-field"  %>
       </div>
       <div class="small-2 columns recipe-attribute-input">
@@ -35,8 +35,10 @@
     </div>
   </div>
   <div class="row">
-    <h3>Categories</h3>
-    <button type="button" id="new-category-button" class="button round tiny">+</button>
+    <span class="column small-12">
+      <span class="recipe-form-header">Categories</span>
+      <button type="button" id="new-category-button" class="form-button button round tiny">Add a category</button>
+    </span>
     <div id="recipe-add-categories" class="recipe-add-categories-block columns small-10 end">
       <%= form.fields_for :categories do |category_form| %>
         <div class="small-4 columns category-box end">
@@ -46,9 +48,11 @@
     </div>
   </div>
   <div class="row">
-    <h3>Ingredients</h3>
-    <button type="button" id="new-ingredient-button" class="button round tiny">+</button>
-    <div id="recipe-add-ingredients" class="columns small-10 recipe-add-ingredients-block">
+    <span class="column small-12">
+      <span class="recipe-form-header">Ingredients</span>
+      <button type="button" id="new-ingredient-button" class="form-button button round tiny">Add an ingredient</button>
+    </span>
+    <div id="recipe-add-ingredients" class="columns small-10 recipe-add-ingredients-block end">
       <%= form.fields_for :ingredient_lists do |il_form| %>
         <div class="row">
           <div class="columns small-12 ingredient-box">
@@ -73,9 +77,11 @@
     </div>
   </div>
   <div class="row">
-    <h3>Recipe Steps</h3>
-    <button type="button" id="new-step-button" class="button round tiny">+</button>
-    <div id="recipe-add-steps" class="columns small-10 recipe-add-steps-block">
+    <span class="column small-12">
+      <span class="recipe-form-header">Recipe Steps</span>
+      <button type="button" id="new-step-button" class="form-button button round tiny">Add a step</button>
+    </span>
+    <div id="recipe-add-steps" class="columns small-10 recipe-add-steps-block end">
       <% step_counter = 1 %>
       <%= form.fields_for :recipe_steps do |recipe_step_form| %>
         <h6>Step <%= step_counter %></h6>

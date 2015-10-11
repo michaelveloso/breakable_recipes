@@ -7,6 +7,42 @@
   color: $slate;
 }
 
+.recipe-form-header {
+  font-family: 'Lobster', cursive;
+  font-size: 20pt;
+}
+
+.form-button {
+  background-color: $light-green;
+  color: $black;
+
+  &:hover {
+    background-color: $slate;
+    color: white;
+  }
+}
+
+#new-step-button {
+  font-size: 12pt;
+  margin: 0 0 5px 5px;
+}
+
+#new-ingredient-button {
+  font-size: 12pt;
+  margin: 0 0 5px 5px;
+}
+
+#new-category-button {
+  background-color: $light-orange;
+  font-size: 12pt;
+  margin: 0 0 5px 5px;
+
+  &:hover {
+    background-color: $slate;
+    color: $white;
+  }
+}
+
 .recipe-name-input-block textarea {
   background-color: $white;
   border-color: darken($light-yellow, 5%);
@@ -23,6 +59,7 @@
   font-size: 14pt;
   padding: 0 5px;
   padding-top: 10px;
+  margin-bottom: 20px;
 
   input {
     @include fieldstyle($dark-orange);
@@ -42,9 +79,8 @@
   border-radius: 5px;
   box-shadow: 2px 2px 1px darken($light-yellow, 70%);
   font-size: 14pt;
-  margin: 20px 0;
-  padding: 0 5px;
-  padding-top: 15px;
+  margin: 0 0 20px 0;
+  padding: 15px 0 0 0;
 
   select {
     @include fieldstyle($light-orange);
@@ -58,7 +94,7 @@
   font-size: 14pt;
   margin-bottom: 20px;
   padding: 0 5px;
-  padding-top: 10px;
+  padding-top: 15px;
 
   select {
     @include fieldstyle($light-green);

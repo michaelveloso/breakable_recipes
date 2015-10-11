@@ -14,6 +14,18 @@
   }
 }
 
+.delete-from-index-button {
+  background-color: $light-yellow;
+  color: $black;
+  margin: 0;
+  padding: 2px;
+
+  &:hover {
+    background-color: $slate;
+    color: $white;
+  }
+}
+
 .recipe-info-index {
   margin: 0 0 10px 20px;
 }
