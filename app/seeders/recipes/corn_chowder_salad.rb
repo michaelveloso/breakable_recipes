@@ -1,5 +1,6 @@
 class RecipeSeeder
   def self.corn_chowder_salad
+    exit if recipe("Corn Chowder Salad")
     recipe = Recipe.new(name: "Corn Chowder Salad", user: User.first)
     recipe.cooking_time = 30
     recipe.num_served_min = 8
