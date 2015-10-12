@@ -16,9 +16,6 @@ class RecipesController < ApplicationController
     @category_options = category_options
     @ingredient_options = ingredient_options
     @recipe = Recipe.new
-    # 3.times { @recipe.categories.build }
-    # 20.times { @recipe.ingredient_lists.build }
-    # 10.times { @recipe.recipe_steps.build }
     @recipe.categories.build
     @recipe.ingredient_lists.build
     @recipe.recipe_steps.build
@@ -34,7 +31,11 @@ class RecipesController < ApplicationController
       redirect_to recipe_path(@recipe)
     else
       flash[:errors] = @recipe.errors.full_messages.join(', ')
+      @ingredient_options = ingredient_options
       @category_options = category_options
+      @recipe.categories.build
+      @recipe.ingredient_lists.build
+      @recipe.recipe_steps.build
       render :new
     end
   end
