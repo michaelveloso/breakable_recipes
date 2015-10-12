@@ -48,6 +48,8 @@ group :test do
   gem 'shoulda-matchers'
   gem 'orderly'
   gem 'coveralls', require: false
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
 end
 
 group :production do

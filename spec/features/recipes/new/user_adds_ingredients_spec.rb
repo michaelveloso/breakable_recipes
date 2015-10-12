@@ -7,9 +7,10 @@ feature 'user can add ingredients', %{
 
   Acceptance criteria:
 
-  [] Form displays dropdowns for ingredients
-  [] Form allows associated step
-  [] Correct ingredients appear on show page
+  [√] User can add more ingredient fields
+  [√] Form displays dropdowns for ingredients
+  [√] Form allows associated step
+  [√] Correct ingredients appear on show page
 } do
 
   before(:each) do
@@ -23,7 +24,16 @@ feature 'user can add ingredients', %{
     fill_in "recipe-name-input", with: "Recipe Name"
   end
 
-  scenario 'user can add ingredients to a new recipe' do
+  scenario 'user can add more ingredient fields', js: true do
+    expect(page.has_select?('recipe_ingredient_lists_attributes_0_id')).to eq(true)
+    expect(page.has_select?('recipe_ingredient_lists_attributes_1_id')).to eq(false)
+    click_button 'new-ingredient-button'
+    expect(page.has_select?('recipe_ingredient_lists_attributes_1_id')).to eq(true)
+  end
+
+  scenario 'user can add ingredients to a new recipe', js: true do
+    click_button 'new-ingredient-button'
+    click_button 'new-ingredient-button'
     select @ingredient1.name, from: 'recipe_ingredient_lists_attributes_0_id'
     select @ingredient2.name, from: 'recipe_ingredient_lists_attributes_1_id'
     select @ingredient3.name, from: 'recipe_ingredient_lists_attributes_2_id'
@@ -48,7 +58,8 @@ feature 'user can add ingredients', %{
     expect(page).to have_content("some preparation")
   end
 
-  scenario 'user can tag ingredients with step order' do
+  scenario 'user can tag ingredients with step order', js: true do
+    click_button 'new-ingredient-button'
     select @ingredient1.name, from: 'recipe_ingredient_lists_attributes_0_id'
     fill_in 'recipe_ingredient_lists_attributes_0_step', with: 1
     select @ingredient2.name, from: 'recipe_ingredient_lists_attributes_1_id'
@@ -59,7 +70,8 @@ feature 'user can add ingredients', %{
     expect(current_path).to eq(recipe_path(Recipe.last))
   end
 
-  scenario 'ingredients appear on recipe show page' do
+  scenario 'ingredients appear on recipe show page', js: true do
+    click_button 'new-ingredient-button'
     select @ingredient1.name, from: 'recipe_ingredient_lists_attributes_0_id'
     select @ingredient2.name, from: 'recipe_ingredient_lists_attributes_1_id'
     click_button("Add this Recipe!")
