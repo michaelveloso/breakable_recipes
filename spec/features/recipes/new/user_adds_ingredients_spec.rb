@@ -25,10 +25,13 @@ feature 'user can add ingredients', %{
   end
 
   scenario 'user can add more ingredient fields', js: true do
-    expect(page.has_select?('recipe_ingredient_lists_attributes_0_id')).to eq(true)
-    expect(page.has_select?('recipe_ingredient_lists_attributes_1_id')).to eq(false)
+    expect(
+      page.has_select?('recipe_ingredient_lists_attributes_0_id')).to eq(true)
+    expect(
+      page.has_select?('recipe_ingredient_lists_attributes_1_id')).to eq(false)
     click_button 'new-ingredient-button'
-    expect(page.has_select?('recipe_ingredient_lists_attributes_1_id')).to eq(true)
+    expect(
+      page.has_select?('recipe_ingredient_lists_attributes_1_id')).to eq(true)
   end
 
   scenario 'user can add ingredients to a new recipe', js: true do
@@ -52,7 +55,8 @@ feature 'user can add ingredients', %{
 
   scenario 'user can add preparation to ingredients' do
     select @ingredient1.name, from: 'recipe_ingredient_lists_attributes_0_id'
-    fill_in 'recipe_ingredient_lists_attributes_0_preparation', with: "some preparation"
+    fill_in 'recipe_ingredient_lists_attributes_0_preparation',
+      with: "some preparation"
     click_button("Add this Recipe!")
 
     expect(page).to have_content("some preparation")

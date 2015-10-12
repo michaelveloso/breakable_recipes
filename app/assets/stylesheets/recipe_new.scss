@@ -18,7 +18,7 @@
 
   &:hover {
     background-color: $slate;
-    color: white;
+    color: $white;
   }
 }
 
@@ -79,8 +79,8 @@
   border-radius: 5px;
   box-shadow: 2px 2px 1px darken($light-yellow, 70%);
   font-size: 14pt;
-  margin: 0 0 20px 0;
-  padding: 15px 0 0 0;
+  margin: 0 0 20px;
+  padding: 15px 0 0;
 
   select {
     @include fieldstyle($light-orange);
