@@ -48,7 +48,7 @@ $ingBlock = $("#recipe-add-ingredients");
 newIngHTML = function(originalHTML){
   var ingIndex, ingIndexArray, ingIndexUS, ingString;
   ingIndex = $(".ingredient-box").length;
-  ingIndexArray = "[" + ingIndex + "]"
+  ingIndexArray = "[" + ingIndex + "]";
   ingIndexUS = "_" + ingIndex + "_";
   ingString = originalHTML.replace(/\[0\]/g, ingIndexArray);
   ingString = ingString.replace(/\_0\_/g, ingIndexUS);
