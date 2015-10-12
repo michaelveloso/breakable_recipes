@@ -1,28 +1,40 @@
-var catOption, $catBlock, newCatHTML;
+var $catBlock, newCatHTML;
 
-var ingOption, $ingBlock, newIngHTML;
+var $ingBlock, newIngHTML;
 
-var stepOption, $stepBlock, newStepHTML;
+var $stepBlock, newStepHTML;
+
+$.fn.outerHTML = function() {
+    var $t = $(this);
+    if ($t[0].outerHTML !== undefined) {
+        return $t[0].outerHTML;
+    } else {
+        var content = $t.wrap('<div/>').parent().html();
+        $t.unwrap();
+        return content;
+    }
+};
 
 $(document).ready(function(){
+  var catHTML, ingHTML, stepHTML;
 
-  catOption = $catBlock.html();
-  ingOption = $ingBlock.html();
-  stepOption = $stepBlock.html();
+  catHTML = $catBlock.children().first().outerHTML();
+  ingHTML = $ingBlock.children().first().outerHTML();
+  stepHTML = $stepBlock.children().first().outerHTML();
 
   $("#new-category-button").on("click", function(event){
     event.preventDefault();
-    $catBlock.append(newCatHTML(catOption));
+    $catBlock.append(newCatHTML(catHTML));
   });
 
   $("#new-ingredient-button").on("click", function(event){
     event.preventDefault();
-    $ingBlock.append(newIngHTML(ingOption));
+    $ingBlock.append(newIngHTML(ingHTML));
   });
 
   $("#new-step-button").on("click", function(event){
     event.preventDefault();
-    $stepBlock.append(newStepHTML(stepOption));
+    $stepBlock.append(newStepHTML(stepHTML));
   });
 });
 

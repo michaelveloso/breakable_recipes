@@ -31,13 +31,15 @@ class RecipesController < ApplicationController
       redirect_to recipe_path(@recipe)
     else
       flash[:errors] = @recipe.errors.full_messages.join(', ')
-      @ingredient_options = ingredient_options
-      @category_options = category_options
-      @recipe.categories.build
-      @recipe.ingredient_lists.build
-      @recipe.recipe_steps.build
-      render :new
+      redirect_to new_recipe_path
     end
+  end
+
+  def edit
+    check_user
+    @category_options = category_options
+    @ingredient_options = ingredient_options
+    @recipe = Recipe.find(params[:id])
   end
 
   def destroy
@@ -120,5 +122,12 @@ class RecipesController < ApplicationController
 
   def ingredient_lists
     params[:recipe][:ingredient_lists_attributes].select { |id| id.length > 0 }
+  end
+
+  def check_user
+    unless current_user == Recipe.find(params[:id]).user
+      flash[:errors] = "You don't have permission to do that!"
+      redirect_to root_path
+    end
   end
 end

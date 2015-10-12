@@ -61,7 +61,7 @@ FactoryGirl.define do
         transient do
           recipe_steps_count { rand(4..8) }
           ingredient_lists_count { rand(5..15) }
-          categories_count { rand(0..3) }
+          categories_count { rand(1..3) }
         end
 
         after(:create) do |recipe, evaluator|

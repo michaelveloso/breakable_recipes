@@ -11,6 +11,7 @@
     <% @recipes.each do |recipe| %>
       <div class="recipe-name small-12 columns">
         <span><%= link_to recipe.name, recipe_path(recipe), class: "small-6 columns" %>
+        <%= button_to "Edit", edit_recipe_path(recipe), class: "edit-from-index-button button tiny round inline left", method: :get %></span>
         <%= button_to "Delete", recipe, class: "delete-from-index-button button tiny round inline left", method: :delete %></span>
       </div>
       <div class="recipe-info-index">

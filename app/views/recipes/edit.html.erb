@@ -1,4 +1,4 @@
-<h1 class="sub-header">Add a Recipe</h1>
+<h1 class="sub-header">Edit this Recipe</h1>
 
 <%= form_for @recipe do |form| %>
   <div class="row">
@@ -42,7 +42,7 @@
     <div id="recipe-add-categories" class="recipe-add-categories-block columns small-10 end">
       <%= form.fields_for :categories do |category_form| %>
         <div class="small-4 columns category-box end">
-          <%= category_form.select :id, options_for_select(@category_options), class: "category-select-box" %>
+          <%= category_form.select :id, options_for_select(@category_options, category_form.object.id), class: "category-select-box" %>
         </div>
       <% end %>
     </div>
@@ -57,7 +57,7 @@
         <div class="row">
           <div class="columns small-12 ingredient-box">
             <div class="columns small-4">
-              <%= il_form.select :id, options_for_select(@ingredient_options) %>
+              <%= il_form.select :id, options_for_select(@ingredient_options, il_form.object.ingredient.id) %>
             </div>
             <div class="columns small-2">
               <%= il_form.text_field :amount, placeholder: "amount" %>
@@ -84,9 +84,9 @@
     <div id="recipe-add-steps" class="columns small-10 recipe-add-steps-block end">
       <% step_counter = 1 %>
       <%= form.fields_for :recipe_steps do |recipe_step_form| %>
-        <div class="step-box">
+        <div class="step-block">
           <h6>Step <%= step_counter %></h6>
-          <%= recipe_step_form.text_area :body %>
+          <%= recipe_step_form.text_area :body, class:"step-box" %>
           <% step_counter += 1 %>
         </div>
       <% end %>
@@ -94,7 +94,7 @@
   </div>
 
   <div class="actions small-10 column">
-    <%= form.submit "Add this Recipe!", class: "recipe-button expand button round" %>
+    <%= form.submit "Update this Recipe!", class: "recipe-button expand button round" %>
   </div>
 <% end %>
 <div class="small-10 column">
