@@ -1,5 +1,5 @@
 <% if not current_user.present? %>
-  <%= link_to "Sign in", new_user_session_path %> or <%= link_to "Sign up", new_user_registration_path %> to add recipes!
+  <h3><%= link_to "Sign in", new_user_session_path %> or <%= link_to "Sign up", new_user_registration_path %> to add recipes!</h3>
 <% else %>
   <div class="row recipe-index-header">
     <span class="small-3 column your-recipes">Your Recipes</span>
@@ -11,7 +11,7 @@
     <% @recipes.each do |recipe| %>
       <div class="recipe-name small-12 columns">
         <span><%= link_to recipe.name, recipe_path(recipe), class: "small-6 columns" %>
-        <%= button_to "Edit", edit_recipe_path(recipe), class: "edit-from-index-button button tiny round inline left", method: :get %></span>
+        <%= button_to "Edit", edit_recipe_path(recipe), class: "delete-from-index-button button tiny round inline left", method: :get %></span>
         <%= button_to "Delete", recipe, class: "delete-from-index-button button tiny round inline left", method: :delete %></span>
       </div>
       <div class="recipe-info-index">
