@@ -24,6 +24,7 @@
     </div>
   <% end %>
 </div>
-<div>
-  <%= render "devise/shared/links" %>
+<div class="small-8 colums">
+  <%= button_to "Sign Up", new_user_registration_path, class: "recipe-button button round expand medium", method: :get %>
+  <%= button_to "Forgot Your Password?", new_user_password_path, class: "recipe-button button round expand medium", method: :get %>
 </div>
