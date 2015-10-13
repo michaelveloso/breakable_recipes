@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user sees recipe index', %{
+feature 'user can delete recipes', %{
   As an authenticated user,
   I want to by able to delete my own recipes
   So that I can get rid of ones I don't like anymore

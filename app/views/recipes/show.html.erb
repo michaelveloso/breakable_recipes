@@ -38,6 +38,7 @@
     </div>
   </div>
   <div class="column small-8 end">
+    <%= button_to "Edit this recipe", edit_recipe_path(@recipe), class: "recipe-button expand button round", method: :get %>
     <%= button_to "Delete this recipe", @recipe, class: "recipe-button expand button round", method: :delete %>
     <%= button_to "Back to recipes", recipes_path, class: "recipe-button expand button round", method: :get %>
   </div>
