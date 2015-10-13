@@ -69,8 +69,8 @@ feature 'user can add simple attributes', %{
       expect(page).to have_content("Name can't be blank")
     end
 
-    scenario 'user sees error message if name is duplicate' do
-      FactoryGirl.create(:recipe, name: "Recipe Name")
+    scenario 'user sees error message if user/name tuple is duplicate' do
+      FactoryGirl.create(:recipe, name: "Recipe Name", user: @user)
 
       fill_in "recipe-name-input", with: "Recipe Name"
       click_button("Add this Recipe!")
