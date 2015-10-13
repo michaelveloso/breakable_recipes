@@ -40,7 +40,7 @@
       <button type="button" id="new-category-button" class="form-button button round tiny">Add a category</button>
     </span>
     <div id="recipe-add-categories" class="recipe-add-categories-block columns small-10 end">
-      <%= form.fields_for :categories do |category_form| %>
+      <%= form.fields_for :categories, include_id: false do |category_form| %>
         <div class="small-4 columns category-box end">
           <%= category_form.select :id, options_for_select(@category_options, category_form.object.id), class: "category-select-box" %>
         </div>
@@ -53,7 +53,7 @@
       <button type="button" id="new-ingredient-button" class="form-button button round tiny">Add an ingredient</button>
     </span>
     <div id="recipe-add-ingredients" class="columns small-10 recipe-add-ingredients-block end">
-      <%= form.fields_for :ingredient_lists do |il_form| %>
+      <%= form.fields_for :ingredient_lists, include_id: false do |il_form| %>
         <div class="row">
           <div class="columns small-12 ingredient-box">
             <div class="columns small-4">

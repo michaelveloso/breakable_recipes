@@ -42,6 +42,20 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update_attributes(recipe_params)
+      add_recipe_categories
+      add_ingredient_lists
+      add_recipe_steps
+      flash[:success] = "Recipe edited!"
+      redirect_to recipe_path(@recipe)
+    else
+      flash[:errors] = @recipe.errors.full_messages.join(', ')
+      redirect_to edit_recipe_path(@recipe)
+    end
+  end
+
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
@@ -84,44 +98,59 @@ class RecipesController < ApplicationController
   end
 
   def add_recipe_categories
-    recipe_category_ids.each do |_key, category_id|
-      RecipeCategory.create(
-        recipe: @recipe,
-        category_id: category_id[:id])
+    RecipeCategory.destroy_all(recipe: @recipe)
+    if recipe_category_ids
+      recipe_category_ids.each do |_key, category_id|
+        RecipeCategory.create(
+          recipe: @recipe,
+          category_id: category_id[:id])
+      end
     end
   end
 
   def add_ingredient_lists
-    ingredient_lists.each do |_key, info|
-      IngredientList.create(
-        recipe: @recipe,
-        ingredient_id: info[:id],
-        amount: info[:amount],
-        preparation: info[:preparation],
-        step: info[:step]
-      )
+    IngredientList.destroy_all(recipe: @recipe)
+    if ingredient_lists
+      ingredient_lists.each do |_key, info|
+        IngredientList.create(
+          recipe: @recipe,
+          ingredient_id: info[:id],
+          amount: info[:amount],
+          preparation: info[:preparation],
+          step: info[:step]
+        )
+      end
     end
   end
 
   def add_recipe_steps
-    recipe_steps.each do |order, body_hash|
-      RecipeStep.create(
-        recipe: @recipe,
-        order: (order.to_i + 1),
-        body: body_hash[:body])
+    RecipeStep.destroy_all(recipe: @recipe)
+    if recipe_steps
+      recipe_steps.each do |order, body_hash|
+        RecipeStep.create(
+          recipe: @recipe,
+          order: (order.to_i + 1),
+          body: body_hash[:body])
+      end
     end
   end
 
   def recipe_category_ids
-    params[:recipe][:categories_attributes].select { |id| id.length > 0 }
+    if params[:recipe][:categories_attributes]
+      params[:recipe][:categories_attributes].select { |id| id.length > 0 }
+    end
   end
 
   def recipe_steps
-    params[:recipe][:recipe_steps_attributes].select { |body| body.length > 0 }
+    if params[:recipe][:recipe_steps_attributes]
+      params[:recipe][:recipe_steps_attributes].select { |body| body.length > 0 }
+    end
   end
 
   def ingredient_lists
-    params[:recipe][:ingredient_lists_attributes].select { |id| id.length > 0 }
+    if params[:recipe][:ingredient_lists_attributes]
+      params[:recipe][:ingredient_lists_attributes].select { |id| id.length > 0 }
+    end
   end
 
   def check_user
