@@ -60,9 +60,12 @@ feature 'user can edit recipes', %{
     scenario 'recipe static attributes are pre-filled' do
       expect(page).to have_content(@recipe.name)
       expect(find('#recipe_complexity').value).to eq(@recipe.complexity.to_s)
-      expect(find('#recipe_cooking_time').value).to have_content(@recipe.cooking_time)
-      expect(find('#num-served-min-input').value).to eq(@recipe.num_served_min.to_s)
-      expect(find('#num-served-max-input').value).to eq(@recipe.num_served_max.to_s)
+      expect(find('#recipe_cooking_time').value).
+        to have_content(@recipe.cooking_time)
+      expect(find('#num-served-min-input').value).
+        to eq(@recipe.num_served_min.to_s)
+      expect(find('#num-served-max-input').value).
+        to eq(@recipe.num_served_max.to_s)
     end
 
     scenario 'recipe categories are pre-filled' do
@@ -73,7 +76,8 @@ feature 'user can edit recipes', %{
 
     scenario 'recipe ingredients are pre-filled' do
       @recipe.ingredient_lists.each_with_index do |il, index|
-        expect(find(ingr_select_id_str(index)).value).to eq(il.ingredient.id.to_s)
+        expect(find(ingr_select_id_str(index)).value).
+          to eq(il.ingredient.id.to_s)
         expect(find(ingr_amount_str_by_id(index)).value).to eq(il.amount)
         expect(find(ingr_prep_str_by_id(index)).value).to eq(il.preparation)
       end
@@ -120,12 +124,14 @@ feature 'user can edit recipes', %{
       new_ingredient = FactoryGirl.create(:ingredient)
       visit edit_recipe_path(@recipe)
 
-      select new_ingredient.name, from: 'recipe_ingredient_lists_attributes_0_id'
+      select new_ingredient.name,
+        from: 'recipe_ingredient_lists_attributes_0_id'
       fill_in (ingr_amount_str(0)), with: 'New Amount'
       fill_in (ingr_prep_str(0)), with: 'New Preparation'
       click_button 'Update this Recipe!'
 
-      expect(page).to have_content("New Amount #{new_ingredient.to_s}, New Preparation")
+      expect(page).to have_content(
+        "New Amount #{new_ingredient}, New Preparation")
     end
 
     scenario 'recipe steps are updated' do

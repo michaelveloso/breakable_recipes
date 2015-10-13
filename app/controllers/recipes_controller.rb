@@ -143,13 +143,15 @@ class RecipesController < ApplicationController
 
   def recipe_steps
     if params[:recipe][:recipe_steps_attributes]
-      params[:recipe][:recipe_steps_attributes].select { |body| body.length > 0 }
+      params[:recipe][:recipe_steps_attributes].
+        select { |body| body.length > 0 }
     end
   end
 
   def ingredient_lists
     if params[:recipe][:ingredient_lists_attributes]
-      params[:recipe][:ingredient_lists_attributes].select { |id| id.length > 0 }
+      params[:recipe][:ingredient_lists_attributes].
+        select { |id| id.length > 0 }
     end
   end
 
