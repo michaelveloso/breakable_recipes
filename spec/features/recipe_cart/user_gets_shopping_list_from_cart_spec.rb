@@ -40,13 +40,13 @@ feature 'user gets a shopping list', %{
     click_link 'Sign Out'
 
     user = FactoryGirl.create(:user)
-    ing_A = FactoryGirl.create(:ingredient, name: "AAA")
-    ing_M = FactoryGirl.create(:ingredient, name: "MMM")
-    ing_Z = FactoryGirl.create(:ingredient, name: "ZZZ")
+    ing_a = FactoryGirl.create(:ingredient, name: "AAA")
+    ing_m = FactoryGirl.create(:ingredient, name: "MMM")
+    ing_z = FactoryGirl.create(:ingredient, name: "ZZZ")
     recipe = FactoryGirl.create(:recipe, user: user)
-    FactoryGirl.create(:ingredient_list, ingredient: ing_M, recipe: recipe)
-    FactoryGirl.create(:ingredient_list, ingredient: ing_Z, recipe: recipe)
-    FactoryGirl.create(:ingredient_list, ingredient: ing_A, recipe: recipe)
+    FactoryGirl.create(:ingredient_list, ingredient: ing_m, recipe: recipe)
+    FactoryGirl.create(:ingredient_list, ingredient: ing_z, recipe: recipe)
+    FactoryGirl.create(:ingredient_list, ingredient: ing_a, recipe: recipe)
     sign_in(user)
 
     visit recipes_path
