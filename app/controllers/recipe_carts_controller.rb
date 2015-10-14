@@ -1,5 +1,4 @@
 class RecipeCartsController < ApplicationController
-
   def show
   end
 

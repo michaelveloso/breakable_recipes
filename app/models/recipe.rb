@@ -14,7 +14,7 @@ class Recipe < ActiveRecord::Base
 
   validates :user_id, presence: true
   validates :name, presence: true
-  validates :name, uniqueness: {scope: :user_id}
+  validates :name, uniqueness: { scope: :user_id }
   validates :cooking_time, numericality: {
     only_integer: true,
     greater_than: 0,
@@ -35,8 +35,11 @@ class Recipe < ActiveRecord::Base
   end
 
   def cooking_time_min
-    (cooking_time.
-      present?) ? "Cooking time: #{cooking_time} minutes" : "Cooking time: ?"
+    if cooking_time.present?
+      "Cooking time: #{cooking_time} minutes"
+    else
+      "Cooking time: ?"
+    end
   end
 
   def num_served

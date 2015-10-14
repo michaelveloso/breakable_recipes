@@ -15,8 +15,14 @@ feature 'user can add recipes to cart', %{
     @user = FactoryGirl.create(:user)
     @recipe_1 = FactoryGirl.create(:recipe_complete, user: @user)
     @recipe_2 = FactoryGirl.create(:recipe_complete, user: @user)
-    FactoryGirl.create(:carted_recipe, recipe_cart: @user.cart, recipe: @recipe_1)
-    FactoryGirl.create(:carted_recipe, recipe_cart: @user.cart, recipe: @recipe_2)
+    FactoryGirl.create(
+      :carted_recipe,
+      recipe_cart: @user.cart,
+      recipe: @recipe_1)
+    FactoryGirl.create(
+      :carted_recipe,
+      recipe_cart: @user.cart,
+      recipe: @recipe_2)
     sign_in(@user)
   end
 
