@@ -2,10 +2,16 @@
 <div class="cart-recipe-block columns small-12 end">
   <% if current_user.cart.recipes.length > 0 %>
     <% current_user.cart.recipes.each do |recipe| %>
-      <div class="recipe-name colums small-12">
+      <div class="recipe-name columns small-6">
         <h3><%= link_to recipe.name, recipe_path(recipe) %></h3>
       </div>
+      <div class="columns small-4">
+        <%= button_to 'Remove from cart', recipe_cart_path, method: :delete, params: { recipe_id: recipe.id }, class: "delete-from-index-button button tiny round inline left" %>
+      </div>
     <% end %>
+    <div class="columns small-8 end">
+      <%= button_to 'Clear cart', recipe_cart_path, params: { recipe_id: 'all' }, method: :delete, class: "recipe-button button expand round" %>
+    </div>
   <% else %>
     No recipes added!
   <% end %>

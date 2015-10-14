@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :recipes
 
-  resource :recipe_cart, only: [:show, :update]
+  resource :recipe_cart, only: [:show, :update, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
