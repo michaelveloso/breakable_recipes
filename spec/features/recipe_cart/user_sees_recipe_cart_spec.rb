@@ -29,27 +29,26 @@ feature 'user can add recipes to cart', %{
   scenario 'user can navigate to cart from topbar' do
     click_link 'My Recipe Cart'
 
-    expect(current_path).to eq('/recipe_cart')
+    expect(current_path).to eq(recipe_cart_path)
   end
 
   scenario 'user can see all recipes in cart' do
-    visit '/recipe_cart'
+    visit recipe_cart_path
 
     expect(page).to have_content(@recipe_1.name)
     expect(page).to have_content(@recipe_2.name)
   end
 
   scenario 'recipes are links to their show pages' do
-    visit '/recipe_cart'
+    visit recipe_cart_path
 
     click_link(@recipe_1.name)
 
     expect(current_path).to eq(recipe_path(@recipe_1))
-    visit '/recipe_cart'
+    visit recipe_cart_path
 
     click_link(@recipe_2.name)
 
     expect(current_path).to eq(recipe_path(@recipe_2))
   end
-
 end

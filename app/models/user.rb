@@ -17,8 +17,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessor :current_cart
-
   def moderator?
     role == 'admin' || role == 'moderator'
   end
@@ -40,6 +38,6 @@ class User < ActiveRecord::Base
   end
 
   def last_recipe_cart
-    RecipeCart.where(user_id: id).order(created_at: :desc).limit(1)[0]
+    RecipeCart.where(user_id: id).order(created_at: :asc).limit(1)[0]
   end
 end
