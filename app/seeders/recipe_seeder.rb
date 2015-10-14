@@ -12,7 +12,6 @@ require_relative 'recipes/turkey_salad'
 require_relative 'recipes/roast_beef_and_blue_cheese_wraps'
 require_relative 'recipes/pasta_amatriciana'
 
-
 class RecipeSeeder
   def self.seed!
     roast_beef_and_blue_cheese_wraps
