@@ -10,7 +10,7 @@
       </div>
     <% end %>
     <div class="columns small-8 end">
-      <%= button_to 'Make my shopping list', shopping_list_path, params: { recipe_cart: { ordered: true } }, method: :get, class: "recipe-button button expand round" %>
+      <%= button_to 'Make my shopping list', shopping_list_path, method: :get, class: "recipe-button button expand round" %>
     </div>
     <div class="columns small-8 end">
       <%= button_to 'Clear cart', recipe_cart_path, params: { recipe_id: 'all' }, method: :delete, class: "recipe-button button expand round" %>
