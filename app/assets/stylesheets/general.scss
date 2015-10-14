@@ -1,5 +1,10 @@
 @import "colors";
 
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
 h2 {
   display: inline;
 }

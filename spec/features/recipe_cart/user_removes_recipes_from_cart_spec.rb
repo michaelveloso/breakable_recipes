@@ -7,9 +7,9 @@ feature 'user can remove recipes from cart', %{
 
   Acceptance criteria:
 
-  [] User can remove recipes from recipe cart
-  [] User can clear all recipes at once
-  [] User is notified on successful removal
+  [√] User can remove recipes from recipe cart
+  [√] User can clear all recipes at once
+  [√] User is notified on successful removal
 
 } do
 
@@ -26,7 +26,8 @@ feature 'user can remove recipes from cart', %{
       recipe_cart: @user.cart,
       recipe: @recipe_2)
     sign_in(@user)
-    visit '/recipe_cart'
+
+    visit recipe_cart_path
   end
 
   scenario 'user can remove recipes from recipe cart' do
@@ -54,5 +55,4 @@ feature 'user can remove recipes from cart', %{
 
     expect(page).to have_content("All recipes cleared!")
   end
-
 end
