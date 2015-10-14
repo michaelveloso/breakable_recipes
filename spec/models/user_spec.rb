@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 
   it { should have_many :recipes }
+  it { should have_many :recipe_carts }
 
   it { should have_valid(:email).when("email@gmail.com", "gmail@email.com") }
   it { should_not have_valid(:email).when(nil, '', 'zest.com') }
@@ -74,4 +75,8 @@ RSpec.describe User, type: :model do
     expect(user.full_name).to eq("#{user.first_name} #{user.last_name}")
   end
 
+  it "should instantiate a recipe cart" do
+    user = FactoryGirl.create(:user)
+    expect(user.cart).to be_a(RecipeCart)
+  end
 end

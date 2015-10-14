@@ -83,4 +83,25 @@ FactoryGirl.define do
     end
   end
 
+  factory :carted_recipe do
+    recipe_cart
+    recipe
+  end
+
+  factory :recipe_cart do
+    user
+
+    factory :recipe_cart_filled do
+      transient do
+        recipes_count { rand(1..3) }
+      end
+
+      after(:create) do |recipe_cart, evaluator|
+        create_list(
+          :carted_recipe,
+          evaluator.recipes_count,
+          recipe_cart: recipe_cart)
+      end
+    end
+  end
 end

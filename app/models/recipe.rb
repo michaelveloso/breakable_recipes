@@ -5,6 +5,8 @@ class Recipe < ActiveRecord::Base
   has_many :ingredients, through: :ingredient_lists
   has_many :recipe_categories
   has_many :categories, through: :recipe_categories
+  has_many :carted_recipes
+  has_many :recipe_carts, through: :carted_recipes
 
   accepts_nested_attributes_for :categories
   accepts_nested_attributes_for :recipe_steps

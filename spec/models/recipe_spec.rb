@@ -8,6 +8,8 @@ RSpec.describe Recipe, type: :model do
   it { should have_many :ingredient_lists }
   it { should have_many :ingredients }
   it { should have_many :categories }
+  it { should have_many :carted_recipes }
+  it { should have_many :recipe_carts }
 
   it { should have_valid(:name).when("tomatoes", "soy sauce") }
   it { should_not have_valid(:name).when(nil, '') }
