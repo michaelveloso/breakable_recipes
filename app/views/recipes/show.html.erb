@@ -1,5 +1,10 @@
 <div class="recipe-block row">
-  <h2><%= @recipe.name %></h2>
+  <div class="column small-12">
+    <h2><%= @recipe.name %></h2>
+  </div>
+  <div class="column small-12">
+    <%= button_to 'Add to cart', recipe_cart_path, method: :put, params: { recipe_id: @recipe.id }, class: "recipe-button button tiny round inline left" %> </h2>
+  </div>
   <div class="recipe-info-block column small-8">
     <span class="recipe-info-attr"><%= @recipe.complexity_rating %></span>
     <span class="recipe-info-attr"><%= @recipe.cooking_time_min %></span>
@@ -14,9 +19,7 @@
       <% end %>
     </div>
   </div>
-  <div class="column small-4">
-    <%= button_to 'Add to cart', recipe_cart_path, method: :put, params: { recipe_id: @recipe.id }, class: "column small-4 recipe-button button small round" %>
-  </div>
+
   <div class="ingredient-row column small-12">
     <h3>Ingredients:</h3>
     <div class="ingredient-block columns small-6">
