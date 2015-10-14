@@ -5,6 +5,8 @@ class Recipe < ActiveRecord::Base
   has_many :ingredients, through: :ingredient_lists
   has_many :recipe_categories
   has_many :categories, through: :recipe_categories
+  has_many :carted_recipes
+  has_many :recipe_carts, through: :carted_recipes
 
   accepts_nested_attributes_for :categories
   accepts_nested_attributes_for :recipe_steps
@@ -12,7 +14,7 @@ class Recipe < ActiveRecord::Base
 
   validates :user_id, presence: true
   validates :name, presence: true
-  validates :name, uniqueness: true
+  validates :name, uniqueness: { scope: :user_id }
   validates :cooking_time, numericality: {
     only_integer: true,
     greater_than: 0,
@@ -29,11 +31,15 @@ class Recipe < ActiveRecord::Base
   validates :complexity, inclusion: { in: [nil, 1, 2, 3] }
 
   def complexity_rating
-    (complexity.present?) ? "Complexity: #{complexity}" : ""
+    (complexity.present?) ? "Complexity: #{complexity}" : "Complexity: ?"
   end
 
   def cooking_time_min
-    (cooking_time.present?) ? "Cooking time: #{cooking_time} minutes" : ""
+    if cooking_time.present?
+      "Cooking time: #{cooking_time} minutes"
+    else
+      "Cooking time: ?"
+    end
   end
 
   def num_served
@@ -46,7 +52,7 @@ class Recipe < ActiveRecord::Base
         "Serves #{num_served_max}-#{num_served_min}"
       end
     else
-      ""
+      "Serves ?-?"
     end
   end
 end

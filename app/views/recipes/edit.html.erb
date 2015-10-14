@@ -84,7 +84,7 @@
     <div id="recipe-add-steps" class="columns small-10 recipe-add-steps-block end">
       <% step_counter = 1 %>
       <%= form.fields_for :recipe_steps do |recipe_step_form| %>
-        <div class="step-block">
+        <div class="edit-step-block">
           <h6>Step <%= step_counter %></h6>
           <%= recipe_step_form.text_area :body, class:"step-box" %>
           <% step_counter += 1 %>

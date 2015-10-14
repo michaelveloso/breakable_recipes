@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007205005) do
+ActiveRecord::Schema.define(version: 20151013184225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "carted_recipes", force: :cascade do |t|
+    t.integer "recipe_id",      null: false
+    t.integer "recipe_cart_id", null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
@@ -38,6 +43,13 @@ ActiveRecord::Schema.define(version: 20151007205005) do
   end
 
   add_index "ingredients", ["name", "subtype"], name: "index_ingredients_on_name_and_subtype", unique: true, using: :btree
+
+  create_table "recipe_carts", force: :cascade do |t|
+    t.integer  "user_id",                    null: false
+    t.boolean  "ordered",    default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "recipe_categories", force: :cascade do |t|
     t.integer "category_id", null: false
@@ -65,7 +77,7 @@ ActiveRecord::Schema.define(version: 20151007205005) do
     t.datetime "updated_at"
   end
 
-  add_index "recipes", ["name"], name: "index_recipes_on_name", unique: true, using: :btree
+  add_index "recipes", ["name", "user_id"], name: "index_recipes_on_name_and_user_id", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",       null: false

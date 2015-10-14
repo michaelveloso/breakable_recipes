@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :recipes
+  has_many :recipe_carts
 
   validates :email, presence: true
   validates :email, uniqueness: true
@@ -16,6 +17,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  attr_accessor :current_cart
+
   def moderator?
     role == 'admin' || role == 'moderator'
   end
@@ -26,5 +29,17 @@ class User < ActiveRecord::Base
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def cart
+    if last_recipe_cart && last_recipe_cart.ordered == false
+      last_recipe_cart
+    else
+      RecipeCart.create(user_id: id)
+    end
+  end
+
+  def last_recipe_cart
+    RecipeCart.where(user_id: id).order(created_at: :desc).limit(1)[0]
   end
 end
