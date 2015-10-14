@@ -1,13 +1,12 @@
-<h2>Your Recipe Cart</h2>
-
-<div class="row">
-  <div class="cart-recipe-block columns small-6">
-    <% if current_user.cart.recipes.length > 0 %>
-      <% current_user.cart.recipes.each do |recipe| %>
-        <%= link_to recipe.name, recipe_path(recipe) %>
-      <% end %>
-    <% else %>
-      No recipes added!
+<h2 class="columns small-12">Your Recipe Cart</h2>
+<div class="cart-recipe-block columns small-12 end">
+  <% if current_user.cart.recipes.length > 0 %>
+    <% current_user.cart.recipes.each do |recipe| %>
+      <div class="recipe-name colums small-12">
+        <h3><%= link_to recipe.name, recipe_path(recipe) %></h3>
+      </div>
     <% end %>
-  </div>
+  <% else %>
+    No recipes added!
+  <% end %>
 </div>
