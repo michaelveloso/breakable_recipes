@@ -8,7 +8,7 @@ feature 'user can add recipes to cart', %{
   Acceptance criteria:
   [√] User can click on 'Recipe Cart' button in topbar
   [√] User sees recipes in cart
-  [] Recipes are links to their show pages
+  [√] Recipes are links to their show pages
 } do
 
   before(:each) do
