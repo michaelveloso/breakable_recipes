@@ -12,6 +12,5 @@ class RecipeCart < ActiveRecord::Base
     end
     ingredient_lists.flatten!
     ingredient_lists.sort_by! { |il| il.ingredient.to_s }
-    ingredient_lists.map! { |il| il.to_s }
   end
 end

@@ -12,8 +12,9 @@ Rails.application.routes.draw do
 
   resource :recipe_cart, only: [:show, :update, :destroy]
 
-  resource :shopping_list, only: [:show]
+  resource :shopping_list, only: [:show, :new]
 
+  resource :suggested_recipe, only: [:show]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
