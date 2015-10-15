@@ -8,3 +8,18 @@ html {
 h2 {
   display: inline;
 }
+
+body {
+  background: image-url("bg_photo.jpg") no-repeat center center fixed;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+.content {
+  background-color: $light-yellow;
+  border-radius: 20px;
+  margin: 20px 0;
+  padding: 20px;
+}

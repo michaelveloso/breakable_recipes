@@ -59,7 +59,7 @@
   font-size: 14pt;
   padding: 0 5px;
   padding-top: 10px;
-  margin-bottom: 20px;
+  margin: 0 0 20px 15px;
 
   input {
     @include fieldstyle($dark-orange);
@@ -79,7 +79,7 @@
   border-radius: 5px;
   box-shadow: 2px 2px 1px darken($light-yellow, 70%);
   font-size: 14pt;
-  margin: 0 0 20px;
+  margin: 0 0 20px 15px;
   padding: 15px 0 0;
 
   select {
@@ -92,7 +92,7 @@
   border-radius: 5px;
   box-shadow: 2px 2px 1px darken($light-yellow, 70%);
   font-size: 14pt;
-  margin-bottom: 20px;
+  margin: 0 0 20px 15px;
   padding: 0 5px;
   padding-top: 15px;
 
@@ -110,6 +110,7 @@
   border-radius: 5px;
   box-shadow: 2px 2px 1px darken($light-yellow, 70%);
   font-size: 14pt;
+  margin-left: 15px;
   padding: 15px 15px 0;
 
   textarea {
@@ -133,4 +134,8 @@
     background-color: $slate;
     box-shadow: 2px 2px 1px darken($light-yellow, 70%);
     color: $white; }
+}
+
+.new-recipe-wrapper {
+  margin-left: 50px;
 }

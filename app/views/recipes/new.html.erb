@@ -1,102 +1,104 @@
-<h1 class="sub-header">Add a Recipe</h1>
+<div class="add-recipe-wrapper">
+  <h1 class="sub-header">Add a Recipe</h1>
 
-<%= form_for @recipe do |form| %>
-  <div class="row">
-    <div class="small-6 columns recipe-name-input-block">
-      <%= form.text_area :name, placeholder: "Recipe Name", id: "recipe-name-input", class: "input-field", cols: "80", rows: "2" %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="recipe-attributes-block small-10 columns">
-      <div class="small-1 columns recipe-attribute-input">
-        <%= form.label :complexity, class: "left inline" %>
-      </div>
-      <div class="small-1 columns recipe-attribute-input">
-        <%= form.select :complexity, [[nil],[1,1],[2,2],[3,3]], class: "input-field"  %>
-      </div>
-      <div class="small-3 columns recipe-attribute-input">
-        <%= form.label "Cooking time (min):", class: "right inline" %>
-      </div>
-      <div class="small-2 columns recipe-attribute-input">
-        <%= form.number_field :cooking_time, class: "input-field"  %>
-      </div>
-      <div class="small-2 columns recipe-attribute-input">
-        <%= form.label "Num served: ", class: "right inline" %>
-      </div>
-      <div class="small-1 columns recipe-attribute-input">
-        <%= form.number_field :num_served_min, id: "num-served-min-input", class: "input-field"  %>
-      </div>
-      <div class="small-1 columns recipe-attribute-input">
-        <%= form.label "to", class: "right inline" %>
-      </div>
-      <div class="small-1 columns recipe-attribute-input end">
-        <%= form.number_field :num_served_max, id: "num-served-max-input", class: "input-field"  %>
+  <%= form_for @recipe do |form| %>
+    <div class="row">
+      <div class="small-6 columns recipe-name-input-block">
+        <%= form.text_area :name, placeholder: "Recipe Name", id: "recipe-name-input", class: "input-field", cols: "80", rows: "2" %>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <span class="column small-12">
-      <span class="recipe-form-header">Categories</span>
-      <button type="button" id="new-category-button" class="form-button button round tiny">Add a category</button>
-    </span>
-    <div id="recipe-add-categories" class="recipe-add-categories-block columns small-10 end">
-      <%= form.fields_for :categories do |category_form| %>
-        <div class="small-4 columns category-box end">
-          <%= category_form.select :id, options_for_select(@category_options), class: "category-select-box" %>
+    <div class="row">
+      <div class="recipe-attributes-block small-10 columns">
+        <div class="small-1 columns recipe-attribute-input">
+          <%= form.label :complexity, class: "left inline" %>
         </div>
-      <% end %>
+        <div class="small-1 columns recipe-attribute-input">
+          <%= form.select :complexity, [[nil],[1,1],[2,2],[3,3]], class: "input-field"  %>
+        </div>
+        <div class="small-3 columns recipe-attribute-input">
+          <%= form.label "Cooking time (min):", class: "right inline" %>
+        </div>
+        <div class="small-2 columns recipe-attribute-input">
+          <%= form.number_field :cooking_time, class: "input-field"  %>
+        </div>
+        <div class="small-2 columns recipe-attribute-input">
+          <%= form.label "Num served: ", class: "right inline" %>
+        </div>
+        <div class="small-1 columns recipe-attribute-input">
+          <%= form.number_field :num_served_min, id: "num-served-min-input", class: "input-field"  %>
+        </div>
+        <div class="small-1 columns recipe-attribute-input">
+          <%= form.label "to", class: "right inline" %>
+        </div>
+        <div class="small-1 columns recipe-attribute-input end">
+          <%= form.number_field :num_served_max, id: "num-served-max-input", class: "input-field"  %>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <span class="column small-12">
-      <span class="recipe-form-header">Ingredients</span>
-      <button type="button" id="new-ingredient-button" class="form-button button round tiny">Add an ingredient</button>
-    </span>
-    <div id="recipe-add-ingredients" class="columns small-10 recipe-add-ingredients-block end">
-      <%= form.fields_for :ingredient_lists do |il_form| %>
-        <div class="row">
-          <div class="columns small-12 ingredient-box">
-            <div class="columns small-4">
-              <%= il_form.select :id, options_for_select(@ingredient_options) %>
-            </div>
-            <div class="columns small-2">
-              <%= il_form.text_field :amount, placeholder: "amount" %>
-            </div>
-            <div class="columns small-3">
-              <%= il_form.text_field :preparation, placeholder: "preparation" %>
-            </div>
-            <div class="columns small-1">
-              <%= il_form.label :step, class: "right inline" %>
-            </div>
-            <div class="columns small-1 end">
-              <%= il_form.number_field :step %>
+    <div class="row">
+      <span class="column small-12">
+        <span class="recipe-form-header">Categories</span>
+        <button type="button" id="new-category-button" class="form-button button round tiny">Add a category</button>
+      </span>
+      <div id="recipe-add-categories" class="recipe-add-categories-block columns small-10 end">
+        <%= form.fields_for :categories do |category_form| %>
+          <div class="small-4 columns category-box end">
+            <%= category_form.select :id, options_for_select(@category_options), class: "category-select-box" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <span class="column small-12">
+        <span class="recipe-form-header">Ingredients</span>
+        <button type="button" id="new-ingredient-button" class="form-button button round tiny">Add an ingredient</button>
+      </span>
+      <div id="recipe-add-ingredients" class="columns small-10 recipe-add-ingredients-block end">
+        <%= form.fields_for :ingredient_lists do |il_form| %>
+          <div class="row">
+            <div class="columns small-12 ingredient-box">
+              <div class="columns small-4">
+                <%= il_form.select :id, options_for_select(@ingredient_options) %>
+              </div>
+              <div class="columns small-2">
+                <%= il_form.text_field :amount, placeholder: "amount" %>
+              </div>
+              <div class="columns small-3">
+                <%= il_form.text_field :preparation, placeholder: "preparation" %>
+              </div>
+              <div class="columns small-1">
+                <%= il_form.label :step, class: "right inline" %>
+              </div>
+              <div class="columns small-1 end">
+                <%= il_form.number_field :step %>
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <span class="column small-12">
-      <span class="recipe-form-header">Recipe Steps</span>
-      <button type="button" id="new-step-button" class="form-button button round tiny">Add a step</button>
-    </span>
-    <div id="recipe-add-steps" class="columns small-10 recipe-add-steps-block end">
-      <% step_counter = 1 %>
-      <%= form.fields_for :recipe_steps do |recipe_step_form| %>
-        <div class="step-box">
-          <h6>Step <%= step_counter %></h6>
-          <%= recipe_step_form.text_area :body %>
-          <% step_counter += 1 %>
-        </div>
-      <% end %>
+    <div class="row">
+      <span class="column small-12">
+        <span class="recipe-form-header">Recipe Steps</span>
+        <button type="button" id="new-step-button" class="form-button button round tiny">Add a step</button>
+      </span>
+      <div id="recipe-add-steps" class="columns small-10 recipe-add-steps-block end">
+        <% step_counter = 1 %>
+        <%= form.fields_for :recipe_steps do |recipe_step_form| %>
+          <div class="step-box">
+            <h6>Step <%= step_counter %></h6>
+            <%= recipe_step_form.text_area :body %>
+            <% step_counter += 1 %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  </div>
 
-  <div class="actions small-10 column">
-    <%= form.submit "Add this Recipe!", class: "recipe-button expand button round" %>
+    <div class="actions small-10 column">
+      <%= form.submit "Add this Recipe!", class: "recipe-button expand button round" %>
+    </div>
+  <% end %>
+  <div class="small-10 column">
+    <%= button_to "Back to recipes", recipes_path, class: "recipe-button expand button round", method: :get %>
   </div>
-<% end %>
-<div class="small-10 column">
-  <%= button_to "Back to recipes", recipes_path, class: "recipe-button expand button round", method: :get %>
 </div>
