@@ -14,8 +14,7 @@ class RecipeSuggestor
 
   def self.gather_recipes(ingredients)
     recipes = count_recipes(ingredients)
-    recipes = sort_recipes(recipes)
-    recipes
+    sort_recipes(recipes)
   end
 
   def self.count_recipes(ingredients)
