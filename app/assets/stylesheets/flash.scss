@@ -1,0 +1,24 @@
+@import "colors";
+
+.flash {
+  color: $white;
+  font-family: 'Lobster', cursive;
+  font-size: 14pt;
+  text-align: center;
+}
+
+.flash-notice {
+  background: $bright-blue;
+}
+
+.flash-success {
+  background: $bright-green;
+}
+
+.flash-alert {
+  background: $bright-red;
+}
+
+.flash-errors {
+  background: $bright-red;
+}
