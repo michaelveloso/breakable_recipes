@@ -13,9 +13,15 @@
       <%= button_to 'Make my shopping list', shopping_list_path, method: :get, class: "recipe-button button expand round" %>
     </div>
     <div class="columns small-8 end">
+      <%= button_to 'Back to my recipes', recipes_path, method: :get, class: "recipe-button button expand round" %>
+    </div>
+    <div class="columns small-8 end">
       <%= button_to 'Clear cart', recipe_cart_path, params: { recipe_id: 'all' }, method: :delete, class: "recipe-button button expand round" %>
     </div>
   <% else %>
-    No recipes added!
+    <h3>No recipes added!</h3>
+    <div class="columns small-8 end">
+      <%= button_to 'Back to my recipes', recipes_path, method: :get, class: "recipe-button button expand round" %>
+    </div>
   <% end %>
 </div>
