@@ -21,10 +21,20 @@ feature 'user gets suggestions from shopping list', %{
     @ingredient_1 = FactoryGirl.create(:ingredient, name: "Ingredient 1")
     @ingredient_2 = FactoryGirl.create(:ingredient, name: "Ingredient 2")
     @ingredient_3 = FactoryGirl.create(:ingredient, name: "Ingredient 3")
-    FactoryGirl.create(:ingredient_list, ingredient: @ingredient_1, recipe: @recipe_1)
-    FactoryGirl.create(:ingredient_list, ingredient: @ingredient_2, recipe: @recipe_1)
-    FactoryGirl.create(:ingredient_list, ingredient: @ingredient_2, recipe: @recipe_2)
-    FactoryGirl.create(:ingredient_list, ingredient: @ingredient_3, recipe: @recipe_2)
+    FactoryGirl.create(
+      :ingredient_list,
+      ingredient: @ingredient_1,
+      recipe: @recipe_1)
+    FactoryGirl.create(
+      :ingredient_list,
+      ingredient: @ingredient_2,
+      recipe: @recipe_1)
+    FactoryGirl.create(:ingredient_list,
+      ingredient: @ingredient_2,
+      recipe: @recipe_2)
+    FactoryGirl.create(:ingredient_list,
+      ingredient: @ingredient_3,
+      recipe: @recipe_2)
     @user.cart.recipes << @recipe_1
     sign_in(@user)
     visit shopping_list_path
