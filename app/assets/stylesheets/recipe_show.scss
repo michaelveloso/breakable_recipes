@@ -66,3 +66,16 @@
 .recipe-step-body {
   margin: 5px 5px 5px 20px;
 }
+
+.add-to-cart-button.tiny {
+  background-color: $light-yellow;
+  color: $slate;
+  font-family: 'Lobster', cursive;
+  font-size: 12pt;
+  margin: 2px;
+
+  &:hover {
+    background-color: $slate;
+    box-shadow: 2px 2px 1px darken($light-yellow, 70%);
+    color: $white; }
+}
