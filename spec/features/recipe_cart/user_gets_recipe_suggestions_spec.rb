@@ -20,30 +20,34 @@ feature 'user gets suggestions from shopping list', %{
     sign_in(@user)
   end
 
-  scenario 'user can add recipe to cart from index' do
-    visit recipes_path
-
-    click_button "Add to cart"
-
-    expect(@user.cart.recipes.include?(@recipe)).to eq(true)
+  scenario 'user can choose ingredients from shopping list page' do
+    pending
+    expect(true).to eq(false)
   end
 
-  scenario 'user can add recipe to cart from show' do
-    visit recipe_path(@recipe)
-
-    click_button "Add to cart"
-
-    expect(@user.cart.recipes.include?(@recipe)).to eq(true)
+  scenario 'user clicks button to get suggested recipes' do
+    pending
+    expect(true).to eq(false)
   end
 
-  scenario 'user is taken to recipe cart after adding a recipe' do
-    visit recipe_path(@recipe)
-
-    click_button "Add to cart"
-
-    expect(current_path).to eq('/recipe_cart')
-    expect(page).to have_content(@recipe.name)
-    expect(page).to_not have_content('No recipes added!')
+  scenario 'user sees list of suggested recipes' do
+    pending
+    expect(true).to eq(false)
   end
 
+  scenario 'suggested recipes do not include recipes already in cart' do
+    pending
+    expect(true).to eq(false)
+  end
+
+  scenario 'If no suggestions, user is informed' do
+    pending
+    expect(true).to eq(false)
+
+  end
+
+  scenario 'Page includes links to recipe index and shopping cart' do
+    pending
+    expect(true).to eq(false)
+  end
 end
