@@ -11,15 +11,15 @@ h2 {
 
 body {
   background: image-url('bg_photo.jpg') no-repeat center center fixed;
-  -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
+  -webkit-background-size: cover;
   background-size: cover;
 }
 
 .content {
-  margin: 20px 0;
-  padding: 20px;
   background-color: $light-yellow;
   border-radius: 20px;
+  margin: 20px 0;
+  padding: 20px;
 }

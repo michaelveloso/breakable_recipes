@@ -1,11 +1,8 @@
 class RecipeSuggestor
-
   def self.get_recipes(ingredient_ids)
     ingredients = get_ingredients(ingredient_ids)
     gather_recipes(ingredients)
   end
-
-  private
 
   def self.get_ingredients(ingredient_ids)
     ingredients = []
@@ -18,6 +15,7 @@ class RecipeSuggestor
   def self.gather_recipes(ingredients)
     recipes = count_recipes(ingredients)
     recipes = sort_recipes(recipes)
+    recipes
   end
 
   def self.count_recipes(ingredients)
@@ -31,10 +29,11 @@ class RecipeSuggestor
         end
       end
     end
+    recipes
   end
 
   def self.sort_recipes(recipes)
-    sorted_recipes_raw = recipes.sort_by { |recipe, count| -count }
+    sorted_recipes_raw = recipes.sort_by { |_recipe, count| -count }
     sorted_recipes = []
     sorted_recipes_raw.each do |recipe_array|
       sorted_recipes << recipe_array[0]
