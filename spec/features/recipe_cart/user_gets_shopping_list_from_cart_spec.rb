@@ -6,8 +6,8 @@ feature 'user gets a shopping list', %{
   So that I know what I need to buy
 
   Acceptance criteria:
-  [] User can get shopping list from recipe cart show page
-  [] User sees ingredient listed in alphabetical order
+  [√] User can get shopping list from recipe cart show page
+  [√] User sees ingredient listed in alphabetical order
   [] Shopping cart is cleared
 } do
 
@@ -59,11 +59,13 @@ feature 'user gets a shopping list', %{
     expect('MMM').to appear_before('ZZZ')
   end
 
-  scenario 'shopping cart is cleared' do
+  scenario 'shopping cart is cleared when list is finalized' do
     click_button 'Make my shopping list'
+
+    click_button 'Finalize shopping list'
+
     visit recipe_cart_path
 
     expect(page).to have_content('No recipes added')
   end
-
 end

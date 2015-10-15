@@ -1,0 +1,9 @@
+<h2>Final Shopping List</h2>
+
+<% @shopping_list.each do |item| %>
+  <div>
+    <%= item.to_s %>
+  </div>
+<% end %>
+
+<%= button_to 'Back to recipes', recipes_path, method: :get, class: "recipe-button button expand round medium" %>

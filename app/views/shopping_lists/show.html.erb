@@ -1,7 +1,12 @@
 <h2>Shopping List</h2>
 
-<% @shopping_list.each do |item| %>
-  <div>
-    <%= item %>
-  </div>
-<% end %>
+<form action="/suggested_recipe" method="GET">
+  <% @shopping_list.each do |item| %>
+    <div>
+      <%= check_box_tag("id[#{item.ingredient.id}]", item.ingredient.id, false, class: 'ingredient-choices') %> <%= item.to_s %>
+    </div>
+  <% end %>
+  <%= submit_tag "Get suggested recipes", class: "button recipe-button round expand medium" %>
+</form>
+
+<%= button_to "Finalize shopping list", new_shopping_list_path, class: "button recipe-button round expand medium", method: :get  %>
