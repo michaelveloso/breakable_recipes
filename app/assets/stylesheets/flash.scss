@@ -1,14 +1,14 @@
 @import "colors";
 
 .flash {
+  color: $white;
   font-family: 'Lobster', cursive;
   font-size: 14pt;
-  color: $white;
   text-align: center;
 }
 
 .flash-notice {
-  background: $bright-blue;;
+  background: $bright-blue;
 }
 
 .flash-success {
