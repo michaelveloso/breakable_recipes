@@ -62,7 +62,7 @@ feature 'user gets a shopping list', %{
   scenario 'shopping cart is cleared when list is finalized' do
     click_button 'Make my shopping list'
 
-    click_button 'Finalize my shopping list'
+    click_button 'Finalize shopping list'
 
     visit recipe_cart_path
 
