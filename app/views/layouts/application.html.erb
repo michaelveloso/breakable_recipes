@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Recipe Central</title>
+  <title>Recipe Collector</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
   <link href='https://fonts.googleapis.com/css?family=Chivo:400,900' rel='stylesheet' type='text/css'>
@@ -12,7 +12,7 @@
     <section class="top-bar-section left">
       <ul class="title-area">
         <li class="name">
-          <h1><a href="/">Recipe Central</a></h1>
+          <h1><a href="/">Recipe Collector</a></h1>
         </li>
         <% if current_user %>
           <% if current_user.moderator? %>
