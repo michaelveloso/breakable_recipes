@@ -15,6 +15,11 @@
           <h1><a href="/">Recipe Collector</a></h1>
         </li>
         <% if current_user %>
+          <% if current_user.admin? %>
+            <li class="topbar-link">
+              <%= link_to 'Users', admin_users_path %>
+            </li>
+          <% end %>
           <% if current_user.moderator? %>
             <li class="topbar-link">
               <%= link_to 'Categories', categories_path %>

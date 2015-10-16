@@ -11,7 +11,7 @@ feature 'user can edit recipes', %{
   [√] I can edit my recipes from their show pages
   [√] Only a recipe's owner can edit a recipe
   [√] Edit page has attributes pre-filled
-  [] Recipe is updated correctly
+  [√] Recipe is updated correctly
   [√] I am shown errors if name is not filled out
   [√] I am given confirmation when a recipe is edited
   [√] I am taken to recipe show page upon successful editing

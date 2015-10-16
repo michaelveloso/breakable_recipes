@@ -1,0 +1,12 @@
+<h2>Users</h2>
+
+<div class="user-index">
+  <% @users.each do |user| %>
+  <div class="user-listing">
+    <%= user.username %> <%= user.email %>
+    <% if user.moderator? %>
+      (<%= user.role %>)
+    <% end %>
+  </div>
+  <% end %>
+</div>
