@@ -2,9 +2,9 @@ class UserSeeder
   USERS = [
     {
       username: "mjveloso",
-      email: "mjv.audio@gmail.com",
-      password: "password",
-      password_confirmation: "password",
+      email: ENV['GMAIL_ADDRESS'],
+      password: ENV['RECIPE_COLLECTOR_PASSWORD'],
+      password_confirmation: ENV['RECIPE_COLLECTOR_PASSWORD'],
       first_name: "Michael",
       last_name: "Veloso",
       role: "admin"
