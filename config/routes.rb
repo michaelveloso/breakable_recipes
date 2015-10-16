@@ -15,6 +15,11 @@ Rails.application.routes.draw do
   resource :shopping_list, only: [:show, :new]
 
   resource :suggested_recipe, only: [:show]
+
+  namespace :admin do
+    resources :users, only: [:index]
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

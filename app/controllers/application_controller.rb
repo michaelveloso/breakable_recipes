@@ -28,4 +28,11 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     recipes_path
   end
+
+  def verify_admin
+    if not current_user.admin?
+      flash[:errors] = 'You don\'t have permission to do that!'
+      redirect_to root_path
+    end
+  end
 end
