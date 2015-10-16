@@ -7,6 +7,7 @@
     <% if user.moderator? %>
       (<%= user.role %>)
     <% end %>
+    <%= button_to "Delete", admin_user_path(user), method: :delete %>
   </div>
   <% end %>
 </div>

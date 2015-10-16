@@ -31,7 +31,6 @@ feature 'admin can see index of users', %{
     expect(page).to have_content(@mod.email)
     expect(page).to have_content(@admin.username)
     expect(page).to have_content(@admin.email)
-
   end
 
   scenario 'Users index shows role of each user' do
