@@ -11,6 +11,7 @@ feature 'admin can see index of users', %{
   [√] - Index of users shows role
   [√] - Mod cannot see link or visit admin_users_path
   [√] - Member cannot see link or visit admin_users_path
+  [] - Usernames are links to user show pages
 } do
 
   before(:each) do
@@ -60,5 +61,20 @@ feature 'admin can see index of users', %{
 
     expect(current_path).to eq(root_path)
     expect(page).to have_content("You don't have permission to do that")
+  end
+
+  scenario 'Usernames are links to their user show pages' do
+    sign_in(@admin)
+
+    visit admin_users_path
+
+    click_link(@member.username)
+
+    expect(current_path).to eq(admin_user_path(@member))
+    visit admin_users_path
+
+    click_link(@mod.username)
+
+    expect(current_path).to eq(admin_user_path(@mod))
   end
 end

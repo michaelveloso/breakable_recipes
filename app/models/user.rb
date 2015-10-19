@@ -4,8 +4,6 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true
   validates :email, uniqueness: true
-  validates :password, presence: true
-  validates :password, length: { minimum: 8 }
   validates :username, presence: true
   validates :username, uniqueness: true
   validates :first_name, presence: true
@@ -39,5 +37,13 @@ class User < ActiveRecord::Base
 
   def last_recipe_cart
     RecipeCart.where(user_id: id).order(created_at: :desc).limit(1)[0]
+  end
+
+  def current_role_string
+    if admin?
+      "#{username} is now an admin"
+    else
+      "#{username} is now a #{role}"
+    end
   end
 end

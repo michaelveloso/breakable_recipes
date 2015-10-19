@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resource :suggested_recipe, only: [:show]
 
   namespace :admin do
-    resources :users, only: [:index, :destroy]
+    resources :users, only: [:index, :destroy, :show, :update]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

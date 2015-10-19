@@ -1,0 +1,16 @@
+<h2>@user.username</h2>
+
+Name: <%= @user.full_name %>
+Email: <%= @user.email %>
+Joined: <%= @user.created_at %>
+Last sign-in: <%= @user.last_sign_in_at %>
+
+<% if @user.role != 'member' %>
+  <%= button_to 'Make member', admin_user_path(@user), method: :patch, params: { role: "member" }, class: "set-privilege-button button tiny round inline left" %>
+<% end %>
+<% if @user.role != 'moderator' %>
+  <%= button_to 'Make moderator', admin_user_path(@user), method: :patch, params: { role: "moderator" }, class: "set-privilege-button button tiny round inline left" %>
+<% end %>
+<% if @user.role != 'admin' %>
+  <%= button_to 'Make admin', admin_user_path(@user), method: :patch, params: { role: "admin" }, class: "set-privilege-button button tiny round inline left" %>
+<% end %>
