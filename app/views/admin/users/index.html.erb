@@ -3,7 +3,7 @@
 <div class="user-index">
   <% @users.each do |user| %>
   <div class="user-listing">
-    <%= user.username %> <%= user.email %>
+    <%= link_to user.username, admin_user_path(user) %> <%= user.email %>
     <% if user.moderator? %>
       (<%= user.role %>)
     <% end %>
