@@ -35,5 +35,4 @@ class Admin::UsersController < ApplicationController
   def role_params
     { role: params[:role] }
   end
-
 end
