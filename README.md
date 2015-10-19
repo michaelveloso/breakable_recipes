@@ -20,6 +20,16 @@ Also, admin responsibilities: de-/escalating permissions, deleting inappropriate
 
 ### TECHNICAL INFO:
 
+Recipe Collector is built on Ruby on Rails, using a PostgreSQL database. Front-end uses JS and JQuery to construct forms dynamically, and the UI is built on Foundation.
+
+Other resources used:
+
+Devise - User authentication / authorization
+Selenium - JavaScript testing
+Capybara - feature testing
+Rspec - feature and unit testing
+Factory Girl - feature and unit testing
+
 ![Build Status](https://codeship.com/projects/bc77f9e0-4876-0133-3ba9-1a1bdb65cff7/status?branch=master)
 ![Code Climate](https://codeclimate.com/github/michaelveloso/breakable_recipes.png)
 ![Coverage Status](https://coveralls.io/repos/michaelveloso/breakable_recipes/badge.png)
