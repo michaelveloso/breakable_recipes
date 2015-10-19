@@ -8,9 +8,6 @@ RSpec.describe User, type: :model do
   it { should have_valid(:email).when("email@gmail.com", "gmail@email.com") }
   it { should_not have_valid(:email).when(nil, '', 'zest.com') }
 
-  it { should have_valid(:password).when("awefsdfs", "2133fewfs") }
-  it { should_not have_valid(:password).when(nil, '', '16', 'pwd') }
-
   it { should have_valid(:username).when("billybob", "suejoe") }
   it { should_not have_valid(:username).when(nil, '') }
 

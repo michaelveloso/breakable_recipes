@@ -7,52 +7,70 @@ feature 'admin can set privileges', %{
 
   Acceptance criteria:
 
-  [] - Admin can make moderator from user's show page
-  [] - Admin can make admin from user's show page
-  [] - Admin can remove all privilege from user's show page
-  [] - Admin is given confirmation when privilege is changed
+  [] - Admin sees appropriate buttons
+  [√] - Admin can make moderator from user's show page
+  [√] - Admin can make admin from user's show page
+  [√] - Admin can remove all privilege from user's show page
+  [√] - Admin is given confirmation when privilege is changed
   [] - User is notified via email when privilege is changed
 } do
 
   before(:each) do
+    @user = FactoryGirl.create(:user)
+    @mod = FactoryGirl.create(:user_mod)
     @admin = FactoryGirl.create(:user_admin)
     sign_in(@admin)
   end
 
+  scenario "Admin sees appropriate buttons" do
+    visit admin_user_path(@user)
+
+    expect(page.has_button?('Make member')).to eq(false)
+    find_button('Make moderator')
+    find_button('Make admin')
+
+    visit admin_user_path(@mod)
+
+    expect(page.has_button?('Make moderator')).to eq(false)
+    find_button('Make member')
+    find_button('Make admin')
+
+    visit admin_user_path(@admin)
+
+    expect(page.has_button?('Make admin')).to eq(false)
+    find_button('Make moderator')
+    find_button('Make member')
+  end
+
   scenario "Admin can elevate a member to a moderator" do
-    user = FactoryGirl.create(:user)
-    visit admin_user_path(user)
+    visit admin_user_path(@user)
 
     click_button('Make moderator')
-
-    expect(user.role).to eq('moderator')
+    expect(@user.reload.role).to eq('moderator')
   end
 
   scenario "Admin can elevate a member to admin" do
-    user = FactoryGirl.create(:user)
-    visit admin_user_path(user)
+    visit admin_user_path(@user)
 
     click_button('Make admin')
 
-    expect(user.role).to eq('admin')
+    expect(@user.reload.role).to eq('admin')
   end
 
   scenario "Admin can elevate a moderator to admin" do
-    mod = FactoryGirl.create(:mod)
-    visit admin_user_path(mod)
+    visit admin_user_path(@mod)
 
     click_button('Make admin')
 
-    expect(mod.role).to eq('admin')
+    expect(@mod.reload.role).to eq('admin')
   end
 
   scenario "Admin can demote moderator to member" do
-    mod = FactoryGirl.create(:user_mod)
-    visit admin_user_path(mod)
+    visit admin_user_path(@mod)
 
     click_button('Make member')
 
-    expect(mod.role).to eq('member')
+    expect(@mod.reload.role).to eq('member')
   end
 
   scenario "Admin can demote admin to moderator" do
@@ -61,7 +79,7 @@ feature 'admin can set privileges', %{
 
     click_button('Make moderator')
 
-    expect(admin.role).to eq('moderator')
+    expect(admin.reload.role).to eq('moderator')
   end
 
   scenario "Admin can demote admin to member" do
@@ -70,22 +88,21 @@ feature 'admin can set privileges', %{
 
     click_button('Make member')
 
-    expect(admin.role).to eq('member')
+    expect(admin.reload.role).to eq('member')
   end
 
   scenario "Admin is shown notification of status change" do
-    user = FactoryGirl.create(:user)
-    visit admin_user_path(user)
+    visit admin_user_path(@user)
 
     click_button('Make admin')
 
-    expect(page).to have_content("#{user.username} is now a admin")
+    expect(page).to have_content("#{@user.username} is now an admin")
     click_button('Make moderator')
 
-    expect(page).to have_content("#{user.username} is now a moderator")
+    expect(page).to have_content("#{@user.username} is now a moderator")
     click_button('Make member')
 
-    expect(page).to have_content("#{user.username} is now a member")
+    expect(page).to have_content("#{@user.username} is now a member")
   end
 
   scenario "User gets email notification of role change" do

@@ -18,13 +18,11 @@ class Admin::UsersController < ApplicationController
 
   def update
     @user = this_user
-    binding.pry
     if @user.update_attributes(role_params)
-      flash[:success] = "#{@user.username} is now a #{@user.role}"
+      flash[:success] = @user.current_role_string
     else
       flash[:errors] = @user.errors.full_messages.join(', ')
     end
-    binding.pry
     redirect_to admin_user_path(@user)
   end
 
