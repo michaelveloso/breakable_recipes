@@ -23,8 +23,7 @@ feature 'user can flag recipes as shared', %{
     @recipe_shared = FactoryGirl.create(
       :recipe_complete,
       user: user,
-      shared: true
-      )
+      shared: true)
     sign_in(user)
   end
 

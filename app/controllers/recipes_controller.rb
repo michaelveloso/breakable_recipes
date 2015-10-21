@@ -83,8 +83,7 @@ class RecipesController < ApplicationController
       :cooking_time,
       :num_served_min,
       :num_served_max,
-      :shared
-      ).merge(user: current_user)
+      :shared).merge(user: current_user)
   end
 
   def check_owner(recipe)
