@@ -2,7 +2,7 @@ class SuggestedRecipesController < ApplicationController
   def show
     ids = get_ingredient_ids
     if !ids.empty?
-      @recipes = RecipeSuggestor.get_recipes(ids)
+      @recipes = RecipeSuggestor.get_recipes(ids, current_user)
       current_user.cart.recipes.each do |carted_recipe|
         @recipes.delete(carted_recipe)
       end

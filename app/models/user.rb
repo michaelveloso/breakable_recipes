@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :recipes
-  has_many :recipe_carts
+  has_many :recipes, dependent: :destroy
+  has_many :recipe_carts, dependent: :destroy
 
   validates :email, presence: true
   validates :email, uniqueness: true

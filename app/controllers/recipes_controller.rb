@@ -1,12 +1,13 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!, except: [:index]
+  before_action :check_user, only: [:edit, :update]
 
   def index
     @recipes = Recipe.where(user: current_user).order(:name)
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
+    @recipe = this_recipe
     check_owner(@recipe)
     @ingredients = @recipe.ingredient_lists
     @steps = @recipe.recipe_steps.order(:order)
@@ -36,28 +37,34 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    check_user
     @category_options = category_options
     @ingredient_options = ingredient_options
-    @recipe = Recipe.find(params[:id])
+    @recipe = this_recipe
   end
 
   def update
-    @recipe = Recipe.find(params[:id])
-    if @recipe.update_attributes(recipe_params)
-      add_recipe_categories
-      add_ingredient_lists
-      add_recipe_steps
-      flash[:success] = "Recipe edited!"
+    @recipe = this_recipe
+    if params[:shared_only]
+      @recipe.shared = params[:recipe][:shared]
+      @recipe.save
+      flash[:success] = @recipe.share_flash_string
       redirect_to recipe_path(@recipe)
     else
-      flash[:errors] = @recipe.errors.full_messages.join(', ')
-      redirect_to edit_recipe_path(@recipe)
+      if @recipe.update_attributes(recipe_params)
+        add_recipe_categories
+        add_ingredient_lists
+        add_recipe_steps
+        flash[:success] = "Recipe edited!"
+        redirect_to recipe_path(@recipe)
+      else
+        flash[:errors] = @recipe.errors.full_messages.join(', ')
+        redirect_to edit_recipe_path(@recipe)
+      end
     end
   end
 
   def destroy
-    @recipe = Recipe.find(params[:id])
+    @recipe = this_recipe
     @recipe.destroy
     flash[:success] = "#{@recipe.name} deleted!"
     redirect_to recipes_path
@@ -65,13 +72,19 @@ class RecipesController < ApplicationController
 
   private
 
+  def this_recipe
+    Recipe.find(params[:id])
+  end
+
   def recipe_params
     params.require(:recipe).permit(
       :name,
       :complexity,
       :cooking_time,
       :num_served_min,
-      :num_served_max).merge(user: current_user)
+      :num_served_max,
+      :shared
+      ).merge(user: current_user)
   end
 
   def check_owner(recipe)
