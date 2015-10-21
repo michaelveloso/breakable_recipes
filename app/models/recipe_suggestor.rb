@@ -1,7 +1,7 @@
 class RecipeSuggestor
-  def self.get_recipes(ingredient_ids)
+  def self.get_recipes(ingredient_ids, user)
     ingredients = get_ingredients(ingredient_ids)
-    gather_recipes(ingredients)
+    gather_recipes(ingredients, user)
   end
 
   def self.get_ingredients(ingredient_ids)
@@ -12,19 +12,21 @@ class RecipeSuggestor
     ingredients
   end
 
-  def self.gather_recipes(ingredients)
-    recipes = count_recipes(ingredients)
+  def self.gather_recipes(ingredients, user)
+    recipes = count_recipes(ingredients, user)
     sort_recipes(recipes)
   end
 
-  def self.count_recipes(ingredients)
+  def self.count_recipes(ingredients, user)
     recipes = {}
     ingredients.each do |ingredient|
       ingredient.recipes.each do |recipe|
-        if recipes[recipe]
-          recipes[recipe] += 1
-        else
-          recipes[recipe] = 1
+        if recipe.user = user
+          if recipes[recipe]
+            recipes[recipe] += 1
+          else
+            recipes[recipe] = 1
+          end
         end
       end
     end

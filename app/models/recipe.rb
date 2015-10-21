@@ -55,4 +55,12 @@ class Recipe < ActiveRecord::Base
       "Serves ?-?"
     end
   end
+
+  def toggle_string
+    shared ? "Unshare" : "Share"
+  end
+
+  def share_flash_string
+    shared ? "#{name} is shared!" : "#{name} is no longer shared."
+  end
 end

@@ -9,11 +9,13 @@ feature 'admin can delete user from index', %{
 
   [√] - Admin sees delete button on users index page
   [√] - Admin sees confirmation after delete
+  [√] - All deleted user's recipes are removed
+  [] - All deleted user's comments are removed
+  [] - Deleted user is notified by email
 } do
 
   before(:each) do
     @member = FactoryGirl.create(:user)
-    @mod = FactoryGirl.create(:user_mod)
     @admin = FactoryGirl.create(:user_admin)
     sign_in(@admin)
 
@@ -30,5 +32,22 @@ feature 'admin can delete user from index', %{
     click_button('Delete', match: :first)
 
     expect(page).to have_content("#{@member.username} deleted")
+  end
+
+  scenario 'Deleted user\'s recipes are removed' do
+    recipe = FactoryGirl.create(:recipe, user: @member)
+    click_button('Delete', match: :first)
+
+    expect(recipe).to_not eq(Recipe.last)
+  end
+
+  scenario 'Deleted user\'s comments are removed' do
+    pending ('comments not implemented yet')
+    expect(true).to eq(false)
+  end
+
+  scenario 'Deleted user is notified of deletion via email' do
+    pending ('email not implemented yet')
+    expect(true).to eq(false)
   end
 end

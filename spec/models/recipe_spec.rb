@@ -54,4 +54,17 @@ RSpec.describe Recipe, type: :model do
     expect(recipe.num_served).to eq(
       "Serves #{recipe.num_served_min}-#{recipe.num_served_max}")
   end
+
+  it 'should default to unshared' do
+    recipe = FactoryGirl.create(:recipe)
+    expect(recipe.shared).to eq(false)
+  end
+
+  it 'should display the correct toggle string' do
+    recipe = FactoryGirl.create(:recipe)
+    expect(recipe.toggle_string).to eq("Share")
+
+    recipe = FactoryGirl.create(:recipe, shared: true)
+    expect(recipe.toggle_string).to eq("Unshare")
+  end
 end

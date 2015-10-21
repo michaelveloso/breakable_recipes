@@ -25,9 +25,13 @@ Recipe Collector is built on Ruby on Rails, using a PostgreSQL database. Front-e
 Other resources used:
 
 Devise - User authentication / authorization
+
 Selenium - JavaScript testing
+
 Capybara - feature testing
+
 Rspec - feature and unit testing
+
 Factory Girl - feature and unit testing
 
 ![Build Status](https://codeship.com/projects/bc77f9e0-4876-0133-3ba9-1a1bdb65cff7/status?branch=master)
