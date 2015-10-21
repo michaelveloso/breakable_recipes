@@ -21,7 +21,7 @@ feature 'user can delete recipes', %{
 
   scenario 'user can delete recipes from index' do
     visit recipes_path
-save_and_open_page
+
     click_button("Delete")
 
     visit recipes_path
