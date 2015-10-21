@@ -11,6 +11,7 @@ feature 'user can add simple attributes', %{
   [√] Form is only visible to registered users
   [√] Form displays fields for recipe name,
        cooking time, complexity, and number served
+  [] Form has checkbox for sharing
   [√] Form requires name only
   [√] Form displays success message on complete submission
   [√] User sees recipe show page on complete submission
@@ -47,6 +48,7 @@ feature 'user can add simple attributes', %{
       find_field("Complexity")
       find_field("num-served-min-input")
       find_field("num-served-max-input")
+      find_field("recipe_shared")
     end
 
     scenario 'user sees success message on successful submission' do

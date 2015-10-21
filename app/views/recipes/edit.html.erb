@@ -5,6 +5,10 @@
     <div class="small-6 columns recipe-name-input-block">
       <%= form.text_area :name, placeholder: "Recipe Name", id: "recipe-name-input", class: "input-field", cols: "80", rows: "2" %>
     </div>
+    <div class="small-3 columns end recipe-share-input-block">
+      <%= form.label "Share this recipe?", class: "left inline" %>
+      <%= form.check_box :shared, class: "left inline shared-checkbox" %>
+    </div>
   </div>
   <div class="row">
     <div class="recipe-attributes-block small-10 columns">
