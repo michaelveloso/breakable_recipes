@@ -7,7 +7,7 @@ feature 'user can subscribe to a shared recipe', %{
 
   Acceptance criteria:
 
-  [] User can subscribe to a shared recipe from its show page
+  [√] User can subscribe to a shared recipe from its show page
   [] User is notified on successful subscription
   [] Subscribed recipes appear in recipes_path
   [] Subscribed recipes do not appear in shared recipes
