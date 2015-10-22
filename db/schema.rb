@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151021135959) do
+ActiveRecord::Schema.define(version: 20151022144525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,13 @@ ActiveRecord::Schema.define(version: 20151021135959) do
   end
 
   add_index "recipes", ["name", "user_id"], name: "index_recipes_on_name_and_user_id", unique: true, using: :btree
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer "recipe_id"
+    t.integer "user_id"
+  end
+
+  add_index "subscriptions", ["recipe_id", "user_id"], name: "index_subscriptions_on_recipe_id_and_user_id", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",       null: false

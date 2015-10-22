@@ -3,8 +3,11 @@
     <h2><%= @recipe.name %></h2>
   </div>
   <div class="column small-12">
-    <%= button_to 'Add to cart', recipe_cart_path, method: :put, params: { recipe_id: @recipe.id }, class: "add-to-cart-button button tiny round inline left" %> </h2>
-  </div>
+    <%= form_for @subscription do |form| %>
+      <input type="hidden" name="_method" value="patch">
+      <input type="hidden" name="recipe[id]" value="<%= @recipe.id %>">
+      <%= submit_tag "Subscribe", class: "button recipe-button tiny round inline left" %>
+    <% end %>  </div>
   <div class="recipe-info-block column small-8">
     <span class="recipe-info-attr"><%= @recipe.complexity_rating %></span>
     <span class="recipe-info-attr"><%= @recipe.cooking_time_min %></span>
@@ -45,5 +48,6 @@
   </div>
   <div class="column small-8 end">
     <%= button_to "Back to shared recipes", shared_recipes_path, class: "recipe-button expand button round", method: :get %>
+    <%= button_to "Back to my recipes", recipes_path, class: "recipe-button expand button round", method: :get %>
   </div>
 </div>

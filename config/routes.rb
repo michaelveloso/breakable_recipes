@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   end
 
   namespace :shared do
-    resources :recipes, only: [:index, :show]
+    resources :recipes, only: [:index, :show, :update]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

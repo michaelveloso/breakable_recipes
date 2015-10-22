@@ -9,19 +9,15 @@ feature 'user can see index of shared recipes', %{
 
   [√] User sees shared recipes at /shared/recipes
   [√] User can see show pages of shared recipes
-  [√] Subscribed recipes do not appear in shared recipes
+  [√] User can navigate back to shared recipe index
+  [√] User can navigate back to their recipes
 } do
 
   before(:each) do
-    user_1 = FactoryGirl.create(:user)
-    user_2 = FactoryGirl.create(:user)
-    @recipe_1 = FactoryGirl.create(:recipe_complete,
-      user: user_1,
-      shared: true)
-    @recipe_2 = FactoryGirl.create(:recipe_complete,
-      user: user_1,
-      shared: true)
-    sign_in(user_2)
+    user = FactoryGirl.create(:user)
+    @recipe_1 = FactoryGirl.create(:recipe_complete, shared: true)
+    @recipe_2 = FactoryGirl.create(:recipe_complete, shared: true)
+    sign_in(user)
   end
 
   scenario 'User sees shared recipes at /shared/recipes' do
@@ -52,15 +48,20 @@ feature 'user can see index of shared recipes', %{
     expect(page).to_not have_content("You don't have permission")
   end
 
-  scenario 'Subscribed recipes do not appear in shared recipes' do
-    pending('Recipes are as yet unsubscribable')
+  scenario 'User can navigate back to shared recipe index' do
     visit shared_recipe_path(@recipe_1)
 
-    click_button 'Subscribe'
+    click_button("Back to shared recipes")
 
-    visit shared_recipes_path
+    expect(current_path).to eq(shared_recipes_path)
+  end
 
-    expect(page).to_not have_content(@recipe_1.name)
+  scenario 'User can navigate back to their recipe index' do
+    visit shared_recipe_path(@recipe_1)
+
+    click_button("Back to my recipes")
+
+    expect(current_path).to eq(recipes_path)
   end
 
 end

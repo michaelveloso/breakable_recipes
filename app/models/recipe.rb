@@ -1,12 +1,14 @@
 class Recipe < ActiveRecord::Base
   belongs_to :user
-  has_many :recipe_steps
-  has_many :ingredient_lists
+  has_many :recipe_steps, dependent: :destroy
+  has_many :ingredient_lists, dependent: :destroy
   has_many :ingredients, through: :ingredient_lists
-  has_many :recipe_categories
+  has_many :recipe_categories, dependent: :destroy
   has_many :categories, through: :recipe_categories
-  has_many :carted_recipes
+  has_many :carted_recipes, dependent: :destroy
   has_many :recipe_carts, through: :carted_recipes
+  has_many :subscriptions, dependent: :destroy
+  has_many :subscribers, through: :subscriptions, source: :user
 
   accepts_nested_attributes_for :categories
   accepts_nested_attributes_for :recipe_steps
