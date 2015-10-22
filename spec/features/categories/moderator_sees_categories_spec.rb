@@ -47,12 +47,3 @@ feature 'user sees category index', %{
     expect("AAA").to appear_before("BBB")
   end
 end
-
-def sign_in(user)
-  visit new_user_session_path
-
-  fill_in 'Email', with: user.email
-  fill_in 'Password', with: user.password
-
-  click_button 'Log in'
-end

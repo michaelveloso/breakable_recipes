@@ -51,6 +51,10 @@ FactoryGirl.define do
     sequence(:name) { |n| "recipe#{n}" }
     user
 
+    factory :recipe_shared do
+      shared true
+    end
+
     factory :recipe_numbers do
       cooking_time { rand(5..60) }
       num_served_min { rand(1..4) }

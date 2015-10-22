@@ -1,0 +1,49 @@
+<div class="recipe-block row">
+  <div class="column small-12">
+    <h2><%= @recipe.name %></h2>
+  </div>
+  <div class="column small-12">
+    <%= button_to 'Add to cart', recipe_cart_path, method: :put, params: { recipe_id: @recipe.id }, class: "add-to-cart-button button tiny round inline left" %> </h2>
+  </div>
+  <div class="recipe-info-block column small-8">
+    <span class="recipe-info-attr"><%= @recipe.complexity_rating %></span>
+    <span class="recipe-info-attr"><%= @recipe.cooking_time_min %></span>
+    <span class="recipe-info-attr"><%= @recipe.num_served %></span>
+    <div>
+      <% if @recipe.categories.present? %>
+        <% @recipe.categories.each do |category| %>
+          <span class="category-name">
+            <%= category.name %>
+          </span>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="ingredient-row column small-12">
+    <h3>Ingredients:</h3>
+    <div class="ingredient-block columns small-6">
+      <% @ingredients.each do |ingredient| %>
+        <div class="ingredient-listing columns small-12">
+          <%= ingredient.to_s %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="step-row column small-12">
+    <h3>Instructions:</h3>
+    <div class="step-block columns small-8">
+      <% @steps.each_with_index do |step, index| %>
+        <div class="recipe-step-index">Step <%= index + 1 %>:</div>
+        <div class="recipe-step">
+          <div class="recipe-step-body">
+            <%= step.body %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="column small-8 end">
+    <%= button_to "Back to shared recipes", shared_recipes_path, class: "recipe-button expand button round", method: :get %>
+  </div>
+</div>
