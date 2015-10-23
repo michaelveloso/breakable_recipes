@@ -3,7 +3,13 @@ class RecipesController < ApplicationController
   before_action :check_user, only: [:edit, :update]
 
   def index
-    @recipes = Recipe.where(user: current_user).order(:name)
+    if current_user
+      @recipes = Recipe.where(user: current_user)
+      current_user.subscribed_recipes.each do |recipe|
+        @recipes << recipe if recipe.shared
+      end
+      @recipes = @recipes.sort_by { |recipe| recipe.name }
+    end
   end
 
   def show

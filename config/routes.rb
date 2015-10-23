@@ -20,6 +20,12 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :destroy, :show, :update]
   end
 
+  namespace :shared do
+    resources :recipes, only: [:index, :show, :update]
+  end
+
+  resource :subscription, only: [:create]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

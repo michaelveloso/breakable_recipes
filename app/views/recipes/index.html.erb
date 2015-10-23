@@ -10,10 +10,15 @@
   <div class="recipe-list-block">
     <% @recipes.each do |recipe| %>
       <div class="recipe-name row">
-        <%= link_to recipe.name, recipe_path(recipe), class: "small-6 columns" %>
-        <%= button_to 'Add to cart', recipe_cart_path, method: :put, params: { recipe_id: recipe.id }, class: "delete-from-index-button button tiny round inline left" %>
-        <%= button_to "Edit", edit_recipe_path(recipe), class: "delete-from-index-button button tiny round inline left", method: :get %>
-        <%= button_to "Delete", recipe, class: "delete-from-index-button button tiny round inline left", method: :delete %>
+        <% if recipe.user == current_user %>
+          <%= link_to recipe.name, recipe_path(recipe), class: "small-6 columns" %>
+          <%= button_to 'Add to cart', recipe_cart_path, method: :put, params: { recipe_id: recipe.id }, class: "delete-from-index-button button tiny round inline left" %>
+          <%= button_to "Edit", edit_recipe_path(recipe), class: "delete-from-index-button button tiny round inline left", method: :get %>
+          <%= button_to "Delete", recipe, class: "delete-from-index-button button tiny round inline left", method: :delete %>
+        <% else %>
+          <%= link_to recipe.name, shared_recipe_path(recipe), class: "small-6 columns" %>
+          <%= button_to 'Add to cart', recipe_cart_path, method: :put, params: { recipe_id: recipe.id }, class: "delete-from-index-button button tiny round inline left" %>
+        <% end %>
       </div>
       <div class="small-12 columns recipe-info-index">
         <span class="recipe-info-attr"><%= recipe.complexity_rating %></span>
