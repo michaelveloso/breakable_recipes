@@ -2,7 +2,8 @@ class Shared::RecipesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @recipes = Recipe.where(shared: true).where.not(user: current_user).order(:name)
+    @recipes = Recipe.where(shared: true).
+      where.not(user: current_user).order(:name)
     current_user.subscribed_recipes.each do |recipe|
       @recipes.delete(recipe)
     end
