@@ -27,6 +27,7 @@ feature 'user can subscribe to a shared recipe', %{
 
     expect(page).to have_content(
       "You have successfully subscribed to this recipe!")
+    expect(current_path).to eq(shared_recipe_path(@recipe_1))
   end
 
   scenario 'Subscribed recipes appear in recipes_path' do
