@@ -8,16 +8,16 @@ feature 'user can subscribe to a shared recipe', %{
   Acceptance criteria:
 
   [√] User can subscribe to a shared recipe from its show page
-  [] User is notified on successful subscription
-  [] Subscribed recipes appear in recipes_path
-  [] Subscribed recipes do not appear in shared recipes
+  [√] User is notified on successful subscription
+  [√] Subscribed recipes appear in recipes_path
+  [√] Subscribed recipes do not appear in shared recipes
 } do
 
   before(:each) do
-    user = FactoryGirl.create(:user)
+    @user = FactoryGirl.create(:user)
     @recipe_1 = FactoryGirl.create(:recipe_complete, shared: true)
     @recipe_2 = FactoryGirl.create(:recipe_complete, shared: true)
-    sign_in(user)
+    sign_in(@user)
   end
 
   scenario 'User can subscribe to a shared recipe from its show page' do
@@ -44,7 +44,6 @@ feature 'user can subscribe to a shared recipe', %{
   end
 
   scenario 'Subscribed recipes do not appear in shared recipes' do
-    pending('Recipes are as yet unsubscribable')
     visit shared_recipe_path(@recipe_1)
 
     click_button 'Subscribe'

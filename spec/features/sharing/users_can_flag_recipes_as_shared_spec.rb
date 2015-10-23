@@ -15,16 +15,16 @@ feature 'user can flag recipes as shared', %{
 } do
 
   before(:each) do
-    user = FactoryGirl.create(:user)
+    @user = FactoryGirl.create(:user)
     @recipe_unshared = FactoryGirl.create(
       :recipe_complete,
-      user: user,
+      user: @user,
       shared: false)
     @recipe_shared = FactoryGirl.create(
       :recipe_complete,
-      user: user,
+      user: @user,
       shared: true)
-    sign_in(user)
+    sign_in(@user)
   end
 
   scenario 'Unshared recipes can be shared from recipe show page' do
@@ -59,7 +59,33 @@ feature 'user can flag recipes as shared', %{
   end
 
   scenario 'Unshared recipes no longer appear in subscribers\' indexes' do
-    pending ('Index does not include subscribed recipes yet')
-    expect(true).to eq(false)
+    user_2 = FactoryGirl.create(:user)
+    click_link 'Sign Out'
+
+    sign_in(user_2)
+
+    visit shared_recipe_path(@recipe_shared)
+
+    click_button 'Subscribe'
+
+    visit recipes_path
+
+    expect(page).to have_content(@recipe_shared.name)
+
+    click_link 'Sign Out'
+
+    sign_in(@user)
+
+    visit recipe_path(@recipe_shared)
+
+    click_button 'Unshare'
+
+    click_link 'Sign Out'
+
+    sign_in(user_2)
+
+    visit recipes_path
+
+    expect(page).to_not have_content(@recipe_shared.name)
   end
 end
