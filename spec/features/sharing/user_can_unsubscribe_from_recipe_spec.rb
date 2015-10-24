@@ -10,7 +10,7 @@ feature 'user can unsubscribe from a shared recipe', %{
   [√] User can unsubscribe from a shared recipe from its show page
   [√] User can unsubscribe from a shared recipe from recipe index
   [√] User is notified of successful unsubscription
-  [√] Unsubscribed recipes appear in shared recipes
+  [√] Unsubscribed recipes reappear in shared recipes
 } do
 
   before(:each) do

@@ -12,7 +12,8 @@ class SubscriptionsController < ApplicationController
   end
 
   def destroy
-    @subscription = Subscription.find_by(user: current_user, recipe_id: recipe_id)
+    @subscription = Subscription.find_by(
+      user: current_user, recipe_id: recipe_id)
     @subscription.destroy
     flash[:success] = "You have successfully unsubscribed from this recipe."
     redirect_to recipes_path
