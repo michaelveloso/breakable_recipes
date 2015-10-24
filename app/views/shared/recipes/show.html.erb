@@ -3,10 +3,18 @@
     <h2><%= @recipe.name %></h2>
   </div>
   <div class="column small-12">
-    <form action="/subscription" method="POST">
-      <input type="hidden" name="subscription[recipe_id]" value="<%= @recipe.id %>">
-      <%= submit_tag "Subscribe", class: "button recipe-button tiny round inline left" %>
-    </form>
+    <% if @recipe.subscribed?(current_user) %>
+      <form action="/subscription" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="subscription[recipe_id]" value="<%= @recipe.id %>">
+        <%= submit_tag "Unsubscribe", class: "button recipe-button tiny round inline left" %>
+      </form>
+    <% else %>
+      <form action="/subscription" method="POST">
+        <input type="hidden" name="subscription[recipe_id]" value="<%= @recipe.id %>">
+        <%= submit_tag "Subscribe", class: "button recipe-button tiny round inline left" %>
+      </form>
+    <% end %>
   </div>
   <div class="recipe-info-block column small-8">
     <span class="recipe-info-attr"><%= @recipe.complexity_rating %></span>

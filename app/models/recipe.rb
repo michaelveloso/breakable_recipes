@@ -65,4 +65,8 @@ class Recipe < ActiveRecord::Base
   def share_flash_string
     shared ? "#{name} is shared!" : "#{name} is no longer shared."
   end
+
+  def subscribed?(user)
+    subscribers.include?(user)
+  end
 end
