@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     resources :recipes, only: [:index, :show, :update]
   end
 
-  resource :subscription, only: [:create]
+  resource :subscription, only: [:create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

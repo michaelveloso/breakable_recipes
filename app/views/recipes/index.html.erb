@@ -18,6 +18,11 @@
         <% else %>
           <%= link_to recipe.name, shared_recipe_path(recipe), class: "small-6 columns" %>
           <%= button_to 'Add to cart', recipe_cart_path, method: :put, params: { recipe_id: recipe.id }, class: "delete-from-index-button button tiny round inline left" %>
+          <form action="/subscription" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="subscription[recipe_id]" value="<%= recipe.id %>">
+            <%= submit_tag "Unsubscribe", class: "button recipe-button tiny round inline left" %>
+          </form>
         <% end %>
       </div>
       <div class="small-12 columns recipe-info-index">
