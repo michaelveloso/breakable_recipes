@@ -2,9 +2,12 @@
   <h3><%= link_to "Sign in", new_user_session_path %> or <%= link_to "Sign up", new_user_registration_path %> to add recipes!</h3>
 <% else %>
   <div class="row recipe-index-header">
-    <span class="small-3 column your-recipes">Your Recipes</span>
+    <span class="small-4 column your-recipes">Your Recipes</span>
     <span class="small-4 column add-recipe-index end">
       <%= button_to "Add a new recipe", new_recipe_path, method: :get, class: "inline button recipe-button round expand" %>
+    </span>
+    <span class="small-4 column add-recipe-index end">
+      <%= button_to "Find a new recipe", shared_recipes_path, method: :get, class: "inline button recipe-button round expand" %>
     </span>
   </div>
   <div class="recipe-list-block">
@@ -21,7 +24,7 @@
           <form action="/subscription" method="POST">
             <input type="hidden" name="_method" value="DELETE">
             <input type="hidden" name="subscription[recipe_id]" value="<%= recipe.id %>">
-            <%= submit_tag "Unsubscribe", class: "button recipe-button tiny round inline left" %>
+            <%= submit_tag "Unsubscribe", class: "button delete-from-index-button tiny round inline left" %>
           </form>
         <% end %>
       </div>
