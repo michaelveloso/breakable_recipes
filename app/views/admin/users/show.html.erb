@@ -1,16 +1,16 @@
-<h2>@user.username</h2>
+<h3><%= @user.username %></h3>
 
-Name: <%= @user.full_name %>
-Email: <%= @user.email %>
-Joined: <%= @user.created_at %>
-Last sign-in: <%= @user.last_sign_in_at %>
+Name: <%= @user.full_name %><br>
+Email: <%= @user.email %><br>
+Joined: <%= @user.created_at %><br>
+Last sign-in: <%= @user.last_sign_in_at %><br>
 
 <% if @user.role != 'member' %>
-  <%= button_to 'Make member', admin_user_path(@user), method: :patch, params: { role: "member" }, class: "set-privilege-button button tiny round inline left" %>
+  <%= button_to 'Make member', admin_user_path(@user), method: :patch, params: { role: "member" }, class: "delete-from-index-button tiny round inline left" %>
 <% end %>
 <% if @user.role != 'moderator' %>
-  <%= button_to 'Make moderator', admin_user_path(@user), method: :patch, params: { role: "moderator" }, class: "set-privilege-button button tiny round inline left" %>
+  <%= button_to 'Make moderator', admin_user_path(@user), method: :patch, params: { role: "moderator" }, class: "delete-from-index-button button tiny round inline left" %>
 <% end %>
 <% if @user.role != 'admin' %>
-  <%= button_to 'Make admin', admin_user_path(@user), method: :patch, params: { role: "admin" }, class: "set-privilege-button button tiny round inline left" %>
+  <%= button_to 'Make admin', admin_user_path(@user), method: :patch, params: { role: "admin" }, class: "delete-from-index-button button tiny round inline left" %>
 <% end %>
