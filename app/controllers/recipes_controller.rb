@@ -99,22 +99,6 @@ class RecipesController < ApplicationController
     end
   end
 
-  def category_options
-    options = [['(Choose a category)', nil]]
-    Category.order(:name).each do |category|
-      options << [category.name, category.id]
-    end
-    options
-  end
-
-  def ingredient_options
-    options = [['(Choose an ingredient)', nil]]
-    Ingredient.order(:name, :subtype).each do |ingredient|
-      options << [ingredient.for_dropdown, ingredient.id]
-    end
-    options
-  end
-
   def add_recipe_categories
     RecipeCategory.destroy_all(recipe: @recipe)
     if recipe_category_ids
