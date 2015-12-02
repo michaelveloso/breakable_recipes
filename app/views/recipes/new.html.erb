@@ -47,7 +47,7 @@
       <div id="recipe-add-categories" class="recipe-add-categories-block columns small-10 end">
         <%= form.fields_for :categories do |category_form| %>
           <div class="small-4 columns category-box end">
-            <%= category_form.select :id, options_for_select(@category_options), class: "category-select-box" %>
+            <%= category_form.select :id, options_for_select(Category.options_for_select), class: "category-select-box" %>
           </div>
         <% end %>
       </div>
@@ -62,7 +62,7 @@
           <div class="row">
             <div class="columns small-12 ingredient-box">
               <div class="columns small-4">
-                <%= il_form.select :id, options_for_select(@ingredient_options) %>
+                <%= il_form.select :id, options_for_select(Ingredient.options_for_select) %>
               </div>
               <div class="columns small-2">
                 <%= il_form.text_field :amount, placeholder: "amount" %>

@@ -4,4 +4,12 @@ class Category < ActiveRecord::Base
 
   validates :name, presence: true
   validates :name, uniqueness: true
+
+  def self.options_for_select
+    options = [['(Choose a category)', nil]]
+    self.order(:name).each do |category|
+      options << [category.name, category.id]
+    end
+    options
+  end
 end

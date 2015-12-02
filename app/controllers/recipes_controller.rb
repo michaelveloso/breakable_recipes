@@ -20,8 +20,6 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @category_options = category_options
-    @ingredient_options = ingredient_options
     @recipe = Recipe.new
     @recipe.categories.build
     @recipe.ingredient_lists.build
@@ -43,8 +41,6 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    @category_options = category_options
-    @ingredient_options = ingredient_options
     @recipe = this_recipe
   end
 
@@ -97,22 +93,6 @@ class RecipesController < ApplicationController
       flash[:errors] = "You don't have permission to see this recipe"
       redirect_to root_path
     end
-  end
-
-  def category_options
-    options = [['(Choose a category)', nil]]
-    Category.order(:name).each do |category|
-      options << [category.name, category.id]
-    end
-    options
-  end
-
-  def ingredient_options
-    options = [['(Choose an ingredient)', nil]]
-    Ingredient.order(:name, :subtype).each do |ingredient|
-      options << [ingredient.for_dropdown, ingredient.id]
-    end
-    options
   end
 
   def add_recipe_categories

@@ -16,4 +16,12 @@ class Ingredient < ActiveRecord::Base
     string += ", #{subtype}" if subtype.present?
     string
   end
+
+  def self.options_for_select
+    options = [['(Choose an ingredient)', nil]]
+    self.order(:name, :subtype).each do |ingredient|
+      options << [ingredient.for_dropdown, ingredient.id]
+    end
+    options
+  end
 end
