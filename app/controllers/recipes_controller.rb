@@ -20,8 +20,6 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @category_options = category_options
-    @ingredient_options = ingredient_options
     @recipe = Recipe.new
     @recipe.categories.build
     @recipe.ingredient_lists.build
@@ -43,8 +41,6 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    @category_options = category_options
-    @ingredient_options = ingredient_options
     @recipe = this_recipe
   end
 
