@@ -14,4 +14,15 @@ RSpec.describe Category, type: :model do
     expect(category_invalid.valid?).to eq(false)
   end
 
+  it 'should offer all categories as options' do
+    Category.create(name: "French")
+    Category.create(name: "Asian")
+    category_options = Category.options_for_select
+    french_id = Category.where(name: "French")[0].id
+    asian_id = Category.where(name: "Asian")[0].id
+    expect(category_options).to be_a(Array)
+    expect(category_options[0]).to eq(["(Choose a category)", nil])
+    expect(category_options.include?(["French", french_id])).to eq(true)
+    expect(category_options.include?(["Asian", asian_id])).to eq(true)
+  end
 end
