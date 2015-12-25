@@ -25,4 +25,16 @@ RSpec.describe Ingredient, type: :model do
     ingredient = Ingredient.create(name: "Tomatoes", subtype: "Plum")
     expect(ingredient.for_dropdown).to eq("Tomatoes, Plum")
   end
+
+  it 'should offer all categories as options' do
+    Ingredient.create(name: "Basil")
+    Ingredient.create(name: "Noodles", subtype: "Rice")
+    basil_id = Ingredient.where(name: "Basil")[0].id
+    rice_noodles_id = Ingredient.where(name: "Noodles")[0].id
+    ingredient_options = Ingredient.options_for_select
+    expect(ingredient_options).to be_a(Array)
+    expect(ingredient_options[0]).to eq(["(Choose an ingredient)", nil])
+    expect(ingredient_options.include?(["Basil", basil_id])).to eq(true)
+    expect(ingredient_options.include?(["Noodles, Rice", rice_noodles_id])).to eq(true)
+  end
 end
