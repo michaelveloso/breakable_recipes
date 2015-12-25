@@ -35,6 +35,7 @@ RSpec.describe Ingredient, type: :model do
     expect(ingredient_options).to be_a(Array)
     expect(ingredient_options[0]).to eq(["(Choose an ingredient)", nil])
     expect(ingredient_options.include?(["Basil", basil_id])).to eq(true)
-    expect(ingredient_options.include?(["Noodles, Rice", rice_noodles_id])).to eq(true)
+    expect(ingredient_options.include?(
+      ["Noodles, Rice", rice_noodles_id])).to eq(true)
   end
 end
